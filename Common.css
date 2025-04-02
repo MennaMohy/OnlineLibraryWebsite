@@ -1,21 +1,29 @@
-#signup {
+body{
     font-family: Georgia, serif;
-    background-color:  #f5f5dc;
+    background-color: #96501DFF;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
-    background-image: url('https://i.pinimg.com/736x/ac/a0/8f/aca08f2f645252f03b65c7aec981448c.jpg') ;
 }
+.bodySecond {
+    font-family: Georgia, serif;
+    background-color: #f5f5dc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
 #box {
-    box-shadow: 0 8px 20px rgba(139, 69, 19, 0.6);
+    /*box-shadow: 0 8px 20px rgba(139, 69, 19, 0.6);
     background: rgba(150, 79, 29, 0.4);
     padding: 30px;
     width: 400px;
     border-radius: 12px;
     border: 1px solid rgba(210, 180, 140, 0.3);
     text-align: left;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);*/
 }
 label {
     color: beige ;
@@ -23,16 +31,19 @@ label {
     margin-bottom: 5px;
 }
 p{
-    color: beige;
+    color: #f5f5dc;
+    text-align: left;
+    margin-bottom: 5px;
 }
+
 input {
     width: 90%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-button {
-    width: 100%;
+.button-light {
+    width: 80%;
     padding: 12px;
     border: none;
     border-radius: 25px;
@@ -47,17 +58,47 @@ button {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+.button-dark {
+    width: 80%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: #96501d; /* Brown */
+    color: #f5f5dc; /* Beige */
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 button:hover {
     background: #e8e8d0;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-h1 {
-    color: #f5f5dc;
+h1,h2,h3{
     text-align: center;
+    letter-spacing: 2px;
+}
+
+h1{
+    color: #f5f5dc;
+    font-size: 30px;
     margin-bottom: 5px;
-    font-size: 28px;
-    letter-spacing: 1px;
+}
+
+h2 {
+    color: #96501DFF;
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+h3{
+    color: #96501DFF;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 h4 {
@@ -76,4 +117,19 @@ h4 {
     background-color: #e8e8d0;
     cursor: pointer;
     font-weight: bold;
+}
+.container {
+     display: flex;
+     flex-direction: column;
+    justify-content: center;
+     align-items: center;
+     height: 100vh;
+     width: 100%;
+     padding-right: 100px;
+ }
+.imgAlign {
+    width: 80%;
+    margin-top: 90px;
+    margin-left: auto;
+    margin-right: 20px;
 }
