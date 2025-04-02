@@ -1,0 +1,62 @@
+#box {
+    width: 90%;
+    padding: 30px;
+}
+
+.results-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.book-results-container {
+    display: grid;
+    gap: 20px;
+}
+
+.book-result {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(139, 69, 19, 0.1);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 15px;
+}
+
+.book-info {
+    display: grid;
+    gap: 5px;
+}
+
+.book-info p {
+    margin: 0;
+    color: #5a3921;
+    align-items: center;
+}
+
+.book-info strong {
+    color: #96501d;
+}
+
+.availability {
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-weight: bold;
+    text-align: center;
+    width: fit-content;
+}
+
+.available {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.unavailable {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.back-button-container {
+    margin-top: 40px;
+    text-align: center;
+}

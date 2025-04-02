@@ -1,0 +1,15 @@
+
+select {
+    width :95%;
+    padding : 8px;
+    margin-bottom: 15px;
+    border : 1px solid #f5f5dc;
+    border-radius: 5px;
+    background-color: white;
+    font-family: Georgia, serif;
+    color: #5a3921;
+}
+select:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
