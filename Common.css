@@ -1,0 +1,79 @@
+#signup {
+    font-family: Georgia, serif;
+    background-color:  #f5f5dc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-image: url('https://i.pinimg.com/736x/ac/a0/8f/aca08f2f645252f03b65c7aec981448c.jpg') ;
+}
+#box {
+    box-shadow: 0 8px 20px rgba(139, 69, 19, 0.6);
+    background: rgba(150, 79, 29, 0.4);
+    padding: 30px;
+    width: 400px;
+    border-radius: 12px;
+    border: 1px solid rgba(210, 180, 140, 0.3);
+    text-align: left;
+    backdrop-filter: blur(5px);
+}
+label {
+    color: beige ;
+    display: block;
+    margin-bottom: 5px;
+}
+p{
+    color: beige;
+}
+input {
+    width: 90%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: #f5f5dc;
+    color: #96501d;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background: #e8e8d0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+h1 {
+    color: #f5f5dc;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+h4 {
+    color: rgba(245, 245, 220, 0.9);
+    text-align: center;
+    margin: 0 0 25px 0;
+    font-weight: normal;
+    font-style: italic;
+}
+#d , #dd{
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 20px;
+    width: 20%;
+    border: 2px solid #f5f5dc;
+    background-color: #e8e8d0;
+    cursor: pointer;
+    font-weight: bold;
+}
