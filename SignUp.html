@@ -5,7 +5,7 @@
     <title>Sign Up</title>
     <link rel = stylesheet href = "Common.css">
 </head>
-<body>
+<body class="SignUp">
     <div id="box">
         <h1>Sign Up</h1><br>
         <h4>Creat your account free with our user-friendly Online Library and borrow digital books :)</h4>
@@ -26,9 +26,13 @@
             <label>
                 <input type="password" placeholder="xxxxxxxx" required>
             </label>
-            <label> Is admin?
-                <br><button id = "d" type="button">Yes</button>
-                <button id = "dd" type="button">No</button>
+            <p>Is admin?</p>
+            <label for="isAdmin">
+                <select id="isAdmin" name="isAdmin">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
             </label>
             <br>
             <button type="submit" class="button-light">Sign Up</button>
