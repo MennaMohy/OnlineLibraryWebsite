@@ -1,14 +1,16 @@
 /* Wrapper to align the input field and icon */
 .search-container {
-    position: absolute;  /* Fixes positioning */
+    position: fixed;  /* Fixes positioning */
     top: 20px;
     right: 20px;
     width: 350px;
     height: 40px;
+    z-index: 1000;
 }
 
 /* Wrapper to align the input field and icon */
 .search-wrapper {
+    position: relative;
     display: flex;
     align-items: center;
     background-color: #ffffff;
@@ -37,6 +39,9 @@
     padding: 5px;
     position: absolute;
     right: 10px;  /* Positions icon inside the bar */
+    top: 50%;
+    transform: translateY(-50%); 
+    transition: opacity 0.3s ease; 
 }
 
 /* Adjusting the search*/
@@ -49,6 +54,7 @@
 .search-button:hover {
     opacity: 0.5;
 }
+
 #resultsContainer {
     width:70%;
     margin-top: 70px;
@@ -64,4 +70,105 @@ iframe{
     height: 100%;
     border: none;
     min-height: 100vh;
+}
+
+.recommendations {
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+.recommendations-title {
+    font-size: 1.6em;
+    text-align: center;
+    margin-top: 20px;
+    color: #5a3921;
+    font: italic bold 1.5em/1 Georgia, serif;
+    text-decoration: underline;
+}
+
+/* Container for 3 books in a row */
+.books-row {
+    position: absolute;
+    top: 270px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;  
+    gap: 15px;  
+    margin-top: 20px;  
+    flex-wrap: wrap;
+}
+
+/* Individual book card */
+.book-card-small {
+    width: 180px; 
+    height: 350px;  
+    background-color: beige;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* Book title styling */
+.book-card-small .book-title {
+    color: #5a3921;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Book image styling */
+.book-card-small img {
+    width: 100%;
+    height: 280px;  
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Book author styling */
+.book-card-small .book-author {
+    font-size: 1em;
+    color: #7e6a58;
+    margin-top: 5px;
+}
+#box {
+    position: absolute;
+    top: 700px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    padding: 30px;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.welcome{
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);  
+    width: 100%;
+    margin-bottom: 90px; 
+}
+.home-title {
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 10px;
+    color: #5a3921;
+    font-family: 'Georgia', serif;
+    font-weight: bold;
+}
+.home-description {
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 10px;
+    color: #5a3921;
+    font-style: italic;
 }
