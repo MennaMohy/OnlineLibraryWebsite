@@ -10,7 +10,7 @@
 
 <body>
 <div class="search-container">
-    <form id="searchForm">
+    <form id="searchForm" action = Results.html>
         <div class="search-wrapper">
             <input type="text" name="query" class="search-input" placeholder="Search..." required>
             <button type="submit" class="search-button">
@@ -460,17 +460,7 @@
 
     </div>
     </div>
-</div>
 
-<div id ="resultsContainer"></div>
-<script>
-    document.getElementById("searchForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-        document.getElementById("resultsContainer").innerHTML = `
-                <iframe src="Results.html" style="width:100%; height:500px; border:none;"></iframe>
-            `;
-    });
-</script>
 </body>
 
 </html>
