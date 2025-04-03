@@ -19,8 +19,8 @@
     border-radius: 8px;
     box-shadow: 0 3px 10px rgba(139, 69, 19, 0.1);
     display: grid;
-    grid-template-columns: 1fr auto;
     gap: 15px;
+    grid-template-columns: 120px 1fr auto;
 }
 
 .book-info {
@@ -45,7 +45,21 @@
     text-align: center;
     width: fit-content;
 }
+.book-description {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 10px;
+    line-height: 1.4;
+}
 
+.book-cover {
+    width:120px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+    object-position: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 .available {
     background: #e8f5e9;
     color: #2e7d32;
@@ -56,7 +70,3 @@
     color: #c62828;
 }
 
-.back-button-container {
-    margin-top: 40px;
-    text-align: center;
-}
