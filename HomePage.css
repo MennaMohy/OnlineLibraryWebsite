@@ -1,9 +1,10 @@
-/* Container for search bar */
+/* Wrapper to align the input field and icon */
 .search-container {
+    position: absolute;  /* Fixes positioning */
+    top: 20px;
+    right: 20px;
     width: 350px;
     height: 40px;
-    align-content: flex-start;
-    position: fixed;
     z-index: 1000;/*Ensures search stays on top*/
 }
 
@@ -12,13 +13,13 @@
     display: flex;
     align-items: center;
     background-color: #ffffff;
-    border: #e4d5b6 2px solid;
+    border: 2px solid #e4d5b6;
     border-radius: 10px;
     padding: 5px;
-    position: relative;
     width: 100%;
     height: 100%;
 }
+
 /* Styling the input field */
 .search-input {
     width: 100%;
@@ -36,15 +37,13 @@
     cursor: pointer;
     padding: 5px;
     position: absolute;
-    top: 60%;
-    transform: translateY(-50%); /* Center the icon vertically */
+    right: 10px;  /* Positions icon inside the bar */
 }
 
-/* Adjusting the search icon by percentage*/
+/* Adjusting the search*/
 .search-button img {
-    width: 13%;
-    height: auto;
-    margin-left: 250px;
+    width: 40px;
+    height: 45px;
 }
 
 /* Button hover effect */
