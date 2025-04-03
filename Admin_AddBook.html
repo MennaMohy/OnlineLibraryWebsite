@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Book | Online Library</title>
+    <link rel="stylesheet" href="Common.css">
+    <link rel = "stylesheet" href = "Admin.css">
+</head>
+
+<body class="addbook">
+<div id="box">
+    <h1>Add A Book</h1>
+    <form action="Manage_books.html" method="GET">
+        <p>Book ID</p>
+        <label>
+            <input type="text" placeholder="ID" required>
+        </label>
+        <p>Name</p>
+        <label>
+            <input type="Text" placeholder="Book Name" required>
+        </label>
+        <p>Author</p>
+        <label>
+            <input type="Text" placeholder="Author Name" required>
+        </label>
+        <label>
+            <p>Category:</p>
+            <select id="book-category" name="category" required>
+                <option value="" disabled selected>Select a category</option>
+                <option value="fiction">Fiction</option>
+                <option value="non-fiction">Non-Fiction</option>
+                <option value="science">Science</option>
+                <option value="biography">Biography</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="romance">Contemporary Romance</option>
+                <option value="mystery">Mystery</option>
+                <option value="thriller">Thriller</option>
+                <option value="history">History</option>
+                <option value="self-help">Self-Help</option>
+            </select>
+        </label>
+        <p>Description</p>
+        <label>
+            <input type="text" placeholder="Description" required>
+        </label>
+        <br>
+        <input type="submit" class="button-light" value="Add Book">
+    </form>
+</div>
+</body>
+</html>
