@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Georgia' , 'serif';
+}
+
+
+.side_Nav{
+    width: 70px;
+    height: 100%;
+    background: #411a0f;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s;
+     z-index: 1000;
+
+}
+
+
+.icon{
+    display: block;
+    margin-bottom: 130px;
+}
+
+
+.NavLink{
+    list-style: none;
+    position: absolute;
+    padding: 45px 0;
+}
+
+
+.NavLink li{
+    padding: 15px 0;
+    display: flex; /* Make icons and text align side by side */
+    align-items: center; /* Center items vertically */
+
+}
+.NavLink li a{
+    color: #F3E9DC;
+    text-decoration: none;
+    padding: 10px 14px;
+    white-space: nowrap; /* Prevent text from wrapping */
+    display: none;
+
+}
+
+
+.NavLink li:hover a{
+    color: #C08552;
+    transition: 0.5s;
+}
+
+.side_Nav:hover{
+    width: 250px;
+
+}
+
+.side_Nav:hover .NavLink li a{
+    display: block;
+}
+
+.side_Nav:hover .NavLink{
+    width: 100%;
+}
