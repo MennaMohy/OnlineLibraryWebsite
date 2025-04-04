@@ -6,10 +6,11 @@
     <title>Book Search | Online Library</title>
     <link rel="stylesheet" href="Common.css">
     <link rel="stylesheet" href="search.css">
-     <link rel="stylesheet" href="NavigationBarStyle.css">
+    <link rel="stylesheet" href="Buttons.css">
+    <link rel="stylesheet" href="NavigationBarStyle.css">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="SignIn">
 <div class="side_Nav">
      <a href="#" class="icon">
          <i class="fa-solid fa-bars" style="color: #F3E9DC; font-size: 35px;position: fixed;left: 12px; top: 15px;"></i>
@@ -29,10 +30,12 @@
     <h1>Book Search</h1>
     <h4>Find your next favorite read</h4>
     <form action="Results.html" target="_blank" >
-        <label for="search">Search Term:</label>
+        <label for="search">
+            <h5>Search Term:</h5>
+        </label>
         <input type="text" id="search" name="search" placeholder="Enter book title, author, or category">
 
-        <label for="type">Search By:</label>
+        <label for="type"> <h5>Search By:</h5></label>
         <select id="type" name="type">
             <option value="title">Title</option>
             <option value="author">Author</option>

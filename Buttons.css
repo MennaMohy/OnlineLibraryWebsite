@@ -50,6 +50,12 @@ button:hover , input.button-light:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
+.button-dark:hover {
+    background:#e8e8d0;
+    color: #96501d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 select {
     width: 97%;
     padding: 10px;
@@ -66,4 +72,8 @@ select:hover {
 select:focus {
     outline: none;
     border-color: #b45f06;
+}
+::placeholder {
+    color: #96501d;
+    letter-spacing: 1.3px;
 }

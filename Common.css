@@ -1,3 +1,35 @@
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-right: 100px;
+    margin-top: 100px;
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.bodySecond {
+    font-family: Georgia, serif;
+    background-color: #f5f5dc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    overflow: hidden;
+}
 body{
     font-family: Georgia, serif;
     background-color: beige;
@@ -7,14 +39,7 @@ body{
     min-height: 100vh;
     margin: 0;
 }
-.bodySecond {
-    font-family: Georgia, serif;
-    background-color: #f5f5dc;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0;
-}
+
 .justifyTopRight {
     background-color: #f5f5dc;
     display: flex;
@@ -58,8 +83,9 @@ h1 {
 }
 h2 {
     color: #96501DFF;
-    font-size: 35px;
+    font-size: 40px;
     margin-bottom: 10px;
+    text-shadow: 1px 1px 2px #5a3921;
 }
 h3{
     color: #96501DFF;
@@ -73,18 +99,39 @@ h4 {
     font-weight: normal;
     font-style: italic;
 }
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    padding-right: 100px;
+h5 {
+    color: rgba(245, 245, 220, 0.9);
+    text-align: left;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 2px;
 }
 .imgAlign {
     width: 80%;
     margin-top: 90px;
     margin-left: auto;
     margin-right: 20px;
+}
+
+.quote {
+    margin-top: 30px;
+    color: #96501D;
+    font-style: italic;
+    text-align: center;
+    font-family: Georgia, serif;
+}
+
+.quote p {
+    color: #96501D;
+    margin: 5px 0;
+}
+
+.quote .author {
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.quote .fa-quote-left {
+    color: rgba(150, 79, 29, 0.3);
+    margin-bottom: 5px;
 }
