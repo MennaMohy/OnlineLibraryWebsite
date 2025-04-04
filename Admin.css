@@ -8,9 +8,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    position: fixed; /* Add this */
+    position: absolute; /* Add this */
     top: 0; /* Add this */
     left: 0; /* Add this */
+    z-index: 10;
 }
 
 /* Title Styles */
@@ -36,6 +37,7 @@
     margin: 0 0.2rem;
     position: relative;
     transition: all 0.3s ease;
+    z-index: 1;
 }
 
 /* Box Highlight Effect */
@@ -51,12 +53,16 @@
     border-radius: 4px;
     z-index: -1;
     transform: scale(1.05);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    opacity:1;
 }
 
 /* Active State */
 .nav-links a.active {
     font-weight: bold;
     color: #3a1f0b;
+    background-color: #e6b0b0;
+    border-color:#3a1f0b;
 }
 
 /* Hover State */
