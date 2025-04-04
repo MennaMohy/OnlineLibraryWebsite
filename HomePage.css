@@ -54,23 +54,6 @@
     opacity: 0.5;
 }
 
-#resultsContainer {
-    width:70%;
-    margin-top: 70px;
-    padding: 20px;
-    font-size: 1.5em;
-    line-height: 1.6;
-    justify-content: center;
-    align-items: center;
-    overflow-y: auto;
-}
-iframe{
-    width: 100%;
-    height: 100%;
-    border: none;
-    min-height: 100vh;
-}
-
 .recommendations {
     position: absolute;
     top: 200px;
@@ -97,13 +80,13 @@ iframe{
     justify-content: center;  
     gap: 15px;  
     margin-top: 20px;  
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 /* Individual book card */
 .book-card-small {
-    width: 180px; 
-    height: 350px;  
+    width: 200px; 
+    height: 355px;  
     background-color: beige;
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -122,8 +105,8 @@ iframe{
 /* Book image styling */
 .book-card-small img {
     width: 100%;
-    height: 280px;  
-    object-fit: cover;
+    height: 255px;  
+    object-fit: fill;
     border-radius: 5px;
 }
 
@@ -133,11 +116,12 @@ iframe{
     color: #7e6a58;
     margin-top: 5px;
 }
+
 #box {
     position: absolute;
     top: 700px;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-47%);
     width: 90%;
     padding: 30px;
 }
