@@ -64,6 +64,15 @@ body{
     backdrop-filter: blur(5px);
     margin-top: 30px;
 }
+#account{
+    text-align: center;
+}
+#acc{
+    color : bisque;
+}
+#acc:hover{
+    color: #ffffff;
+}
 p{
     color: #f5f5dc;
     text-align: left;
