@@ -6,7 +6,12 @@
     margin: 0;
     padding: 0;
 }
-
+.about-us p{
+    padding-left: 80px;
+}
+.a{
+    padding-left: 100px;
+}
 .container {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('aboutImg.jpg');
     background-size: cover;
