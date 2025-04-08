@@ -1,6 +1,6 @@
 /* Wrapper to align the input field and icon */
 .search-container {
-    position: fixed;  /* Fixes positioning */
+    position: absolute;
     top: 20px;
     right: 20px;
     width: 350px;
