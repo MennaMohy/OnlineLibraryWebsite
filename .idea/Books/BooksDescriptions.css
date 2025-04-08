@@ -1,0 +1,41 @@
+#Title {
+    font-size: 50px;
+    color: #f5f5dc;
+    font-weight: bold;
+    text-shadow:
+            -2px -2px 0 #96501DFF, 1px -1px 0 #96501DFF,
+            -1px  1px 0 #96501DFF, 2px  2px 0 #96501DFF;
+    text-align: left;
+    margin-bottom: 2%;
+    margin-top: 0;
+}
+
+#Author{
+    font-size: 25px;
+    color: #96501DFF;
+    font-weight: lighter;
+    text-align: left;
+    margin-bottom: 15%;
+    font-style: italic;
+}
+
+#Description{
+    font-size: 20px;
+    color: #96501DFF;
+    text-align: left;
+    margin-bottom: 20%;
+}
+
+.rightAlign {
+    margin-right: 220px;
+    width: 85%;
+    margin-bottom: 0;
+    margin-top: 85px;
+
+}
+.imgSize{
+    width: 420px;
+    height: auto;
+    margin-left: 200px;
+    margin-bottom: 50px;
+}
