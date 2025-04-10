@@ -33,7 +33,7 @@ body {
     object-fit: cover;
     border-radius: 4px;
     align-self: auto;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16);
 }
 
@@ -51,7 +51,7 @@ body {
     margin: 0;
 }
 .admin-book-info h3{
-    margin-top: -100px;
+    margin-top: -130px;
     font-size: 1.7rem;
     color: #96501d;
     text-align: center;
