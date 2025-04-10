@@ -64,7 +64,7 @@
 .recommendations-title {
     font-size: 1.6em;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 40px;
     color: #5a3921;
     font: italic bold 1.5em/1 Georgia, serif;
     text-decoration: underline;
@@ -140,11 +140,18 @@
 }
 .welcome{
     position: absolute;
-    top: 80px;
+    top: 110px;
     left: 50%;
     transform: translateX(-50%);  
     width: 100%;
     margin-bottom: 90px; 
+}
+.logo{
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 90px;
 }
 .home-title {
     font-size: 2.5em;

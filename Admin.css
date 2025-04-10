@@ -8,9 +8,9 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    position: absolute; /* Add this */
-    top: 0; /* Add this */
-    left: 0; /* Add this */
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: 10;
 }
 
@@ -382,4 +382,7 @@ input[type="submit"].button-light:hover {
 .unavailable {
     background-color: #ffebee;
     color: #c62828;
+}
+.body{
+    top: 11px;
 }
