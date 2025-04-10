@@ -27,19 +27,15 @@
         <label>
             <input type="password" placeholder="xxxxxxxx" required>
         </label>
-        <p>Is admin?</p>
-        <label for="isAdmin">
-            <select id="isAdmin" name="isAdmin" required>
-                <option value="" disabled selected>Select an option</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
-        </label>
-        <br>
-        <input type="submit" class="button-light" value="Sign Up">
+        <p class="role-title">Select your account type:</p>
+        <div class="button-container">
+            <!-- User Sign Up Button -->
+            <input type="submit" class="button-light" value="Sign Up as User">
+            <!-- Admin Sign Up Button -->
+        <input type="submit" formaction="Admin_Homepage.html" class="button-light" value="Sign Up as Admin">
+        </div>
         <p id="account">Already have an account? <a id = "acc" href = "SignIn.html">Sign In</a></p>
     </form>
 </div>
-
 </body>
 </html>

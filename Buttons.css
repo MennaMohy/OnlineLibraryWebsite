@@ -38,6 +38,7 @@ input:focus{
     transition: all 0.3s;
     margin-top: 30px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
 }
 .button-dark {
     width: 80%;
@@ -51,7 +52,8 @@ input:focus{
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s;
-    margin-top: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 button:hover , input.button-light:hover {
@@ -85,4 +87,16 @@ select:focus {
 ::placeholder {
     color: #96501d;
     letter-spacing: 1.3px;
+}
+.button-container {
+    display: flex;
+    gap: 10px;
+    margin-top:0;
+    margin-bottom: 10px;
+}
+.button-container input[type="submit"] {
+    width: 100%;
+}
+.role-title {
+    margin-bottom: 0px;
 }
