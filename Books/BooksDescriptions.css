@@ -6,7 +6,7 @@
             -2px -2px 0 #96501DFF, 1px -1px 0 #96501DFF,
             -1px  1px 0 #96501DFF, 2px  2px 0 #96501DFF;
     text-align: left;
-    margin-bottom: 2%;
+    margin-bottom: 1rem;
     margin-top: 0;
 }
 
@@ -15,7 +15,7 @@
     color: #96501DFF;
     font-weight: lighter;
     text-align: left;
-    margin-bottom: 15%;
+    margin-bottom: 1.5rem;
     font-style: italic;
 }
 
@@ -23,10 +23,12 @@
     font-size: 20px;
     color: #96501DFF;
     text-align: left;
-    margin-bottom: 20%;
+    margin-bottom: 1.5rem;
 }
 
 .rightAlign {
+    flex: 50%;
+    text-align: left;
     margin-right: 220px;
     width: 85%;
     margin-bottom: 0;
@@ -34,8 +36,24 @@
 
 }
 .imgSize{
-    width: 420px;
+    width: 45%;
     height: auto;
-    margin-left: 200px;
+    margin-left: 20%;
     margin-bottom: 50px;
+}
+
+button{
+     display: block;
+    margin-top: 1rem;
+    padding: 12px 25px;
+    background-color: #96501DFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+button:hover {
+    background-color: #7f3f1d;
+
 }
