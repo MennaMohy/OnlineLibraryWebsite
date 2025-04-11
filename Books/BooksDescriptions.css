@@ -1,5 +1,5 @@
 #Title {
-    font-size: 50px;
+    font-size: 45px;
     color: #f5f5dc;
     font-weight: bold;
     text-shadow:
@@ -11,7 +11,7 @@
 }
 
 #Author{
-    font-size: 25px;
+    font-size: 20px;
     color: #96501DFF;
     font-weight: lighter;
     text-align: left;
@@ -20,7 +20,7 @@
 }
 
 #Description{
-    font-size: 20px;
+    font-size: 15px;
     color: #96501DFF;
     text-align: left;
     margin-bottom: 1.5rem;
@@ -32,8 +32,6 @@
     margin-right: 220px;
     width: 85%;
     margin-bottom: 0;
-    margin-top: 85px;
-
 }
 .imgSize{
     width: 45%;
