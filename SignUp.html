@@ -4,38 +4,46 @@
     <meta charset="UTF-8">
     <title>Sign Up</title>
     <link rel="stylesheet" href="Common.css">
-    <link rel ="stylesheet" href = "Buttons.css">
+    <link rel="stylesheet" href="Buttons.css">
+    <link rel="icon" href="lindly.png">
 </head>
 <body class="SignUp">
 <div id="box">
     <h1>Sign Up</h1><br>
-    <h4>Creat your account free with our user-friendly Online Library and borrow digital books :)</h4>
-    <form action="UserHomePage.html" method="GET">
+    <h4>Create your account free with our user-friendly Online Library and borrow digital books :)</h4>
+    <form id="signupForm">
         <p>Username</p>
         <label>
-            <input type="text" placeholder="Name" required>
+            <input type="text" id="UserName" name="UserName" placeholder="Name" required>
         </label>
+
         <p>Email</p>
         <label>
-            <input type="email" placeholder="xxxx@gmail.com" required>
+            <input type="email" id="email" name="email" placeholder="xxxx@gmail.com" required>
         </label>
+
         <p>Password</p>
         <label>
-            <input type="password" placeholder="xxxxxxxx" required>
+            <input type="password" id="pass" name="pass" placeholder="********" required>
         </label>
+
         <p>Password Confirmation</p>
         <label>
-            <input type="password" placeholder="xxxxxxxx" required>
+            <input type="password" id="passCheck" name="passCheck" placeholder="********" required>
         </label>
+
         <p class="role-title">Select your account type:</p>
         <div class="button-container">
-            <!-- User Sign Up Button -->
-            <input type="submit" class="button-light" value="Sign Up as User">
-            <!-- Admin Sign Up Button -->
-        <input type="submit" formaction="Admin_Homepage.html" class="button-light" value="Sign Up as Admin">
+            <input type="submit" class="button-light" value="Sign Up as User" id="userBtn">
+            <input type="submit" class="button-light" value="Sign Up as Admin" id="adminBtn">
         </div>
-        <p id="account">Already have an account? <a id = "acc" href = "SignIn.html">Sign In</a></p>
+
+        <p id="account">Already have an account?
+            <a id="acc" href="SignIn.html">Sign In</a>
+        </p>
     </form>
 </div>
+
+<script src="Sign.js"></script>
 </body>
 </html>
