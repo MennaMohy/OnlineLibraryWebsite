@@ -1,12 +1,12 @@
 
-// available_books.js
+// available books
 document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('booksContainer');
 
     // Load books from localStorage
     const books = JSON.parse(localStorage.getItem('books')) || [];
 
-    // Filter to only show available books (not borrowed)
+    // Filter to only show available books that aren't borrowed
     const availableBooks = books.filter(book => {
         // Make sure book has all required properties and isn't borrowed
         return book && !book.borrowed && book.title && book.author && book.category;
@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Clear container
     container.innerHTML = '';
 
+    // all the books are borrowed
     if (availableBooks.length === 0) {
         container.innerHTML = '<p class="no-books">No available books found</p>';
         return;

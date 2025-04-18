@@ -267,12 +267,13 @@ const books =
         }
     ];
 
-// Save the books array only once (if not already saved)
+// Saving the array of books on the local storage
 if (!localStorage.getItem('books')) {
     localStorage.setItem('books', JSON.stringify(books));
 }
 
 function getBookByTitle(title) {
+    // getting the book by it's title from the local storage
     let storedBooks = JSON.parse(localStorage.getItem('books')) || [];
     return storedBooks.find(book => book.title === title);
 }

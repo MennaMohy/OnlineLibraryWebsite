@@ -1,14 +1,19 @@
+
+// view the borrowed books
 const books = JSON.parse(localStorage.getItem('books')) || [];
 
 document.addEventListener('DOMContentLoaded', function () {
+
     const borrowedBooks = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
     const container = document.getElementById('borrowedbooks');
 
+    // the user didn't borrow any book
     if (borrowedBooks.length === 0) {
         container.innerHTML = '<p style="text-align: center;">You haven’t borrowed any books yet.</p>';
         return;
     }
 
+    // for each borrowed book, display its detail
     borrowedBooks.forEach(book => {
         const bookElement = document.createElement('div');
         bookElement.classList.add('book-result');
@@ -28,9 +33,10 @@ document.addEventListener('DOMContentLoaded', function () {
         container.appendChild(bookElement);
     });
 
+    // setting the due date that the user should return the book
     function getDueDate() {
         const due = new Date();
-        due.setDate(due.getDate() + 14); // due in 14 days
+        due.setDate(due.getDate() + 14); // it will be due in 14 days from the borrowed date
         return due.toLocaleDateString('en-GB'); // e.g. "18/05/2025"
     }
 });
