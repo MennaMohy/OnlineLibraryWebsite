@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="NavigationBarStyle.css">
     <link rel="icon" href="lindly.png">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
+    <script src="Books/Books.js"></script>
+    <script src="available_books.js"></script>
+
+
 </head>
 <body>
 
@@ -16,7 +20,7 @@
         <i class="fa-solid fa-bars" style="color: #F3E9DC; font-size: 25px;position: fixed;left: 18px; top: 15px;"></i>
     </a>
     <ul class="NavLink">
-        <li><i class="fa-solid fa-house" style="color: #fff3dc;"></i><a href="Admin_Homepage.html">Home Page</a></li>
+        <li><i class="fa-solid fa-house" style="color: #fff3dc;"></i><a href="UserHomePage.html">Home Page</a></li>
         <li><i class="fa-solid fa-magnifying-glass" style="color: #fff2db;"></i><a href="Search.html">Search</a></li>
         <li><i class="fa-solid fa-inbox" style="color: #fff3db;"></i><a href="viewAvailable.html">View available books</a></li>
         <li><i class="fa-solid fa-book" style="color: #fff3db;"></i><a href="viewBorrowed.html">Your books</a></li>
@@ -29,245 +33,9 @@
         <h1>Available books</h1>
     </div>
 
-    <main class="book-results-container">
-        <div class="book-result">
-            <!-- Book 1 -->
-            <div class="admin-book-card">
-                <img src="Books/tale_of_two_cities.jpg" alt="A Tale of Two Cities" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>A Tale of Two Cities</h3>
-                    <p><strong>Author:</strong> Charles Dickens</p>
-                    <p><strong>Category:</strong> Classic Literature</p>
-                </div>
-            </div><br>
-
-            <!-- Continue with all other books in the same format -->
-            <!-- Book 2 -->
-            <div class="admin-book-card">
-                <img src="Books/beauty_and_the_beast.jpg" alt="Beauty and the Beast" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>Beauty and the Beast</h3>
-                    <p><strong>Author:</strong> Gabrielle-Suzanne Villeneuve</p>
-                    <p><strong>Category:</strong> Fairy Tale</p>
-                </div>
-            </div><br>
-
-            <!-- Book 4 -->
-            <div class="admin-book-card">
-                <img src="Books/MaybeSomeday.jpg" alt="Maybe Someday" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>Maybe Someday</h3>
-                    <p><strong>Author:</strong> Colleen Hoover</p>
-                    <p><strong>Category:</strong> New Adult Romance</p>
-                </div>
-            </div><br>
-
-            <!-- Book 5 -->
-            <div class="admin-book-card">
-                <img src="Books/practice-makes-perfect.jpg" alt="Practice Makes Perfect" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>Practice Makes Perfect</h3>
-                    <p><strong>Author:</strong> Sarah Adams</p>
-                    <p><strong>Category:</strong> Romantic Comedy</p>
-                </div>
-            </div><br>
-
-            <!-- Book 6 -->
-            <div class="admin-book-card">
-
-                <img src="Books/things-we-never-get-over.jpg" alt="Things We Never Got Over" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>Things We Never Got Over</h3>
-                    <p><strong>Author:</strong> Lucy Score</p>
-                    <p><strong>Category:</strong> Small-Town Romance</p>
-                </div>
-            </div><br>
-
-            <!-- Book 7 -->
-            <div class="admin-book-card">
-                <img src="Books/atomic-habits.jpg" alt="Atomic Habits" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>Atomic Habits</h3>
-                    <p><strong>Author:</strong> James Clear</p>
-                    <p><strong>Category:</strong> Self Development</p>
-                </div>
-            </div><br>
-
-            <!-- Book 8 -->
-            <div class="admin-book-card">
-                <img src="Books/how-to-inf.jpg" alt="How to Win Friends" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>How to Win Friends</h3>
-                    <p><strong>Author:</strong> Dale Carnegie</p>
-                    <p><strong>Category:</strong> Business</p>
-                </div>
-            </div><br>
-
-            <!-- Book 9 -->
-            <div class="admin-book-card">
-                <img src="Books/antidote.jpg" alt="The Antidote" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>The Antidote</h3>
-                    <p><strong>Author:</strong> Karen Russell</p>
-                    <p><strong>Category:</strong> Dark Fiction</p>
-                </div>
-            </div><br>
-
-            <!-- Book 10 -->
-            <div class="admin-book-card">
-                <img src="Books/fagain.jpg" alt="Fagin the Thief" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>Fagin the Thief</h3>
-                    <p><strong>Author:</strong> Allison Epstein</p>
-                    <p><strong>Category:</strong> Historical Fiction</p>
-                </div>
-            </div><br>
-
-            <!-- Book 11 -->
-            <div class="admin-book-card">
-                <img src="Books/oliver.jpg" alt="Oliver Twist" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>Oliver Twist</h3>
-                    <p><strong>Author:</strong> Charles Dickens</p>
-                    <p><strong>Category:</strong> Classic Literature</p>
-                </div>
-            </div><br>
-
-            <!-- Book 12 -->
-            <div class="admin-book-card">
-                <img src="Books/thesilentpatient.jpg" alt="The Silent Patient" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>The Silent Patient</h3>
-                    <p><strong>Author:</strong> Alex Michaelides</p>
-                    <p><strong>Category:</strong> Psychological Thriller</p>
-                </div>
-            </div><br>
-
-            <!-- Book 13 -->
-            <div class="admin-book-card">
-                <img src="Books/theboyfromthewoods.jpg" alt="The Boy from the Woods" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>The Boy from the Woods</h3>
-                    <p><strong>Author:</strong> Harlan Coben</p>
-                    <p><strong>Category:</strong> Mystery Thriller</p>
-                </div>
-            </div><br>
-
-            <!-- Book 14 -->
-            <div class="admin-book-card">
-                <img src="Books/thesummerofbrokenrules.jpg" alt="The Summer of Broken Rules" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>The Summer of Broken Rules</h3>
-                    <p><strong>Author:</strong> K.L. Walther</p>
-                    <p><strong>Category:</strong> Teen Romance</p>
-                </div>
-            </div><br>
-
-            <!-- Book 15 -->
-            <div class="admin-book-card">
-                <img src="Books/thesunisalsoastar.jpeg" alt="The Sun is Also a Star" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>The Sun is Also a Star</h3>
-                    <p><strong>Author:</strong> Nicola Yoon</p>
-                    <p><strong>Category:</strong> Contemporary Romance</p>
-                </div>
-            </div><br>
-
-            <!-- Book 16 -->
-            <div class="admin-book-card">
-                <img src="Books/everythingeverything.jpg" alt="Everything, Everything" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>Everything, Everything</h3>
-                    <p><strong>Author:</strong> Nicola Yoon</p>
-                    <p><strong>Category:</strong> Contemporary Romance</p>
-                </div>
-            </div><br>
-
-            <!-- Book 17 -->
-            <div class="admin-book-card">
-                <img src="Books/confess.jpg" alt="Confess" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>Confess</h3>
-                    <p><strong>Author:</strong> Colleen Hoover</p>
-                    <p><strong>Category:</strong> New Adult Romance</p>
-                </div>
-            </div><br>
-
-            <!-- Book 18 -->
-            <div class="admin-book-card">
-                <img src="Books/lovegame.jpg" alt="Love Game" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>Love Game</h3>
-                    <p><strong>Author:</strong> Emma Rae</p>
-                    <p><strong>Category:</strong> Sports Romance</p>
-                </div>
-            </div><br>
-
-            <!-- Book 19 -->
-            <div class="admin-book-card">
-                <img src="Books/maybeinanotherlife.jpg" alt="Maybe in Another Life" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>Maybe in Another Life</h3>
-                    <p><strong>Author:</strong> Taylor Jenkins Reid</p>
-                    <p><strong>Category:</strong> Contemporary Fiction</p>
-                </div>
-            </div><br>
-
-            <!-- Book 20 -->
-            <div class="admin-book-card">
-                <img src="Books/mylovelywife.jpg" alt="My Lovely Wife" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>My Lovely Wife</h3>
-                    <p><strong>Author:</strong> Samantha Downing</p>
-                    <p><strong>Category:</strong> Psychological Thriller</p>
-                </div>
-            </div><br>
-
-            <!-- Book 21 -->
-            <div class="admin-book-card">
-
-                <img src="Books/thecheatsheet.jpg" alt="The Cheat Sheet" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>The Cheat Sheet</h3>
-                    <p><strong>Author:</strong> Sarah Adams</p>
-                    <p><strong>Category:</strong> Contemporary Romance</p>
-                </div>
-            </div><br>
-
-            <!-- Book 22 -->
-            <div class="admin-book-card">
-                <img src="Books/theenemy.jpg" alt="The Enemy" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>The Enemy</h3>
-                    <p><strong>Author:</strong> Sarah Adams</p>
-                    <p><strong>Category:</strong> Contemporary Romance</p>
-                </div>
-            </div><br>
-
-
-            <!-- Book 24 -->
-            <div class="admin-book-card">
-                <img src="Books/wheninrome.jpg" alt="When In Rome" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>When In Rome</h3>
-                    <p><strong>Author:</strong> Sarah Adams</p>
-                    <p><strong>Category:</strong> Romantic Comedy</p>
-                </div>
-            </div><br>
-
-            <!-- Book 25 -->
-            <div class="admin-book-card">
-                <img src="Books/Thehousemaid.jpg" alt="The Housemaid" style="width:100px; height:auto;">
-                <div class="admin-book-info">
-                    <h3>The Housemaid</h3>
-                    <p><strong>Author:</strong> Freida McFadden</p>
-                    <p><strong>Category:</strong> Psychological Thriller</p>
-                </div>
-            </div>
-        </div>
+    <main class="book-results-container" id = "booksContainer">
+        <!-- only the available books that are not borrowed will be displayed -->
     </main>
 </div>
-
-
 </body>
 </html>

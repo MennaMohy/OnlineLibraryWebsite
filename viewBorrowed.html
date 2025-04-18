@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>borrowed Books</title>
+    <title>Borrowed Books</title>
     <link rel="stylesheet" href="Common.css">
     <link rel="stylesheet" href="results.css">
     <link rel="stylesheet" href="NavigationBarStyle.css">
     <link rel="icon" href="lindly.png">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
+    <script src="viewborrowed.js"></script>
+    <script src = "Books/borrow_book.js"></script>
+    <script src="Books/Books.js"></script>
 </head>
 <body>
 
@@ -16,7 +19,7 @@
         <i class="fa-solid fa-bars" style="color: #F3E9DC; font-size: 25px;position: fixed;left: 18px; top: 15px;"></i>
     </a>
     <ul class="NavLink">
-        <li><i class="fa-solid fa-house" style="color: #fff3dc;"></i><a href="Admin_Homepage.html">Home Page</a></li>
+        <li><i class="fa-solid fa-house" style="color: #fff3dc;"></i><a href="UserHomePage.html">Home Page</a></li>
         <li><i class="fa-solid fa-magnifying-glass" style="color: #fff2db;"></i><a href="Search.html">Search</a></li>
         <li><i class="fa-solid fa-inbox" style="color: #fff3db;"></i><a href="viewAvailable.html">View available books</a></li>
         <li><i class="fa-solid fa-book" style="color: #fff3db;"></i><a href="viewBorrowed.html">Your books</a></li>
@@ -29,42 +32,11 @@
         <h1>Your books</h1>
     </div>
 
-    <div class="book-results-container">
-        <div class="book-result">
-            <img src=Books/it_ends_with_us.jpg alt="It Ends With Us" class="book-cover">
-            <div class="book-info">
-                <p><strong>Title:</strong> It Ends With Us</p>
-                <p><strong>Author:</strong> Colleen Hoover</p>
-                <p><strong>Category:</strong> Contemporary Romance</p>
-                <p class="book-description">
-                    A heartbreaking story of love and resilience, following Lily Bloom as she
-                    makes difficult choices in a relationship with neurosurgeon Ryle Kincaid.
-                </p>
-            </div>
-            <div class="book-status">
-                <span class="availability unavailable">Due 15/06</span>
-            </div>
-        </div>
-
-         <div class="book-result">
-            <img src="Books/things-we-never-get-over.jpg" alt="things-we-never-get-over" class="book-cover">
-            <div class="book-info">
-                <p><strong>Title:</strong> Things We Never Got Over</p>
-                <p><strong>Author:</strong> Lucy Score</p>
-                <p><strong>Category: </strong> Small-Town Romance</p>
-                <p class="book-description">
-                    A rugged small-town barber clashes with a runaway
-                    bride in this steamy, small-town romance. Packed with humor, heart, and a protective hero.
-                </p>
-            </div>
-            <div class="book-status">
-                <span class="availability unavailable">Due 08/06</span>
-            </div>
-        </div>
-
+    <div class="book-results-container" id="borrowedbooks">
+        <!-- displaying the borrowed books by the user -->
     </div>
-</div>
 
+</div>
 
 </body>
 </html>

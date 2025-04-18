@@ -6,9 +6,10 @@ body {
 }
 
 .book-results-container {
-    display: grid;
+    display: flex;
+    flex-direction:column;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1000px;
+    gap: 20px;
     padding: 10px;
 }
 
@@ -20,16 +21,16 @@ body {
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
-
 }
+
 .admin-book-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 5px 15px rgba(139, 69, 19, 0.2);
 }
 
 .admin-book-card img {
-    width: 700px;
-    height: 800px;
+    width: 100px;
+    height: 150px;
     object-fit: cover;
     border-radius: 4px;
     align-self: auto;
@@ -46,13 +47,13 @@ body {
 
 .admin-book-info p {
     color: #5a3921;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     text-align: center;
     margin: 0;
 }
 .admin-book-info h3{
     margin-top: -130px;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     color: #96501d;
     text-align: center;
     padding-bottom: 8px;
