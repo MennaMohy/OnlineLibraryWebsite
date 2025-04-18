@@ -7,12 +7,21 @@ const adminBtn = document.getElementById("adminBtn");
 // Default signed in is user
 let userType = "user";
 
-// If the is admin button is clicked then it is an admin
-adminBtn.addEventListener("click", function () {
+// If the admin button is clicked then it is an admin
+adminBtn?.addEventListener("click", function () {
     userType = "admin";
 });
 
-form.addEventListener("submit", function (event) {
+userBtn?.addEventListener("click", function () {
+    userType = "user";
+});
+
+if (form) {
+    form.addEventListener("submit", handleSignUp);
+}
+
+// Function to handle sign up process
+function handleSignUp(event) {
     // Prevent page reload
     event.preventDefault();
 
@@ -40,7 +49,7 @@ form.addEventListener("submit", function (event) {
     // Add the new user's info
     users.push({ name: userName, email: userEmail, pass: userPass, role: userType });
 
-    // Save the updated users list to localStorage
+    // Save the updated users list to local storage
     localStorage.setItem("Users", JSON.stringify(users));
 
     // Mark the user as signed in
@@ -49,10 +58,46 @@ form.addEventListener("submit", function (event) {
     // Store the logged-in user's data
     localStorage.setItem("loggedInUser", JSON.stringify({ name: userName, email: userEmail, role: userType }));
 
-    // Redirect to appropriate homepage
     if (userType === "admin") {
         window.location.href = "Admin_Homepage.html";
     } else {
         window.location.href = "UserHomePage.html";
     }
-});
+}
+
+// Sign In section
+const savedEmail = document.getElementById("savedEmail");
+const savedPass = document.getElementById("savedPass");
+
+if (savedEmail && savedPass) {
+    savedEmail.closest("form").addEventListener("submit", function (event) {
+        event.preventDefault();
+        checkLogIn();
+    });
+}
+
+// Function to handle sign in
+function checkLogIn() {
+    let enteredEmail = document.getElementById("savedEmail").value.trim();
+    let enteredPass = document.getElementById("savedPass").value;
+
+    let users = JSON.parse(localStorage.getItem("Users")) || [];
+
+    let validUser = users.find(user =>
+        (user.email === enteredEmail || user.name === enteredEmail) && user.pass === enteredPass
+    );
+
+    if (!validUser) {
+        alert("Invalid email or password!");
+        return;
+    }
+
+    localStorage.setItem("loggedInUser", JSON.stringify(validUser));
+    localStorage.setItem("signed", "true");
+
+    if (validUser.role === "admin") {
+        window.location.href = "Admin_Homepage.html";
+    } else {
+        window.location.href = "UserHomePage.html";
+    }
+}
