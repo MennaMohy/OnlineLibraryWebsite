@@ -48,6 +48,8 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem('books', JSON.stringify(storedBooks));
         localStorage.setItem('borrowedBooks', JSON.stringify(borrowedBooks));
 
+        alert(`You have successfully borrowed "${book.title}"!`);
+
         // redirect the user to the home page after pressing the borrow book button
         window.location.href = "../UserHomePage.html";
     });
