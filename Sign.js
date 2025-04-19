@@ -33,7 +33,7 @@ function handleSignUp(event) {
 
     // Password match check
     if (userPass !== userPassCheck) {
-        alert("Passwords do not match!");
+        customAlert("Passwords do not match!", "error");
         return;
     }
 
@@ -42,7 +42,7 @@ function handleSignUp(event) {
 
     // Email used check
     if (users.some(user => user.email === userEmail)) {
-        alert("Email already taken!");
+        customAlert("Email is already taken!", "error");
         return;
     }
 
@@ -88,7 +88,7 @@ function checkLogIn() {
     );
 
     if (!validUser) {
-        alert("Invalid email or password!");
+        customAlert("Invalid email or password!", "error");
         return;
     }
 
