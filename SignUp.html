@@ -31,13 +31,25 @@
         <p>Password Confirmation</p>
         <label>
             <input type="password" id="passCheck" name="passCheck" placeholder="********" required>
-        </label>
+<!--        </label>-->
 
-        <p class="role-title">Select your account type:</p>
-        <div class="button-container">
-            <input type="submit" class="button-light" value="Sign Up as User" id="userBtn">
-            <input type="submit" class="button-light" value="Sign Up as Admin" id="adminBtn">
-        </div>
+<!--        <p class="role-title">Select your account type:</p>-->
+<!--        <div class="button-container">-->
+<!--            <input type="submit" class="button-light" value="Sign Up as User" id="userBtn">-->
+<!--            <input type="submit" class="button-light" value="Sign Up as Admin" id="adminBtn">-->
+<!--        </div>-->
+
+        </label>
+        <p>Is admin?</p>
+        <label for="isAdmin">
+            <select id="isAdmin" name="isAdmin" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </label>
+        <br>
+        <input type="submit" class="button-light" value="Sign Up">
 
         <p id="account">Already have an account?
             <a id="acc" href="SignIn.html">Sign In</a>

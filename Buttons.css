@@ -88,15 +88,15 @@ select:focus {
     color: #96501d;
     letter-spacing: 1.3px;
 }
-.button-container {
-    display: flex;
-    gap: 10px;
-    margin-top:0;
-    margin-bottom: 10px;
-}
-.button-container input[type="submit"] {
-    width: 100%;
-}
-.role-title {
-    margin-bottom: 0px;
-}
+/*.button-container {*/
+/*    display: flex;*/
+/*    gap: 10px;*/
+/*    margin-top:0;*/
+/*    margin-bottom: 10px;*/
+/*}*/
+/*.button-container input[type="submit"] {*/
+/*    width: 100%;*/
+/*}*/
+/*.role-title {*/
+/*    margin-bottom: 0px;*/
+/*}*/

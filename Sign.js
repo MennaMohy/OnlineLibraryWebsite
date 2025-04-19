@@ -1,29 +1,25 @@
 let signed = false;
 
 const form = document.getElementById("signupForm");
-const userBtn = document.getElementById("userBtn");
-const adminBtn = document.getElementById("adminBtn");
 
-// Default signed in is user
-let userType = "user";
-
-// If the admin button is clicked then it is an admin
-adminBtn?.addEventListener("click", function () {
-    userType = "admin";
-});
-
-userBtn?.addEventListener("click", function () {
-    userType = "user";
-});
-
+// Handle form submission
 if (form) {
     form.addEventListener("submit", handleSignUp);
 }
 
 // Function to handle sign up process
 function handleSignUp(event) {
-    // Prevent page reload
-    event.preventDefault();
+    event.preventDefault(); // Prevent page reload
+
+    // Get value of admin select *inside* the function so it's fresh
+    let isAdminValue = document.getElementById("isAdmin").value;
+    let userType;
+
+    if (isAdminValue === "yes") {
+        userType = "admin";
+    } else if (isAdminValue === "no") {
+        userType = "user";
+    }
 
     // Get user's information
     let userName = document.getElementById("UserName").value.trim();
@@ -58,11 +54,8 @@ function handleSignUp(event) {
     // Store the logged-in user's data
     localStorage.setItem("loggedInUser", JSON.stringify({ name: userName, email: userEmail, role: userType }));
 
-    if (userType === "admin") {
-        window.location.href = "Admin_Homepage.html";
-    } else {
-        window.location.href = "UserHomePage.html";
-    }
+    // Redirect based on role
+    window.location.href = userType === "admin" ? "Admin_Homepage.html" : "UserHomePage.html";
 }
 
 // Sign In section
@@ -95,9 +88,5 @@ function checkLogIn() {
     localStorage.setItem("loggedInUser", JSON.stringify(validUser));
     localStorage.setItem("signed", "true");
 
-    if (validUser.role === "admin") {
-        window.location.href = "Admin_Homepage.html";
-    } else {
-        window.location.href = "UserHomePage.html";
-    }
+    window.location.href = validUser.role === "admin" ? "Admin_Homepage.html" : "UserHomePage.html";
 }
