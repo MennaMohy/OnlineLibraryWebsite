@@ -22,10 +22,6 @@
 }
 
 .bodySecond {
-    font-family: Georgia, serif;
-    background-color: #f5f5dc;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
     margin: 0;
     overflow: hidden;
@@ -152,11 +148,11 @@ h5 {
 }
 
 .custom-alert.success {
-    background-color: rgba(50, 124, 52, 0.70); /* green */
+    background-color: rgba(50, 124, 52, 0.70);
 }
 
 .custom-alert.error {
-    background-color: rgba(222, 72, 58, 0.70); /* red */
+    background-color: rgba(222, 72, 58, 0.70);
 }
 
 .custom-alert .close-btn {
@@ -166,4 +162,60 @@ h5 {
     transform: translateY(-50%);
     cursor: pointer;
     font-weight: bold;
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-box {
+    background: #f5f5dc;
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 350px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.popup-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.popup-buttons button {
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#confirmYes {
+    padding: 8px 30px;
+    background-color: rgba(31, 126, 37, 0.65);
+    color: #f5f5dc;
+}
+
+#confirmCancel {
+    padding: 8px 15px;
+    border: 1px solid #f44336;
+    background-color: #f5f5dc;
+    color: #f44336;
+}
+
+.hidden {
+    display: none;
+}
+#confirmMessage {
+    color: #96501DFF;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: center;
 }

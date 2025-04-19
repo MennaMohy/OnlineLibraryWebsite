@@ -21,36 +21,45 @@ document.addEventListener("DOMContentLoaded", function () {
     // Disable the borrow button if the book is already borrowed
     const borrowButton = document.getElementById("borrow_button");
     if (book.borrowed) {
-        borrowButton.style.display = "none";
+        borrowButton.textContent = "Borrowed";
+        borrowButton.disabled = true;
+        borrowButton.className = "button-light";
+        borrowButton.style.pointerEvents = "none";
+    } else {
+        borrowButton.textContent = "Borrow";
+        borrowButton.disabled = false;
+        borrowButton.style.backgroundColor = ""; // reset styling if any
     }
-    else{
-        borrowButton.style.display = "inline-block";
-    }
-
     // borrow button functionality
     borrowButton.addEventListener("click", function () {
-        // Update the book that the user borrowed in the books list
-        const index = storedBooks.findIndex(b => b.title === book.title);
-        if (index !== -1) {
-            storedBooks[index].borrowed = true;
-        }
+        popBox(`Are you sure you want to borrow "${book.title}"?`, function () {
+            const index = storedBooks.findIndex(b => b.title === book.title);
+            if (index !== -1) {
+                storedBooks[index].borrowed = true;
+            }
 
-        // Update borrowed books list
-        let borrowedBooks = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
+            // Update borrowed books list
+            let borrowedBooks = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
 
-        // Avoid duplicates, if the user borrows a book he already borrowed, will not add it
-        const alreadyBorrowed = borrowedBooks.some(b => b.title === book.title);
-        if (!alreadyBorrowed) {
-            borrowedBooks.push(storedBooks[index]); // Push updated version
-        }
+            // Avoid duplicates, if the user borrows a book he already borrowed, will not add it
+            const alreadyBorrowed = borrowedBooks.some(b => b.title === book.title);
+            if (!alreadyBorrowed) {
+                borrowedBooks.push(storedBooks[index]);
+            }
 
-        // Save the borrowed books on the local storage
-        localStorage.setItem('books', JSON.stringify(storedBooks));
-        localStorage.setItem('borrowedBooks', JSON.stringify(borrowedBooks));
+            // Save the borrowed books on the local storage
+            localStorage.setItem('books', JSON.stringify(storedBooks));
+            localStorage.setItem('borrowedBooks', JSON.stringify(borrowedBooks));
 
-        alert(`You have successfully borrowed "${book.title}"!`);
 
-        // redirect the user to the home page after pressing the borrow book button
-        window.location.href = "../UserHomePage.html";
+            // Show alert
+            customAlert(`"${book.title}" is successfully borrowed!`, "success");
+
+            // Disable and update borrow button
+            borrowButton.textContent = "Borrowed";
+            borrowButton.disabled = true;
+            borrowButton.className = "button-light";
+            borrowButton.style.pointerEvents = "none";
+        });
     });
 });

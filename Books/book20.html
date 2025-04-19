@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>My Lovely Wife</title>
-    <link rel="stylesheet" href="../../Common.css">
+    <link rel="stylesheet" href="../Common.css">
     <link rel="stylesheet" href="../../NavigationBarStyle.css">
     <link rel="stylesheet" href="../../Buttons.css">
     <link rel="stylesheet" href="BooksDescriptions.css">
@@ -38,6 +38,17 @@
     <h3 id="Author"></h3>
     <h3 id="Description"></h3>
     <button class="button-dark" id="borrow_button">Borrow Book</button>
-
 </div>
+
+<div id="confirmPopup" class="popup-overlay hidden">
+    <div class="popup-box">
+        <p id="confirmMessage">Are you sure you want to borrow?</p>
+        <div class="popup-buttons">
+            <button id="confirmYes">Yes</button>
+            <button id="confirmCancel">Cancel</button>
+        </div>
+    </div>
+</div>
+<script src="../popBox.js"></script>
+
 </body>

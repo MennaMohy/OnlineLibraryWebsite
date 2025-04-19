@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Beauty and the Beast</title>
-    <link rel="stylesheet" href="../../Common.css">
-    <link rel="stylesheet" href="../../NavigationBarStyle.css">
-    <link rel="stylesheet" href="../../Buttons.css">
+    <link rel="stylesheet" href="../Common.css">
+    <link rel="stylesheet" href="../NavigationBarStyle.css">
+    <link rel="stylesheet" href="../Buttons.css">
     <link rel="stylesheet" href="BooksDescriptions.css">
-    <link rel="icon" href="icon.png">
+    <link rel="icon" href="../icon.png">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
     <script src="Books.js"></script>
     <script src="borrow_book.js"></script></head>
@@ -30,13 +30,26 @@
     <img src="beauty_and_the_beast.jpg" alt="Book Cover" class="imgSize" >
 </div>
 
-
 <!--Book Details-->
 <div class="rightAlign">
+    <div style="margin-left: -50px" id="alertContainer" class="custom-alert"></div>
     <h3 id="Title"></h3>
     <h3 id="Author"></h3>
     <h3 id="Description"></h3>
     <button class="button-dark" id="borrow_button">Borrow Book</button>
-
 </div>
+
+<!-- Confirmation Popup -->
+<div id="confirmPopup" class="popup-overlay hidden">
+    <div class="popup-box">
+        <p id="confirmMessage">Are you sure you want to borrow?</p>
+        <div class="popup-buttons">
+            <button id="confirmCancel">Cancel</button>
+            <button id="confirmYes">Yes</button>
+        </div>
+    </div>
+</div>
+
+<script src="../alert.js"></script>
+<script src="../popBox.js"></script>
 </body>
