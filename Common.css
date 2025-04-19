@@ -152,11 +152,11 @@ h5 {
 }
 
 .custom-alert.success {
-    background-color: rgba(50, 124, 52, 0.73); /* green */
+    background-color: rgba(50, 124, 52, 0.70); /* green */
 }
 
 .custom-alert.error {
-    background-color: rgba(222, 72, 58, 0.73); /* red */
+    background-color: rgba(222, 72, 58, 0.70); /* red */
 }
 
 .custom-alert .close-btn {
