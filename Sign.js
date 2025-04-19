@@ -11,7 +11,6 @@ if (form) {
 function handleSignUp(event) {
     event.preventDefault(); // Prevent page reload
 
-    // Get value of admin select *inside* the function so it's fresh
     let isAdminValue = document.getElementById("isAdmin").value;
     let userType;
 
