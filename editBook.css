@@ -1,0 +1,104 @@
+/* Base Styles */
+body {
+    font-family: Georgia, serif;
+    background-color: #f8f4e9;
+    margin: 0;
+    padding: 20px;
+    color: #4a3f35;
+    line-height: 1.6;
+}
+.container {
+    max-width: 750px;
+    margin: 30px auto;
+    padding: 40px;
+    background-color: #8b5a2b;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(139, 69, 19, 0.4);
+    border: 2px solid #d4b996;
+}
+
+h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    font-weight: 600;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #fff8ee;
+    font-size: 18px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #d4b996;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: white;
+    color: #8b5a2b;
+    transition: all 0.3s ease;
+    font-family: Georgia, serif;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-control::placeholder {
+    color: #a99e8f;
+    opacity: 1;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #8b5a2b;
+    box-shadow: 0 0 0 3px rgba(139, 90, 43, 0.3);
+    background-color: #fff8ee;
+}
+
+select.form-control {
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 18px;
+    padding-right: 40px;
+}
+
+/* Button Styles */
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background-color: beige;
+    color: #8b5a2b;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-family: Georgia, serif;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-submit:hover {
+    background-color: #8b5a2b;
+    color: beige;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.btn-submit:active {
+    transform: translateY(0);
+}

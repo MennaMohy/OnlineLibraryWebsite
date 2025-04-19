@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book | Lindy</title>
+    <link rel="icon" href="icon.png">
+    <link rel="stylesheet" href="editBook.css">
+    <link rel="stylesheet" href="NavigationBarStyle.css">
+    <script src="EditBookByAdmin.js"></script>
+    <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="side_Nav">
+    <a href="#" class="icon">
+        <i class="fa-solid fa-bars" style="color: #F3E9DC; font-size: 25px;position: fixed;left: 18px; top: 15px;"></i>
+    </a>
+    <ul class="NavLink">
+        <li><i class="fa-solid fa-house" style="color: #fff3dc;"></i><a href="Admin_Homepage.html">Home Page</a></li>
+        <li><i class="fa-solid fa-magnifying-glass" style="color: #fff2db;"></i><a href="Search.html">Search</a></li>
+        <li><i class="fa-solid fa-inbox" style="color: #fff3db;"></i><a href="viewAvailable.html">View available books</a></li>
+        <li><i class="fa-solid fa-book" style="color: #fff3db;"></i><a href="viewBorrowed.html">Your books</a></li>
+        <li><i class="fa-solid fa-circle-info" style="color: #fff3db;"></i><a href="aboutUs.html">About us</a></li>
+    </ul>
+
+</div>
+<div class="container">
+    <h2>Edit The Book</h2>
+    <form id="editForm">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="author">Author:</label>
+            <input type="text" id="author" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <input type="text" id="category" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="image">Image URL:</label>
+            <input type="text" id="image" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="available">Availability:</label>
+            <select id="available" class="form-control">
+                <option value="true">Available</option>
+                <option value="false">Unavailable</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn-submit">Save Changes</button>
+    </form>
+</div>
+
+</body>
+</html>
