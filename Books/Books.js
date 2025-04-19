@@ -1,6 +1,6 @@
 
 // array containing the details of all the books
-const books =
+let books =
     [
         {
             title: "A Tale of Two Cities",
@@ -272,9 +272,24 @@ if (!localStorage.getItem('books')) {
     localStorage.setItem('books', JSON.stringify(books));
 }
 
+//Get all books
+function getAllBooks() {
+    return JSON.parse(localStorage.getItem("books")) || [];
+}
+
 function getBookByTitle(title) {
     // getting the book by it's title from the local storage
-    let storedBooks = JSON.parse(localStorage.getItem('books')) || [];
+    const storedBooks = JSON.parse(localStorage.getItem('books')) || [];
     return storedBooks.find(book => book.title === title);
 }
+
+// Add a new book
+function addBook(book) {
+    const books = getAllBooks();
+    books.push(book);
+    localStorage.setItem("books", JSON.stringify(books));
+}
+
 window.getBookByTitle = getBookByTitle;
+window.addBook = addBook;
+window.getAllBooks = getAllBooks;
