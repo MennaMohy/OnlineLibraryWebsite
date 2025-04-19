@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="NavigationBarStyle.css">
     <link rel="icon" href="lindly.png">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
+    <script src="Books/Books.js"></script>
+    <script src="Search.js"></script>
 </head>
 
 <body>
@@ -37,7 +39,21 @@
 
 <main class="book-management">
     <div class="admin-tools">
-        <input type="text" class="search-box" placeholder="Search books...">
+        <div class="search-container">
+            <form id="searchForm">
+                <div class="search-wrapper">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search..." required>
+                    <select id="searchType">
+                        <option value="title">Title</option>
+                        <option value="author">Author</option>
+                        <option value="category">Category</option>
+                    </select>
+                    <button type="submit" class="search-button">
+                        <img src="searchIcon.png" alt="Search">
+                    </button>
+                </div>
+            </form>
+        </div>
         <button class="add-book-btn" onclick="location.href='Admin_AddBook.html'">+ Add New Book</button>
     </div>
 
