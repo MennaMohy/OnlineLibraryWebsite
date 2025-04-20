@@ -307,8 +307,8 @@ input[type="submit"].button-light:hover {
 }
 
 .search-container {
-    top: 145px;
-    margin-right: 90px;
+    position: relative;
+    top: 2px;
 }
 
 /* add book */
