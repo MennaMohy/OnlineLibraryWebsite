@@ -12,7 +12,11 @@ document.addEventListener('DOMContentLoaded', function(e) {
             book.category.toLowerCase().includes(searchTerm)
         );
     });
-
+    function getDueDate() {
+        const due = new Date();
+        due.setDate(due.getDate() + 14); // it will be due in 14 days from the borrowed date
+        return due.toLocaleDateString('en-GB'); // e.g. "18/05/2025"
+    }
     // Display results
     const container = document.querySelector('.book-results-container');
     container.innerHTML = '';
@@ -25,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function(e) {
             bookDiv.className = 'book-result';
 
             const statusClass = book.borrowed ? 'unavailable' : 'available';
-            const statusText = book.borrowed ? `Due ${book.dueDate || new Date().toLocaleDateString()}` : 'Available';
+            const statusText = book.borrowed ? `Due ${getDueDate()}` : 'Available';
             const imagePath = book.image.startsWith('http')
                 ? book.image
                 : `${window.location.origin}/Books/${book.image.split('/').pop()}`;
