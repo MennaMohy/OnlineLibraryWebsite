@@ -6,6 +6,8 @@
     <title>Edit Book | Lindy</title>
     <link rel="icon" href="icon.png">
     <link rel="stylesheet" href="editBook.css">
+    <link rel="stylesheet" href="popupBox.css">
+<!--    <link rel="stylesheet" href="alert.css">-->
     <link rel="stylesheet" href="NavigationBarStyle.css">
     <script src="EditBookByAdmin.js"></script>
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
@@ -22,6 +24,8 @@
         <li><i class="fa-solid fa-book" style="color: #fff3db;"></i><a href="viewBorrowed.html">Your books</a></li>
         <li><i class="fa-solid fa-circle-info" style="color: #fff3db;"></i><a href="aboutUs.html">About us</a></li>
     </ul>
+
+<!--    <div id="alertContainer" class="custom-alert"></div>-->
 
 </div>
 <div class="container">
@@ -58,6 +62,20 @@
         <button type="submit" class="btn-submit">Save Changes</button>
     </form>
 </div>
+
+<!-- Confirmation Popup -->
+<div id="confirmPopup" class="popup-overlay hidden">
+    <div class="popup-box">
+        <p id="confirmMessage">Are you sure you want to borrow?</p>
+        <div class="popup-buttons">
+            <button id="confirmCancel">Cancel</button>
+            <button id="confirmYes">Yes</button>
+        </div>
+    </div>
+</div>
+
+<script src="popBox.js"></script>
+<!--<script src="alert.js"></script>-->
 
 </body>
 </html>

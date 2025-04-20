@@ -14,3 +14,13 @@ function customAlert(message, type = "success") {
         if (alert) alert.remove();
     }, 3000);
 }
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if the book update success flag exists
+    if (sessionStorage.getItem('bookUpdated') === 'true') {
+        // Display the success alert
+        customAlert("Book updated successfully!", "success");
+
+        // Remove the flag, so it doesn't show again after reload
+        sessionStorage.removeItem('bookUpdated');
+    }
+});

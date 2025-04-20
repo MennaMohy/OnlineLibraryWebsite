@@ -26,24 +26,26 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('editForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
-        // Update only the changed fields
-        const updatedBook = {
-            ...originalBook, // Keep all original values
-            title: document.getElementById('title').value || originalBook.title,
-            author: document.getElementById('author').value || originalBook.author,
-            category: document.getElementById('category').value || originalBook.category,
-            image: document.getElementById('image').value || originalBook.image,
-            available: document.getElementById('available').value === 'true'
-        };
+        popBox("Are you sure you want to save changes?", function () {
+            const updatedBook = {
+                ...originalBook,
+                title: document.getElementById('title').value || originalBook.title,
+                author: document.getElementById('author').value || originalBook.author,
+                category: document.getElementById('category').value || originalBook.category,
+                image: document.getElementById('image').value || originalBook.image,
+                available: document.getElementById('available').value === 'true'
+            };
 
-        // Update the book in the array
-        books[index] = updatedBook;
+            // Update the book in the array
+            books[index] = updatedBook;
 
-        // Save to localStorage
-        localStorage.setItem('books', JSON.stringify(books));
+            // Save to localStorage
+            localStorage.setItem('books', JSON.stringify(books));
+            // Save the success flag to sessionStorage
+            sessionStorage.setItem('bookUpdated', 'true');
 
-        // Show success message and redirect
-        alert('Book updated successfully!');
-        window.location.href = 'manage_books.html';
+            // Show success message and redirect
+            window.location.href = 'manage_books.html';
+        });
     });
 });

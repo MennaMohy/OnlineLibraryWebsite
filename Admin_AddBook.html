@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Add New Book | Online Library</title>
     <link rel="stylesheet" href="Common.css">
+    <link rel="stylesheet" href="popupBox.css">
     <link rel = "stylesheet" href = "Admin.css">
     <link rel="stylesheet" href="NavigationBarStyle.css">
     <link rel="icon" href="icon.png">
@@ -78,8 +79,21 @@
         <input type="submit" class="button-light" value="Add Book">
 
     </form>
+
+    <!-- Confirmation Popup -->
+    <div id="confirmPopup" class="popup-overlay hidden">
+        <div class="popup-box">
+            <p id="confirmMessage">Are you sure you want to borrow?</p>
+            <div class="popup-buttons">
+                <button id="confirmCancel">Cancel</button>
+                <button id="confirmYes">Yes</button>
+            </div>
+        </div>
+    </div>
+
     <script src="Books/Books.js"></script>
     <script src="AddBookByAdmin.js"></script>
+    <script src="popBox.js"></script>
 
 </div>
 </body>

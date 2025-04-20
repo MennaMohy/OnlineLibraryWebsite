@@ -14,28 +14,40 @@ document.getElementById("bookForm").addEventListener("submit", function (e) {
         return;
     }
 
-    const reader = new FileReader();
+    // Call the popBox function to ask for confirmation
+    popBox("Are you sure you want to add this book?", function () {
+        const reader = new FileReader();
 
-    reader.onload = function(event) {
-        const base64Image = event.target.result;
+        reader.onload = function(event) {
+            const base64Image = event.target.result;
 
-        const newBook = {
-            id,
-            title,
-            author,
-            category,
-            description,
-            image: base64Image,
-            available: true
+            const newBook = {
+                id,
+                title,
+                author,
+                category,
+                description,
+                image: base64Image,
+                available: true
+            };
+
+            let books = JSON.parse(localStorage.getItem("books")) || [];
+            books.push(newBook);
+            localStorage.setItem("books", JSON.stringify(books));
+            window.getBookByTitle = getBookByTitle;
+
+            // Clear the form after submission
+            e.target.reset();
+
+            sessionStorage.setItem('bookUpdated', 'true');
+
+            // Show success message and redirect
+            window.location.href = 'manage_books.html';
+
+            // // Alert the user that the book has been added successfully
+            // alert("Book added successfully!");
         };
 
-        let books = JSON.parse(localStorage.getItem("books")) || [];
-        books.push(newBook);
-        localStorage.setItem("books", JSON.stringify(books));
-        window.getBookByTitle = getBookByTitle;
-        e.target.reset();
-    };
-
-    reader.readAsDataURL(imageFile); // converts image to Base64 string
-    alert("Book added successfully!");
+        reader.readAsDataURL(imageFile); // Convert image to Base64 string
+    });
 });
