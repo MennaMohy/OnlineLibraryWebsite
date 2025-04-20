@@ -28,10 +28,14 @@ function displayBooks() {
 }
 
 function deleteBook(index) {
-    let books = JSON.parse(localStorage.getItem('books')) || [];
-    books.splice(index, 1);
-    localStorage.setItem('books', JSON.stringify(books));
-    displayBooks(); // Re-render
+    // Show confirmation popup before deleting the book
+    popBox("Are you sure you want to delete this book?", function () {
+        let books = JSON.parse(localStorage.getItem('books')) || [];
+        books.splice(index, 1);
+        localStorage.setItem('books', JSON.stringify(books));
+        displayBooks(); // Re-render
+        customAlert("Book is deleted successfully!", 'success');
+    });
 }
 
 function editBook(index) {

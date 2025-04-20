@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="HomePage.css">
     <link rel="stylesheet" href="Admin.css">
     <link rel="stylesheet" href="alert.css">
+    <link rel="stylesheet" href="popupBox.css">
     <link rel="stylesheet" href="NavigationBarStyle.css">
     <link rel="icon" href="icon.png">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
@@ -59,6 +60,18 @@
     </div>
 </main>
 
+<!-- Confirmation Popup -->
+<div id="confirmPopup" class="popup-overlay hidden">
+    <div class="popup-box">
+        <p id="confirmMessage">Are you sure you want to borrow?</p>
+        <div class="popup-buttons">
+            <button id="confirmCancel">Cancel</button>
+            <button id="confirmYes">Yes</button>
+        </div>
+    </div>
+</div>
+
 <script src="alert.js"></script>
+<script src="popBox.js"></script>
 </body>
 </html>

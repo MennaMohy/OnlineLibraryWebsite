@@ -10,7 +10,7 @@ document.getElementById("bookForm").addEventListener("submit", function (e) {
     const imageFile = imageInput.files[0];
 
     if (!imageFile) {
-        alert("Please upload a book cover.");
+        customAlert("Please upload a book cover!", "error");
         return;
     }
 
@@ -43,9 +43,6 @@ document.getElementById("bookForm").addEventListener("submit", function (e) {
 
             // Show success message and redirect
             window.location.href = 'manage_books.html';
-
-            // // Alert the user that the book has been added successfully
-            // alert("Book added successfully!");
         };
 
         reader.readAsDataURL(imageFile); // Convert image to Base64 string
