@@ -306,11 +306,9 @@ input[type="submit"].button-light:hover {
     margin-bottom: 1.5rem;
 }
 
-.search-box {
-    padding: 0.8rem;
-    width: 300px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+.search-container {
+    top: 145px;
+    margin-right: 90px;
 }
 
 /* add book */
@@ -413,42 +411,4 @@ input[type="submit"].button-light:hover {
 }
 .quote{
     margin-left: 100px;
-}
-.search-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.search-box {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 180px;
-}
-
-.search-type {
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    min-width: 100px;
-}
-
-.search-button {
-    background: none;
-    border: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    align-items: center;
-}
-
-.search-button img {
-    width: 20px;
-    height: 20px;
-    transition: transform 0.2s;
-}
-
-.search-button:hover img {
-    opacity: 0.5;
 }
