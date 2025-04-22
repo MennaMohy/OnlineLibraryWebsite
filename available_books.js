@@ -1,4 +1,3 @@
-
 // available books
 document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('booksContainer');
@@ -27,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         bookCard.className = 'admin-book-card';
 
         bookCard.innerHTML = `
-            <img src="Books/${book.image}" alt="${book.title}" class="book-cover">
+            <img src="${book.image}" alt="${book.title}" class="book-cover">
             <div class="admin-book-info">
                 <h3>${book.title}</h3>
                 <p><strong>Author:</strong> ${book.author}</p>

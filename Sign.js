@@ -26,6 +26,12 @@ function handleSignUp(event) {
     let userPass = document.getElementById("pass").value;
     let userPassCheck = document.getElementById("passCheck").value;
 
+    // Password length check
+    if (userPass.length < 8) {
+        customAlert("Password must be at least 8 characters!", "error");
+        return;
+    }
+
     // Password match check
     if (userPass !== userPassCheck) {
         customAlert("Passwords do not match!", "error");

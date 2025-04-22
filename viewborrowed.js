@@ -1,4 +1,3 @@
-
 // view the borrowed books
 const books = JSON.parse(localStorage.getItem('books')) || [];
 
@@ -19,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         bookElement.classList.add('book-result');
 
         bookElement.innerHTML = `
-            <img src="Books/${book.image}" alt="${book.title}" class="book-cover">
+            <img src="${book.image}" alt="${book.title}" class="book-cover">
             <div class="book-info">
                 <p><strong>Title:</strong> ${book.title}</p>
                 <p><strong>Author:</strong> ${book.author}</p>

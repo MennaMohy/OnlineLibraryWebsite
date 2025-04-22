@@ -1,4 +1,3 @@
-
 // array containing the details of all the books
 let books =
     [
@@ -278,7 +277,7 @@ function getAllBooks() {
 }
 
 function getBookByTitle(title) {
-    // getting the book by it's title from the local storage
+    // getting the book by its title from the local storage
     const storedBooks = JSON.parse(localStorage.getItem('books')) || [];
     return storedBooks.find(book => book.title === title);
 }
