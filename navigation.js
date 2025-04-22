@@ -20,8 +20,8 @@ function generateNavbar() {
             <li><i class="fa-solid fa-house" style="color: #fff3dc;"></i><a href="${prefix}Admin_Homepage.html">Home Page</a></li>
             <li><i class="fa-solid fa-magnifying-glass" style="color: #fff2db;"></i><a href="${prefix}Search.html">Search</a></li>
             <li><i class="fa-solid fa-inbox" style="color: #fff3db;"></i><a href="${prefix}viewAvailable.html">View available books</a></li>
-            <li><i class="fa-solid fa-book" style="color: #fff3db;"></i><a href="${prefix}viewBorrowed.html">Borrowd books</a></li>
             <li><i class="fa-solid fa-circle-info" style="color: #fff3db;"></i><a href="${prefix}aboutUs.html">About us</a></li>
+            <li><i class="fa-solid fa-right-from-bracket" style="color: #f5f5dc;"></i><a href="${prefix}WelcomePage.html">Logout</a></li>
         </ul>
       </div>
     `;
@@ -35,8 +35,10 @@ function generateNavbar() {
           <li><i class="fa-solid fa-house" style="color: #fff3dc;"></i><a href="${prefix}UserHomePage.html">Home Page</a></li>
           <li><i class="fa-solid fa-magnifying-glass" style="color: #fff2db;"></i><a href="${prefix}Search.html">Search</a></li>
           <li><i class="fa-solid fa-inbox" style="color: #fff3db;"></i><a href="${prefix}viewAvailable.html">View available books</a></li>
-          <li><i class="fa-solid fa-book" style="color: #fff3db;"></i><a href="${prefix}viewBorrowed.html">Borrowd books</a></li>
+          <li><i class="fa-solid fa-book" style="color: #fff3db;"></i><a href="${prefix}viewBorrowed.html">Your books</a></li>
           <li><i class="fa-solid fa-circle-info" style="color: #fff3db;"></i><a href="${prefix}aboutUs.html">About us</a></li>
+          <li><i class="fa-solid fa-right-from-bracket" style="color: #f5f5dc;"></i><a href="${prefix}WelcomePage.html">Logout</a></li>
+          
         </ul>
       </div>
     `;
