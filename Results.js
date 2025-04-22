@@ -1,4 +1,6 @@
+
 document.addEventListener('DOMContentLoaded', function(e) {
+
     const storedBooks = JSON.parse(localStorage.getItem("books")) || [];
 
     // Get search term
@@ -49,4 +51,31 @@ document.addEventListener('DOMContentLoaded', function(e) {
             container.appendChild(bookDiv);
         });
     }
+
+    const backHome = document.getElementById('backHome');
+    if (backHome) {
+        backHome.addEventListener('click', function(e) {
+            e.preventDefault();
+            const user = JSON.parse(localStorage.getItem("loggedInUser"));
+            if (user && user.role.toLowerCase() === "admin") {
+                window.location.href = "Admin_Homepage.html";
+            } else {
+                window.location.href = "UserHomePage.html";
+            }
+        });
+    }
+    const homeLink = document.getElementById('homeLink');
+    if (homeLink) {
+        homeLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            const user = JSON.parse(localStorage.getItem("loggedInUser"));
+            if (user && user.role.toLowerCase() === "admin") {
+                window.location.href = "Admin_Homepage.html";
+            } else {
+                window.location.href = "UserHomePage.html";
+            }
+        });
+    }
+
+
 });
