@@ -21,8 +21,7 @@ function generateNavbar() {
             <li><i class="fa-solid fa-inbox" style="color: #fff3db;"></i><a href="${prefix}viewAvailable.html">View available books</a></li>
             <li><i class="fa-solid fa-circle-info" style="color: #fff3db;"></i><a href="${prefix}aboutUs.html">About us</a></li>
             <li><i class="fa-solid fa-right-from-bracket" style="color: #f5f5dc;"></i><a href="#" onclick=
-            "popBox('Are you sure you want to log out?', () => window.location.href='${prefix}WelcomePage.html')">Logout</a>
-</li>
+            "popBox('Are you sure you want to log out?', () => window.location.href='${prefix}WelcomePage.html')">Logout</a></li>
         </ul>
       </div>
     `;
