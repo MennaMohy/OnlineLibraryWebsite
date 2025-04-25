@@ -14,9 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Fill the book details in the page
-    document.getElementById("Title").textContent = "Title: " + book.title;
-    document.getElementById("Author").textContent = "Author: " + book.author;
-    document.getElementById("Description").textContent = "Description: " + book.description;
+    document.getElementById("Title").textContent = book.title;
+    document.getElementById("Author").textContent = "~" + book.author;
+    document.getElementById("Description").textContent = book.description;
 
     // Disable the borrow button if the book is already borrowed
     const borrowButton = document.getElementById("borrow_button");
