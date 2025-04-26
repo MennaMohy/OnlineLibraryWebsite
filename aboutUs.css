@@ -13,9 +13,8 @@
     padding-left: 100px;
 }
 .container {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('aboutImg.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('aboutImg.jpg'), center;
     background-size: cover;
-    background-position: center;
     color: white;
     padding: 80px 0;
     text-align: center;
