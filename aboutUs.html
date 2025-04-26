@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>About Us | Online Library</title>
-    <link rel = stylesheet href="aboutUS.css">
+    <link rel="stylesheet" href="popupBox.css">
+    <link rel = stylesheet href="aboutUs.css">
     <link rel="stylesheet" href="NavigationBarStyle.css">
     <link rel="icon" href="icon.png">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
@@ -40,5 +41,18 @@
             <p>&copy; 2023 LINDLY. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Confirmation Popup -->
+    <div id="confirmPopup" class="popup-overlay hidden">
+        <div class="popup-box">
+            <p id="confirmMessage" style="padding-left: 0;">Are you sure you want to borrow?</p>
+            <div class="popup-buttons">
+                <button id="confirmCancel">Cancel</button>
+                <button id="confirmYes">Yes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="popBox.js"></script>
 </body>
 </html>

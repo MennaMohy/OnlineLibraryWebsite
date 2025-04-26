@@ -5,6 +5,7 @@
     <title>Borrowed Books</title>
     <link rel="stylesheet" href="Common.css">
     <link rel="stylesheet" href="results.css">
+    <link rel="stylesheet" href="popupBox.css">
     <link rel="stylesheet" href="NavigationBarStyle.css">
     <link rel="icon" href="icon.png">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
@@ -28,5 +29,17 @@
 
 </div>
 
+<!-- Confirmation Popup -->
+<div id="confirmPopup" class="popup-overlay hidden">
+    <div class="popup-box">
+        <p id="confirmMessage">Are you sure you want to borrow?</p>
+        <div class="popup-buttons">
+            <button id="confirmCancel">Cancel</button>
+            <button id="confirmYes">Yes</button>
+        </div>
+    </div>
+</div>
+
+<script src="popBox.js"></script>
 </body>
 </html>
