@@ -88,3 +88,7 @@ select:focus {
     color: #96501d;
     letter-spacing: 1.3px;
 }
+#ForgotPass:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
