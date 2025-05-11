@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Borrowed Books</title>
+    <link rel="stylesheet" href="../static/css/Common.css">
+    <link rel="stylesheet" href="../static/css/results.css">
+    <link rel="stylesheet" href="../static/css/popupBox.css">
+    <link rel="stylesheet" href="../static/css/NavigationBarStyle.css">
+    <link rel="icon" href="../static/images/icon.png">
+    <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
+    <script src="../static/js/viewborrowed.js"></script>
+    <script src = "../static/js/borrow_book.js"></script>
+    <script src="../static/js/Books.js"></script>
+</head>
+<body>
+
+<div id="navbar" class="side_Nav"></div>
+<script src="../static/js/navigation.js"></script>
+
+<div id="box">
+    <div class="results-header">
+        <h1>Your books</h1>
+    </div>
+
+    <div class="book-results-container" id="borrowedbooks">
+        <!-- displaying the borrowed books by the user -->
+    </div>
+
+</div>
+
+<!-- Confirmation Popup -->
+<div id="confirmPopup" class="popup-overlay hidden">
+    <div class="popup-box">
+        <p id="confirmMessage">Are you sure you want to borrow?</p>
+        <div class="popup-buttons">
+            <button id="confirmCancel">Cancel</button>
+            <button id="confirmYes">Yes</button>
+        </div>
+    </div>
+</div>
+
+<script src="../static/js/popBox.js"></script>
+</body>
+</html>

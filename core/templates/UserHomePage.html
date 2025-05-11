@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="../static/css/Common.css">
+    <link rel="stylesheet" href="../static/css/HomePage.css">
+    <link rel="stylesheet" href="../static/css/popupBox.css">
+    <link rel="stylesheet" href="../static/css/results.css">
+    <link rel="stylesheet" href="../static/css/NavigationBarStyle.css">
+    <link rel="icon" href="../static/images/icon.png">
+    <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
+    <script src="../static/js/Books.js"></script>
+    <script src = "../static/js/Search.js"></script>
+</head>
+
+<body>
+
+<div id="navbar" class="side_Nav"></div>
+<script src="../static/js/navigation.js"></script>
+
+<div class="search-container">
+    <form id="searchForm">
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search by title, author or category..." required>
+            <button type="submit" class="search-button">
+                <img src="../static/images/searchIcon.png" alt="Search">
+            </button>
+        </div>
+    </form>
+</div>
+
+    <img src="../static/images/lindly.png" alt = "logo" class = "logo">
+
+    <!-- Welcome Message -->
+    <div class="welcome">
+        <h1 class="home-title">Welcome to LINDLY</h1>
+        <hr style="width: 700px;" color="#5a3921">
+        <p class="home-description">Explore our collection of books and resources.</p>
+    </div>
+    <div class="recommendations">
+        <h2 class="recommendations-title">Recommended for You</h2>
+    </div>
+
+<div class="main">
+    
+    <!-- images Section -->
+    <div class="books-row">
+        <div class="book-card-small">
+        <a href="book1.html">
+            <img src="../static/images/it_ends_with_us.jpg" alt="Book 1">
+        </a>
+        <div class="book-title">It Ends With Us</div>
+        <div class="book-author">Colleen Hoover</div>
+        <div class="rating">★★★★☆</div>
+        </div>
+
+        <div class="book-card-small">
+            <a href="book2.html">
+                <img src="../static/images/tale_of_two_cities.jpg" alt="Book 2">
+            </a>
+            <div class="book-title">A Tale of Two Cities</div>
+            <div class="book-author">Charles Dickens</div>
+            <div class="rating">★★★★☆</div>
+        </div>
+        <div class="book-card-small">
+            <a href="book3.html">
+                <img src="../static/images/MaybeSomeday.jpg" alt="Book 3">
+            </a>
+            <div class="book-title">Maybe Someday</div>
+            <div class="book-author">Colleen Hoover</div>
+            <div class="rating">★★★★★</div>
+        </div>
+
+        <div class="book-card-small">
+            <a href="book4.html">
+                <img src="../static/images/practice-makes-perfect.jpg" alt="Book 4">
+            </a>
+            <div class="book-title">Practice Makes Perfect</div>
+            <div class="book-author">Sarah Adams</div>
+            <div class="rating">★★★☆☆</div>
+        </div>
+    </div>
+</div>
+<div id="box">
+    <div class="results-header">
+        <h1>Library of Books</h1>
+    </div>
+
+    <div class="book-results-container">
+        <div class="book-result">
+            <a href="book2.html">
+            <img src="../static/images/tale_of_two_cities.jpg" alt="A Tale of Two Cities" class="book-cover">
+            </a>
+            <div class="book-info">
+                <p><strong>Title:</strong> A Tale of Two Cities</p>
+                <p><strong>Author:</strong> Charles Dickens</p>
+                <p><strong>Category:</strong> Classic Literature</p>
+                <p class="book-description">
+                    Set in London and Paris before and during the French Revolution,
+                    this novel tells the story of a French doctor and his daughter.
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book1.html">
+            <img src=../static/images/it_ends_with_us.jpg alt="It Ends With Us" class="book-cover">
+            </a>
+            <div class="book-info">
+                <p><strong>Title:</strong> It Ends With Us</p>
+                <p><strong>Author:</strong> Colleen Hoover</p>
+                <p><strong>Category:</strong> Contemporary Romance</p>
+                <p class="book-description">
+                    A heartbreaking story of love and resilience, following Lily Bloom as she
+                    makes difficult choices in a relationship with neurosurgeon Ryle Kincaid.
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability unavailable">Due 15/06</span>
+            </div>
+        </div>
+
+
+
+        <div class="book-result">
+            <a href="book3.html">
+            <img src="../static/images/MaybeSomeday.jpg" alt="Maybe-Someday" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> Maybe Someday</p>
+                <p><strong>Author:</strong> Colleen Hoover</p>
+                <p><strong>Category: </strong>  New Adult Romance</p>
+                <p class="book-description">
+                    A forbidden romance between Sydney and her deaf musician neighbor,
+                    Ridge, as they bond through music—despite his existing relationship. Angsty, emotional, with original songs.
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+        <div class="book-result">
+            <a href="book4.html">
+            <img src="../static/images/practice-makes-perfect.jpg" alt="practice-makes-perfect" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> Practice Makes Perfect</p>
+                <p><strong>Author:</strong> Sarah Adams</p>
+                <p><strong>Category: </strong> Romantic Comedy</p>
+                <p class="book-description">
+                    A sweet, opposites-attract romance between a perfectionist 
+                    wedding planner and a laid-back musician, blending humor with heartwarming moments.
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+        <a href="book5.html">
+            <img src="../static/images/beauty_and_the_beast.jpg" alt="Beauty and the Beast" class="book-cover">
+        </a>
+        <div class="book-info">
+            <p><strong>Title:</strong> Beauty and the Beast</p>
+            <p><strong>Author:</strong> Gabrielle-Suzanne Villeneuve</p>
+            <p><strong>Category: </strong> Fairy Tale</p>
+            <p class="book-description">
+                The original fairy tale about a young woman who agrees to live with a beast
+                in his castle to save her father, discovering the kind heart beneath.
+            </p>
+        </div>
+        <div class="book-status">
+            <span class="availability available">Available</span>
+        </div>
+
+    </div>
+        <div class="book-result">
+            <a href="book6.html">
+            <img src="../static/images/things-we-never-get-over.jpg" alt="things-we-never-get-over" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> Things We Never Got Over</p>
+                <p><strong>Author:</strong> Lucy Score</p>
+                <p><strong>Category: </strong> Small-Town Romance</p>
+                <p class="book-description">
+                    A rugged small-town barber clashes with a runaway
+                    bride in this steamy, small-town romance. Packed with humor, heart, and a protective hero.
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability unavailable">Due 08/06</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book7.html">
+            <img src="../static/images/atomic-habits.jpg" alt="atomic-habits" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> Atomic Habits</p>
+                <p><strong>Author:</strong> James Clear</p>
+                <p><strong>Category: </strong> Self Development</p>
+                <p class="book-description">
+                    A transformative guide to 
+                    building good habits and breaking bad ones through tiny, sustainable changes that compound over time.                
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book8.html">
+            <img src="../static/images/how-to-inf.jpg" alt="how-to-inf" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> How to Win Friends And Influence People</p>
+                <p><strong>Author:</strong> Dale Carnegie</p>
+                <p><strong>Category: </strong> Business & Communication</p>
+                <p class="book-description">
+                    A timeless guide to building meaningful relationships and mastering 
+                    interpersonal skills through empathy, genuine appreciation, and effective communication.   
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+        <div class="book-result">
+            <a href="book9.html">
+            <img src="../static/images/antidote.jpg" alt="antidote" class="book-cover">
+            </a>
+            <div class="book-info">
+                <p><strong>Title:</strong> The Antidote</p>
+                <p><strong>Author:</strong> Karen Russell</p>
+                <p><strong>Category: </strong> Dark Fiction</p>
+                <p class="book-description">
+                    A twisted tale of obsession and survival,
+                    where love and poison blur in a battle for control.                
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+        <div class="book-result">
+            <a href="book10.html">
+            <img src="../static/images/fagain.jpg" alt="fagain" class="book-cover">
+            </a>
+            <div class="book-info">
+                <p><strong>Title:</strong> Fagin the Thief</p>
+                <p><strong>Author:</strong> Allison Epstein</p>
+                <p><strong>Category: </strong> Historical Fiction</p>
+                <p class="book-description">
+                    A bold retelling of Dickens’ infamous criminal, blending gritty
+                    19th-century London with fresh psychological depth.     
+                    </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+        <div class="book-result">
+            <a href="book11.html">
+            <img src="../static/images/oliver.jpg" alt="oliver" class="book-cover">
+            </a>
+            <div class="book-info">
+                <p><strong>Title:</strong> Oliver Twist</p>
+                <p><strong>Author:</strong> Charles Dickens</p>
+                <p><strong>Category: </strong> Classic Literature</p>
+                <p class="book-description">
+                    An orphan's brutal journey through workhouses,
+                    crime, and unexpected kindness in 19th-century London.
+                    </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+        <div class="book-result">
+            <a href="book12.html">
+            <img src="../static/images/thesilentpatient.jpg" alt="The Silent Patient" class="book-cover">
+            </a>
+            <div class="book-info">
+                <p><strong>Title:</strong> The Silent Patient </p>
+                <p><strong>Author:</strong> Alex Michaelides </p>
+                <p><strong>Category: </strong> Psychological Thriller</p>
+                <p class="book-description">
+                    A shocking psychological thriller of a woman's act of violence against her husband―and of the
+                    therapist obsessed with uncovering her motive.
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book13.html">
+            <img src="../static/images/theboyfromthewoods.jpg" alt="The Boy from the Woods" class="book-cover">
+            </a>
+            <div class="book-info">
+                <p><strong>Title:</strong> The Boy from the Woods </p>
+                <p><strong>Author:</strong> Harlan Coben</p>
+                <p><strong>Category: </strong> Mystery Thriller</p>
+                <p class="book-description">
+                    A man with a mysterious past must find a missing teenage girl in this shocking thriller.
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book14.html">
+            <img src="../static/images/thesummerofbrokenrules.jpg" alt="The Summer of Broken Rules" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> The Summer of Broken Rules </p>
+                <p><strong>Author:</strong> K. L. Walther </p>
+                <p><strong>Category: </strong> New Adult Romance </p>
+                <p class="book-description">
+                    A heartbroken teen's summer vacation becomes a high-stakes game of survival when a family
+                    wedding turns into an unexpected emotional journey.
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book15.html">
+            <img src="../static/images/thesunisalsoastar.jpeg" alt="The Sun is Also a Star" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> The Sun is Also a Star </p>
+                <p><strong>Author:</strong> Nicola Yoon </p>
+                <p><strong>Category: </strong> Contemporary Romance </p>
+                <p class="book-description">
+                    As the clock ticks, science and destiny debate whether their connection can defy the universe.
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book16.html">
+            <img src="../static/images/everythingeverything.jpg" alt="Everything, Everything" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> Everything, Everything </p>
+                <p><strong>Author:</strong> Nicola Yoon </p>
+                <p><strong>Category: </strong> Contemporary Romance </p>
+                <p class="book-description">
+                    A girl allergic to the outside world, risks everything when she falls for her new neighbor.
+                    As their bond deepens through secret messages, she must decide if love is worth the ultimate
+                    gamble - leaving her sterile sanctuary.
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book17.html">
+            <img src="../static/images/confess.jpg" alt="Confess" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> Confess </p>
+                <p><strong>Author:</strong> Colleen Hoover </p>
+                <p><strong>Category: </strong> New Adult Romance </p>
+                <p class="book-description">
+                    A struggling artist and a mysterious stranger connect through anonymous confessions.
+                    As their bond deepens, shocking secrets emerge that could destroy everything - or prove that
+                    love thrives on truth.
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book18.html">
+            <img src="../static/images/lovegame.jpg" alt="Love Game" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> Love Game </p>
+                <p><strong>Author:</strong> Emma Rae </p>
+                <p><strong>Category: </strong> Contemporary Sports Romance </p>
+                <p class="book-description">
+                    A perfectionist chef and a rebellious tennis star serve up more than they bargained for when
+                    their worlds collide. As she plans his tournament meals, and he disrupts her orderly kitchen, their
+                    spicy rivalry ignites a passion neither can ignore - on or off the court.
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book19.html">
+            <img src="../static/images/maybeinanotherlife.jpg" alt="Maybe in Another Life" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> Maybe in Another Life </p>
+                <p><strong>Author:</strong> Taylor Jenkins Reid </p>
+                <p><strong>Category: </strong> Contemporary Fiction </p>
+                <p class="book-description">
+                    The novel explores the choice of 2 decisions simultaneously, revealing how one split-second
+                    choice creates two completely different life paths filled with love, heartbreak, and destiny.
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book20.html">
+            <img src="../static/images/mylovelywife.jpg" alt="My Lovely Wife" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> My Lovely Wife </p>
+                <p><strong>Author:</strong> Samantha Downing </p>
+                <p><strong>Category: </strong> Psychological Thriller </p>
+                <p class="book-description">
+                    A suburban couple spices up their marriage with a deadly hobby—kidnapping and murder. But when their
+                    twisted game escalates, secrets unravel, and the line between passion and predation blurs. How far
+                    will they go to keep the excitement alive?
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book21.html">
+            <img src="../static/images/thecheatsheet.jpg" alt="The Cheat Sheet" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> The Cheat Sheet </p>
+                <p><strong>Author:</strong> Sarah Adams </p>
+                <p><strong>Category: </strong> Contemporary Romance </p>
+                <p class="book-description">
+                    As the world watches their every move, this pro athlete and dance instructor must decide whether
+                    to stick to their playbook or risk it all for love.
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book22.html">
+            <img src="../static/images/theenemy.jpg" alt="The Enemy" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> The Enemy </p>
+                <p><strong>Author:</strong> Sarah Adams </p>
+                <p><strong>Category: </strong> Contemporary Romance </p>
+                <p class="book-description">
+                    When two workplace rivals are forced to team up, their constant bickering sparks
+                    an unexpected attraction.
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book23.html">
+            <img src="../static/images/Verity.jpg" alt="Verity" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> Verity </p>
+                <p><strong>Author:</strong> Colleen Hoover </p>
+                <p><strong>Category: </strong> Psychological Thriller </p>
+                <p class="book-description">
+                    A struggling writer accepts a job completing a famous author's book series, only to discover
+                    the injured novelist's unpublished autobiography - filled with disturbing confessions. As
+                    attraction grows with the husband who hired her, she must decide: are these dark revelations
+                    truth or fiction?
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book24.html">
+            <img src="../static/images/wheninrome.jpg" alt="When In Rome" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> When In Rome </p>
+                <p><strong>Author:</strong> Sarah Adams </p>
+                <p><strong>Category: </strong> Contemporary Romance </p>
+                <p class="book-description">
+                    A burnt-out pop star escapes to small-town Rome, Kentucky, where a no-nonsense baker teaches her
+                    the simple joys of life - and love. But when her past comes calling, will their budding romance
+                    survive the spotlight?
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+        <div class="book-result">
+            <a href="book25.html">
+            <img src="../static/images/Thehousemaid.jpg" alt="The Housemaid" class="book-cover">
+            </a>
+                <div class="book-info">
+                <p><strong>Title:</strong> The Housemaid </p>
+                <p><strong>Author:</strong> Freida McFadden </p>
+                <p><strong>Category: </strong> Psychological Thriller </p>
+                <p class="book-description">
+                    A desperate woman takes a live-in housemaid job for a wealthy family, but their perfect facade
+                    hides dark secrets. As she uncovers disturbing truths about the wife she's replacing, the real
+                    question becomes: who's really trapped in this house?
+                </p>
+            </div>
+            <div class="book-status">
+                <span class="availability available">Available</span>
+            </div>
+        </div>
+
+    </div>
+    </div>
+<!-- Confirmation Popup -->
+<div id="confirmPopup" class="popup-overlay hidden">
+    <div class="popup-box">
+        <p id="confirmMessage">Are you sure you want to borrow?</p>
+        <div class="popup-buttons">
+            <button id="confirmCancel">Cancel</button>
+            <button id="confirmYes">Yes</button>
+        </div>
+    </div>
+</div>
+
+<script src="../static/js/popBox.js"></script>
+</body>
+</html>

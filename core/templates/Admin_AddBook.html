@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add New Book | Online Library</title>
+    <link rel="stylesheet" href="../static/css/Common.css">
+    <link rel="stylesheet" href="../static/css/popupBox.css">
+    <link rel = "stylesheet" href = "../static/css/Admin.css">
+    <link rel="stylesheet" href="../static/css/NavigationBarStyle.css">
+    <link rel="icon" href="../static/images/icon.png">
+    <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body class="addbook">
+
+<div id="navbar" class="side_Nav"></div>
+<script src="../static/js/navigation.js"></script>
+
+<div id="box">
+    <h1>Add A Book</h1>
+    <form id="bookForm" action="Manage_books.html" method="GET">
+        <p>Book ID</p>
+        <label>
+            <input type="text" id="book-id" placeholder="ID" required>
+        </label>
+        <p>Name</p>
+        <label>
+            <input type="Text" id="book-name" placeholder="Book Name" required>
+        </label>
+        <p>Author</p>
+        <label>
+            <input type="Text" id="book-author" placeholder="Author Name" required>
+        </label>
+        <label>
+            <p>Category:</p>
+            <select id="book-category" name="category" required>
+                <option value="" disabled selected>Select a category</option>
+                <option value="fiction">Fiction</option>
+                <option value="non-fiction">Non-Fiction</option>
+                <option value="dark-fiction">Dark-Fiction</option>
+                <option value="science">Science</option>
+                <option value="biography">Biography</option>
+                <option value="classic literature">Classic Literature</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="fairy tale">Fairy Tale</option>
+                <option value="contemporary romance">Contemporary Romance</option>
+                <option value="romantic comedy">Romantic Comedy</option>
+                <option value="small town romance">Small-Town Romance</option>
+                <option value="new adult romance">New Adult Romance</option>
+                <option value="mystery">Mystery</option>
+                <option value="thriller">Thriller</option>
+                <option value="history">History</option>
+                <option value="self-help">Self-Help</option>
+                <option value="self-development">Self-Development</option>
+                <option value="business&communication">Business & Communication</option>
+            </select>
+
+        </label>
+        <p>Description</p>
+        <label>
+            <input type="text" id="book-description" placeholder="Description" required>
+        </label>
+        <p>Book Cover Image</p>
+        <label>
+            <input type="file" id="book-image" accept="image/*" required>
+        </label>
+        <br>
+        <input type="submit" class="button-light" value="Add Book">
+
+    </form>
+
+    <!-- Confirmation Popup -->
+    <div id="confirmPopup" class="popup-overlay hidden">
+        <div class="popup-box">
+            <p id="confirmMessage">Are you sure you want to borrow?</p>
+            <div class="popup-buttons">
+                <button id="confirmCancel">Cancel</button>
+                <button id="confirmYes">Yes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../static/js/Books.js"></script>
+    <script src="../static/js/AddBookByAdmin.js"></script>
+    <script src="../static/js/popBox.js"></script>
+
+</div>
+</body>
+</html>

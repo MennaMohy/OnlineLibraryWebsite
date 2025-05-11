@@ -1,0 +1,45 @@
+.about-us {
+    font-family: Georgia , serif;
+    line-height: 1.8;
+    color: saddlebrown;
+    background-color: beige;
+    margin: 0;
+    padding: 0;
+}
+.about-us p{
+    padding-left: 80px;
+}
+.a{
+    padding-left: 100px;
+}
+.container {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/aboutImg.jpg'), center;
+    background-size: cover;
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container h1 {
+    font-family: Georgia, serif;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.container p {
+    text-space: var();
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+
+footer {
+    background-color: saddlebrown;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}

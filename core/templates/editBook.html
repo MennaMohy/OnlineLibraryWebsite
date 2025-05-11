@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book | Lindy</title>
+    <link rel="icon" href="../static/images/icon.png">
+    <link rel="stylesheet" href="../static/css/editBook.css">
+    <link rel="stylesheet" href="../static/css/popupBox.css">
+<!--    <link rel="stylesheet" href="alert.css">-->
+    <link rel="stylesheet" href="../static/css/NavigationBarStyle.css">
+    <script src="../static/js/EditBookByAdmin.js"></script>
+    <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="navbar" class="side_Nav"></div>
+<script src="../static/js/navigation.js"></script>
+
+<div class="container">
+    <h2>Edit The Book</h2>
+    <form id="editForm">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="author">Author:</label>
+            <input type="text" id="author" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <input type="text" id="category" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="image">Image URL:</label>
+            <input type="text" id="image" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="available">Availability:</label>
+            <select id="available" class="form-control">
+                <option value="true">Available</option>
+                <option value="false">Unavailable</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn-submit">Save Changes</button>
+    </form>
+</div>
+
+<!-- Confirmation Popup -->
+<div id="confirmPopup" class="popup-overlay hidden">
+    <div class="popup-box">
+        <p id="confirmMessage">Are you sure you want to borrow?</p>
+        <div class="popup-buttons">
+            <button id="confirmCancel">Cancel</button>
+            <button id="confirmYes">Yes</button>
+        </div>
+    </div>
+</div>
+
+<script src="../static/js/popBox.js"></script>
+<!--<script src="alert.js"></script>-->
+
+</body>
+</html>
