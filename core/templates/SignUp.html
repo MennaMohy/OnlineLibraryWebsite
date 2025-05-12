@@ -14,6 +14,7 @@
     <div id="alertContainer" class="custom-alert"></div>
     <h4>Create your account free with our user-friendly Online Library and borrow digital books :)</h4>
     <form id="signupForm">
+        {% csrf_token %}
         <p>Username</p>
         <label>
             <input type="text" id="UserName" name="UserName" placeholder="Name" required>

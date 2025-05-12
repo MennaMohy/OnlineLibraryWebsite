@@ -11,56 +11,55 @@ if (form) {
 function handleSignUp(event) {
     event.preventDefault(); // Prevent page reload
 
-    let isAdminValue = document.getElementById("isAdmin").value;
-    let userType;
-
-    if (isAdminValue === "yes") {
-        userType = "admin";
-    } else if (isAdminValue === "no") {
-        userType = "user";
-    }
-
     // Get user's information
     let userName = document.getElementById("UserName").value.trim();
     let userEmail = document.getElementById("email").value.trim();
     let userPass = document.getElementById("pass").value;
     let userPassCheck = document.getElementById("passCheck").value;
+    let isAdminValue = document.getElementById("isAdmin").value;
+
+    let userType = isAdminValue === "yes" ? "admin" : "user";
+
+    let csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
     // Password length check
     if (userPass.length < 8) {
         customAlert("Password must be at least 8 characters!", "error");
         return;
     }
-
     // Password match check
     if (userPass !== userPassCheck) {
         customAlert("Passwords do not match!", "error");
         return;
     }
-
-    // Get the list of existing users from local storage
-    let users = JSON.parse(localStorage.getItem("Users")) || [];
-
-    // Email used check
-    if (users.some(user => user.email === userEmail)) {
-        customAlert("Email is already taken!", "error");
-        return;
-    }
-
-    // Add the new user's info
-    users.push({ name: userName, email: userEmail, pass: userPass, role: userType });
-
-    // Save the updated users list to local storage
-    localStorage.setItem("Users", JSON.stringify(users));
-
-    // Mark the user as signed in
-    localStorage.setItem("signed", "true");
-
-    // Store the logged-in user's data
-    localStorage.setItem("loggedInUser", JSON.stringify({ name: userName, email: userEmail, role: userType }));
-
-    // Redirect based on role
-    window.location.href = userType === "admin" ? "Admin_Homepage.html" : "UserHomePage.html";
+    // Send the user data in JSON format so the server can read it
+    fetch("/signup/submit/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": csrfToken
+        },
+        body: JSON.stringify({
+            name: userName,
+            email: userEmail,
+            password: userPass,
+            role: userType
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(data => { throw new Error(data.error); });
+        }
+        // If there is no error continue to send the response
+        return response.json();
+    })
+     .then(data => {
+            customAlert("Signed up successfully!", "success");
+            window.location.href = userType === "admin" ? "/admin-home/" : "/user-home/";
+        })
+        .catch(error => {
+            customAlert(error.message, "error");
+        });
 }
 
 // Sign In section
