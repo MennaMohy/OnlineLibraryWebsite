@@ -1,41 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Search Results | Online Library</title>
-    <link rel="stylesheet" href="../static/css/Common.css">
-    <link rel="stylesheet" href="../static/css/results.css">
-    <link rel="stylesheet" href="../static/css/Buttons.css">
-    <link rel="stylesheet" href="../static/css/NavigationBarStyle.css">
-    <link rel="icon" href="../static/images/icon.png">
-    <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
-    <script src="../static/js/Books.js"></script>
-    <script src="../static/js/Results.js"></script>
 
+    <link rel="stylesheet" href="{% static 'css/Common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/results.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Buttons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/NavigationBarStyle.css' %}">
+    <link rel="icon" href="{% static 'images/icon.png' %}">
+
+
+    <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/Books.js' %}"></script>
+    <script src="{% static 'js/Results.js' %}"></script>
 </head>
 <body>
+
+
 <div id="navbar" class="side_Nav"></div>
-<script src="../static/js/navigation.js"></script>
+<script src="{% static 'js/navigation.js' %}"></script>
+
 
 <div id="box">
     <div class="results-header">
-        <a href="{% if user_role == 'admin' %}/admin-home/{% else %}/user-home/{% endif %}" id="backHome" class="button-light"> Back to HomePage</a>
+        <a href="{% if user_role == 'admin' %}{% url 'admin_home' %}{% else %}{% url 'user_home' %}{% endif %}" id="backHome" class="button-light">Back to HomePage</a>
         <h1>Search Results</h1>
     </div>
 
     <div class="book-results-container">
-    {% for book in books %}
-    <div class="book-result">
-        <img src="{{ book.image.url }}" alt="{{ book.title }}">
-        <h3>{{ book.title }}</h3>
-        <p>By {{ book.author }}</p>
-        <p>Category: {{ book.category }}</p>
+        {% for book in books %}
+            <div class="book-result">
+                <img src="{% static 'images/' %}{{ book.image }}" alt="{{ book.title }}">
+                <h3>{{ book.title }}</h3>
+                <p>By {{ book.author }}</p>
+                <p>Category: {{ book.category }}</p>
+            </div>
+        {% empty %}
+            <p>No books found</p>
+        {% endfor %}
     </div>
-    {% empty %}
-    <p>No books found</p>
-    {% endfor %}
 </div>
-</div>
+
 </body>
 </html>

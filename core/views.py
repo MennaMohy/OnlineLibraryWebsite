@@ -22,30 +22,8 @@ def signin_view(request):
 
 def manage_books(request):
     # Logic for managing books
-    return render(request, 'admin-home/manage_books.html')
+    return render(request, 'Manage_books.html')
 
-def results_page(request):
-    query = request.GET.get('query', '')
-    books = Book.objects.filter(
-        title__icontains=query
-    ) | Book.objects.filter(
-        author__icontains=query
-    ) | Book.objects.filter(
-        category__icontains=query
-    )
-
-    user_role = None
-    if request.user.is_authenticated:
-        user_obj = User.objects.filter(email=request.user.email).first()
-        if user_obj:
-            user_role = user_obj.role
-
-    context = {
-        'books': books,
-        'query': query,
-        'user_role': user_role
-    }
-    return render(request, 'Results.html', context)
 
 # Define a function that accepts POST request
 @csrf_exempt
@@ -65,9 +43,27 @@ def signup_view(request):
         # Add the new user to the database
         # Make sure to encrypt the password
         User.objects.create(name=name, email=email, password=make_password(password), role=role)
-
+        request.session['user_role'] = role
         return JsonResponse({"message": "User created successfully"}, status=201)
 
+def results_page(request):
+    query = request.GET.get('query', '')
+    books = Book.objects.filter(
+        title__icontains=query
+    ) | Book.objects.filter(
+        author__icontains=query
+    ) | Book.objects.filter(
+        category__icontains=query
+    )
+    user_role = request.session.get('user_role', None)
+    print(f"User role from session: {user_role}")
+
+    context = {
+        'books': books,
+        'query': query,
+        'user_role': user_role
+    }
+    return render(request, 'Results.html', context)
 
 @csrf_exempt
 def search_books(request):

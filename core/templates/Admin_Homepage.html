@@ -18,10 +18,10 @@
 
 <header class="admin-header">
     <h1>Admin Dashboard</h1>
-        <nav class="nav-links">
-            <a href="Admin_Homepage.html" class="active">Dashboard</a>
-            <a href="Manage_books.html">Manage Books</a>
-        </nav>
+    <nav class="nav-links">
+        <a href="{% url 'admin_home' %}" class="active">Dashboard</a>
+        <a href="{% url 'manage_books' %}">Manage Books</a>
+    </nav>
 </header>
 <img src="../static/images/lindly.png" alt = "logo" class = "logo">
 <div class = "body">
