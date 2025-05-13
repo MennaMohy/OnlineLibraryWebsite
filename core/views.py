@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-from .models import User
+from .models import User,Book
 from django.contrib.auth.hashers import make_password
-
+from django.db.models import Q
 
 
 # Create your views here.
@@ -19,6 +19,33 @@ def user_homepage(request):
 
 def signin_view(request):
     return render(request, 'SignIn.html')
+
+def manage_books(request):
+    # Logic for managing books
+    return render(request, 'admin-home/manage_books.html')
+
+def results_page(request):
+    query = request.GET.get('query', '')
+    books = Book.objects.filter(
+        title__icontains=query
+    ) | Book.objects.filter(
+        author__icontains=query
+    ) | Book.objects.filter(
+        category__icontains=query
+    )
+
+    user_role = None
+    if request.user.is_authenticated:
+        user_obj = User.objects.filter(email=request.user.email).first()
+        if user_obj:
+            user_role = user_obj.role
+
+    context = {
+        'books': books,
+        'query': query,
+        'user_role': user_role
+    }
+    return render(request, 'Results.html', context)
 
 # Define a function that accepts POST request
 @csrf_exempt
@@ -40,3 +67,28 @@ def signup_view(request):
         User.objects.create(name=name, email=email, password=make_password(password), role=role)
 
         return JsonResponse({"message": "User created successfully"}, status=201)
+
+
+@csrf_exempt
+def search_books(request):
+    term = request.GET.get('query', '').lower()
+
+    # Use Q objects to combine queries for title, author, and category
+    books = Book.objects.filter(
+        Q(title__icontains=term) |
+        Q(author__icontains=term) |
+        Q(category__icontains=term)
+    )
+
+    result = []
+    for book in books:
+        result.append({
+            'title': book.title,
+            'author': book.author,
+            'category': book.category,
+            'description': book.description,
+            'image': book.image.url,
+            'borrowed': book.is_borrowed
+        })
+
+    return JsonResponse(result, safe=False)

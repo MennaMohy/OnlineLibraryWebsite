@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+/*document.addEventListener('DOMContentLoaded', function() {
     const searchForm = document.getElementById('searchForm');
 
     searchForm.addEventListener('submit', function(e) {
@@ -17,4 +17,4 @@ document.addEventListener('DOMContentLoaded', function() {
         // Redirect to results page
         window.location.href = 'Results.html';
     });
-});
+});*/

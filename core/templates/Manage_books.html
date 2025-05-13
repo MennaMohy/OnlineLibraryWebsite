@@ -43,14 +43,15 @@
     <div class="admin-tools">
         <button class="add-book-btn" onclick="location.href='Admin_AddBook.html'">+ Add New Book</button>
         <div class="search-container">
-            <form id="searchForm">
-                <div class="search-wrapper">
-                    <input type="text" id="searchInput" class="search-input" placeholder="Search by title, author or category......" required>
-                    <button type="submit" class="search-button">
-                        <img src="../static/images/searchIcon.png" alt="Search">
-                    </button>
-                </div>
-            </form>
+           <form id="searchForm" method="GET"action="/results/">
+            <div class="search-wrapper">
+              <input type="text" name="query" id="searchInput" class="search-input"
+                placeholder="Search by title, author or category..." required>
+             <button type="submit" class="search-button">
+              <img src="../static/images/searchIcon.png" alt="Search">
+             </button>
+             </div>
+           </form>
         </div>
     </div>
 
