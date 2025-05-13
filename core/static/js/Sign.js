@@ -1,10 +1,8 @@
-let signed = false;
+// Sign Up section
+const signupForm = document.getElementById("signupForm");
 
-const form = document.getElementById("signupForm");
-
-// Handle form submission
-if (form) {
-    form.addEventListener("submit", handleSignUp);
+if (signupForm) {
+    signupForm.addEventListener("submit", handleSignUp);
 }
 
 // Function to handle sign up process
@@ -63,34 +61,43 @@ function handleSignUp(event) {
 }
 
 // Sign In section
-const savedEmail = document.getElementById("savedEmail");
-const savedPass = document.getElementById("savedPass");
+const signinForm = document.getElementById("signinForm");
 
-if (savedEmail && savedPass) {
-    savedEmail.closest("form").addEventListener("submit", function (event) {
-        event.preventDefault();
-        checkLogIn();
-    });
+if (signinForm) {
+    signinForm.addEventListener("submit", handleSignIn);
 }
 
 // Function to handle sign in
-function checkLogIn() {
-    let enteredEmail = document.getElementById("savedEmail").value.trim();
-    let enteredPass = document.getElementById("savedPass").value;
+function handleSignIn(event) {
+    event.preventDefault();
 
-    let users = JSON.parse(localStorage.getItem("Users")) || [];
+    let email= document.getElementById("savedEmail").value.trim();
+    let password = document.getElementById("savedPass").value;
 
-    let validUser = users.find(user =>
-        (user.email === enteredEmail || user.name === enteredEmail) && user.pass === enteredPass
-    );
+    let csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
-    if (!validUser) {
-        customAlert("Invalid email or password!", "error");
-        return;
-    }
-
-    localStorage.setItem("loggedInUser", JSON.stringify(validUser));
-    localStorage.setItem("signed", "true");
-
-    window.location.href = validUser.role === "admin" ? "Admin_Homepage.html" : "UserHomePage.html";
+    fetch("/signin/submit/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": csrfToken
+        },
+        body: JSON.stringify({
+            email: email,
+            password: password
+        })
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(data => { throw new Error(data.error); });
+        }
+        return response.json();
+    })
+    .then(data => {
+        customAlert("Signed in successfully!", "success");
+        window.location.href = data.role === "admin" ? "/admin-home/" : "/user-home/";
+    })
+    .catch(error => {
+        customAlert(error.message, "error");
+    });
 }

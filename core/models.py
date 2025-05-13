@@ -12,6 +12,9 @@ class User(models.Model):
     # Method to define the email as the representation of the user object
     def __str__(self):
         return self.email
+
+
+
 class Book(models.Model):
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=255)

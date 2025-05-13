@@ -11,11 +11,15 @@
 <body class="SignIn">
     <div id="box">
         <h1>Sign In</h1><br>
+
         <div id="alertContainer" class="custom-alert"></div>
-        <form action="UserHomePage.html" method="GET">
-            <p>Email/Username</p>
+
+        <form id="signinForm">
+            {% csrf_token %}
+
+            <p>Email</p>
             <label>
-                <input type="text" id="savedEmail" placeholder="xxxx@gmail.com or name" required>
+                <input type="text" id="savedEmail" placeholder="xxxx@gmail.com" required>
             </label>
             <p>Password</p>
             <label>

@@ -5,6 +5,7 @@ import json
 from .models import User,Book
 from django.contrib.auth.hashers import make_password
 from django.db.models import Q
+from django.contrib.auth.hashers import check_password
 
 
 # Create your views here.
@@ -67,6 +68,27 @@ def signup_view(request):
         User.objects.create(name=name, email=email, password=make_password(password), role=role)
 
         return JsonResponse({"message": "User created successfully"}, status=201)
+
+
+@csrf_exempt
+def signin_submit(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+
+        email = data.get("email")
+        password = data.get("password")
+
+        # Get the first user that has this email
+        user = User.objects.filter(email=email).first()
+
+        # If user didn't sign in yet
+        if not user:
+            return JsonResponse({"error": "User not found! Please sign-up first"}, status=400)
+        # If the user enters wrong password
+        if not check_password(password,user.password):
+            return JsonResponse({"error": "Incorrect password!"}, status=400)
+        # If the user exists and enters data correctly
+        return JsonResponse({"message":"Login successful", "role":user.role}, status = 200)
 
 
 @csrf_exempt
