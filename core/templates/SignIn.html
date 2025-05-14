@@ -1,12 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>Sign In</title>
-    <link rel = stylesheet href = "../static/css/alert.css">
-    <link rel = stylesheet href = "../static/css/Common.css">
-    <link rel = stylesheet href = "../static/css/Buttons.css">
-    <link rel="icon" href="../static/images/icon.png">
+    <link rel="stylesheet" href="{% static 'css/alert.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Buttons.css' %}">
+    <link rel="icon" href="{% static 'images/icon.png' %}">
+
+    <style>
+        a {
+            color: rgba(245, 245, 220, 0.9);
+            text-align: left;
+            font-size: 15px;
+            letter-spacing: 1px;
+            font-weight: lighter;
+            margin-bottom: 0;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+
 </head>
 <body class="SignIn">
     <div id="box">
@@ -25,14 +46,14 @@
             <label>
                 <input type="password" id="savedPass" placeholder="xxxxxxxx" required>
             </label>
-            <h6 id="ForgotPass">Forgot Password?</h6>
+            <h6><a href="/forgot-password/" id="ForgotPass"> Forgot Password?</a></h6>
             <br>
             <input type="submit" class="button-light" value="Sign In">
         </form>
     </div>
 
-    <script src="../static/js/alert.js"></script>
-    <script src="../static/js/Sign.js"></script>
+    <script src="{% static 'js/alert.js' %}"></script>
+    <script src="{% static 'js/Sign.js' %}"></script>
 
 </body>
 </html>

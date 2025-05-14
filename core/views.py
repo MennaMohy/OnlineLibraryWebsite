@@ -6,8 +6,8 @@ from .models import User,Book
 from django.contrib.auth.hashers import make_password
 from django.db.models import Q
 from django.contrib.auth.hashers import check_password
-
-
+import random
+import string
 # views
 def welcome(request):
     return render(request, 'WelcomePage.html')
@@ -20,6 +20,9 @@ def user_homepage(request):
 
 def signin_view(request):
     return render(request, 'SignIn.html')
+
+def forgot_password_page(request):
+    return render(request, 'ForgotPassword.html')
 
 def manage_books(request):
     # Logic for managing books
@@ -47,27 +50,6 @@ def signup_view(request):
         request.session['user_role'] = role
         return JsonResponse({"message": "User created successfully"}, status=201)
 
-def results_page(request):
-    query = request.GET.get('query', '')
-    books = Book.objects.filter(
-        title__icontains=query
-    ) | Book.objects.filter(
-        author__icontains=query
-    ) | Book.objects.filter(
-        category__icontains=query
-    )
-    user_role = request.session.get('user_role', None)
-    print(f"User role from session: {user_role}")
-    print(f"Query: {query}")
-    print(f"Books found: {list(books.values())}")
-
-    context = {
-        'books': books,
-        'query': query,
-        'user_role': user_role
-    }
-    return render(request, 'Results.html', context)
-
 @csrf_exempt
 def signin_submit(request):
     if request.method == "POST":
@@ -88,6 +70,54 @@ def signin_submit(request):
         # If the user exists and enters data correctly
         return JsonResponse({"message":"Login successful", "role":user.role}, status = 200)
 
+@csrf_exempt
+def forgot_password_submit(request):
+    if request.method == "POST":
+        # Get the email that the user has entered
+        data = json.loads(request.body)
+        email = data.get("email")
+
+        # Get the user with this email
+        user = User.objects.filter(email=email).first()
+
+        # If no user found: error! can't change password
+        if not user:
+            return JsonResponse({"error": "No user with this email!"}, status=400)
+
+        # Save all the letters and digits to generate a random password
+        characters = string.ascii_letters + string.digits
+        # Generate an 8-characters random password
+        new_password = ''.join(random.choices(characters, k=8))
+
+        # Encrypt the new password then save it
+        user.password = make_password(new_password)
+        user.save()
+
+        # Return the password to show it to the user
+        return JsonResponse({
+            "message": f"Your password has been reset to: {new_password}"}, status=200)
+
+
+def results_page(request):
+    query = request.GET.get('query', '')
+    books = Book.objects.filter(
+        title__icontains=query
+    ) | Book.objects.filter(
+        author__icontains=query
+    ) | Book.objects.filter(
+        category__icontains=query
+    )
+    user_role = request.session.get('user_role', None)
+    print(f"User role from session: {user_role}")
+    print(f"Query: {query}")
+    print(f"Books found: {list(books.values())}")
+
+    context = {
+        'books': books,
+        'query': query,
+        'user_role': user_role
+    }
+    return render(request, 'Results.html', context)
 
 @csrf_exempt
 def search_books(request):
