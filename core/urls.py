@@ -14,5 +14,21 @@ urlpatterns = [
     path('search/', views.search_books, name='search_books'),
     path('results/', views.results_page, name='results_page'),
 
+    # View available books (list of books that are not borrowed)
+    path('available-books/', views.available_books, name='available_books'),
+
+    # View details of a single book
+    path('book/<int:book_id>/', views.book_detail, name='book_detail'),
+
+    # View borrowed books (books borrowed by the logged-in user)
+    path('borrowed-books/', views.borrowed_books, name='borrowed_books'),
+
+
+    path('borrow-book/<int:book_id>/', views.borrow_book, name='borrow_book'),
+
+    path('home/', views.user_homepage, name='user_homepage'),
+
+    path('about-us/', views.about_us, name='aboutUs'),
+
 ]
 

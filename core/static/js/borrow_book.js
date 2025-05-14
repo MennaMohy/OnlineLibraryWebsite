@@ -1,65 +1,47 @@
 
-// user borrowing a book
+// user borrow a book
 document.addEventListener("DOMContentLoaded", function () {
-    // storing the book title
     const bookTitle = document.body.dataset.bookTitle;
-    const storedBooks = JSON.parse(localStorage.getItem("books")) || [];
-
-    // storing whether the book title is stored in the local storage
-    const book = storedBooks.find(b => b.title === bookTitle);
-
-    if (!book) {
-        console.error("Book not found in storage");
-        return;
-    }
-
-    // Fill the book details in the page
-    document.getElementById("Title").textContent = book.title;
-    document.getElementById("Author").textContent = "~" + book.author;
-    document.getElementById("Description").textContent = book.description;
-
-    // Disable the borrow button if the book is already borrowed
     const borrowButton = document.getElementById("borrow_button");
-    if (book.borrowed) {
-        borrowButton.textContent = "Borrowed";
-        borrowButton.disabled = true;
-        borrowButton.className = "button-light";
-        borrowButton.style.pointerEvents = "none";
-    } else {
-        borrowButton.textContent = "Borrow";
-        borrowButton.disabled = false;
-        borrowButton.style.backgroundColor = ""; // reset styling if any
-    }
-    // borrow button functionality
-    borrowButton.addEventListener("click", function () {
-        popBox(`Are you sure you want to borrow "${book.title}"?`, function () {
-            const index = storedBooks.findIndex(b => b.title === book.title);
-            if (index !== -1) {
-                storedBooks[index].borrowed = true;
-            }
 
-            // Update borrowed books list
-            let borrowedBooks = JSON.parse(localStorage.getItem('borrowedBooks')) || [];
+    borrowButton.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent form submission
 
-            // Avoid duplicates, if the user borrows a book he already borrowed, will not add it
-            const alreadyBorrowed = borrowedBooks.some(b => b.title === book.title);
-            if (!alreadyBorrowed) {
-                borrowedBooks.push(storedBooks[index]);
-            }
+        // Corrected popBox call
+        popBox(`Are you sure you want to borrow "${bookTitle}"?`, function () {
+            fetch(`/borrow-book/${borrowButton.dataset.bookId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({ borrowed: true })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    customAlert(`"${bookTitle}" is successfully borrowed!`, "success");
 
-            // Save the borrowed books on the local storage
-            localStorage.setItem('books', JSON.stringify(storedBooks));
-            localStorage.setItem('borrowedBooks', JSON.stringify(borrowedBooks));
+                    // Update button state
+                    borrowButton.textContent = "Borrowed";
+                    borrowButton.disabled = true;
+                    borrowButton.className = "button-light";
+                    borrowButton.style.pointerEvents = "none";
 
-
-            // Show alert
-            customAlert(`"${book.title}" is successfully borrowed!`, "success");
-
-            // Disable and update borrow button
-            borrowButton.textContent = "Borrowed";
-            borrowButton.disabled = true;
-            borrowButton.className = "button-light";
-            borrowButton.style.pointerEvents = "none";
+                    // Update availability status in user home page
+                    const availabilitySpan = document.querySelector(`#availability-${borrowButton.dataset.bookId}`);
+                    if (availabilitySpan) {
+                        availabilitySpan.textContent = "Borrowed";
+                        availabilitySpan.classList.remove('available');
+                        availabilitySpan.classList.add('unavailable');
+                    }
+                } else {
+                    customAlert(`Failed to borrow the book: ${data.message}`, "error");
+                }
+            })
+            .catch(error => {
+                customAlert(`Error: ${error}`, "error");
+            });
         });
     });
 });

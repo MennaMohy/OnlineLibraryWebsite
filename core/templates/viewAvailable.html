@@ -2,45 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Available Books | Online library</title>
+    <title>Available Books | Online Library</title>
     <link rel="stylesheet" href="../static/css/Common.css">
-    <link rel ="stylesheet" href="../static/css/availBooks.css">
+    <link rel="stylesheet" href="../static/css/availBooks.css">
     <link rel="stylesheet" href="../static/css/NavigationBarStyle.css">
     <link rel="stylesheet" href="../static/css/popupBox.css">
     <link rel="icon" href="../static/images/icon.png">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
-    <script src="../static/js/available_books.js"></script>
-    <script src="../static/js/Books.js"></script>
-
 </head>
 <body>
 
-
+<!-- Navigation Bar -->
 <div id="navbar" class="side_Nav"></div>
 <script src="../static/js/navigation.js"></script>
 
-
+<!-- Available Books Section -->
 <div id="box">
     <div class="results-header">
-        <h1>Available books</h1>
+        <h1>Available Books</h1>
     </div>
 
-    <main class="book-results-container" id = "booksContainer">
-        <!-- only the available books that are not borrowed will be displayed -->
+    <main class="book-results-container" id="booksContainer">
+        {% if books %}
+            {% for book in books %}
+                <div class="admin-book-card">
+                    <img src="{{ book.image.url }}" alt="{{ book.title }} image">
+                    <div class="admin-book-info">
+                        <h3>{{ book.title }}</h3>
+                        <p><strong>Author:</strong> {{ book.author }}</p>
+                        <p><strong>Category:</strong> {{ book.category }}</p>
+                        <p><strong>Availability:</strong> Available</p>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No available books at the moment.</p>
+        {% endif %}
     </main>
 </div>
-
-<!-- Confirmation Popup -->
-<div id="confirmPopup" class="popup-overlay hidden">
-    <div class="popup-box">
-        <p id="confirmMessage">Are you sure you want to borrow?</p>
-        <div class="popup-buttons">
-            <button id="confirmCancel">Cancel</button>
-            <button id="confirmYes">Yes</button>
-        </div>
-    </div>
-</div>
-
 <script src="../static/js/popBox.js"></script>
 </body>
 </html>
