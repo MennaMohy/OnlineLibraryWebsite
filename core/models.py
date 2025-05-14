@@ -22,6 +22,7 @@ class Book(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='images/', default='default.jpg')
     is_borrowed = models.BooleanField(default=False)
+    borrowed_by = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
         return self.title

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
@@ -8,7 +8,7 @@ from django.db.models import Q
 from django.contrib.auth.hashers import check_password
 
 
-# Create your views here.
+# views
 def welcome(request):
     return render(request, 'WelcomePage.html')
 def signup_page(request):
@@ -58,6 +58,8 @@ def results_page(request):
     )
     user_role = request.session.get('user_role', None)
     print(f"User role from session: {user_role}")
+    print(f"Query: {query}")
+    print(f"Books found: {list(books.values())}")
 
     context = {
         'books': books,
@@ -110,3 +112,78 @@ def search_books(request):
         })
 
     return JsonResponse(result, safe=False)
+
+# display book details when the user presses on a specific book
+def book_detail(request, book_id):
+    # Get the book from the database by its ID
+    book = get_object_or_404(Book, id=book_id)
+    return render(request, 'book_detail.html', {'book': book})
+
+# user goes to homepage
+def user_homepage(request):
+    books = Book.objects.all()
+    return render(request, 'UserHomePage.html', {'books': books})
+
+# user wants to borrow a book
+def borrow_book(request, book_id):
+    if request.method == 'POST':
+        book = get_object_or_404(Book, id=book_id)
+
+        # book is borrowed so can't borrow it
+        if book.is_borrowed:
+            return JsonResponse({'success': False, 'message': 'Book is already borrowed'})
+
+        # Get users name to store the book with his username
+        data = json.loads(request.body)
+        user = data.get('user')
+
+        # changing the is borrowed flag of the book to true
+        book.is_borrowed = True
+        book.borrowed_by = user
+        book.save() # save the updates in the database
+        return JsonResponse({'success': True})
+    else:
+        return JsonResponse({'success': False, 'message': 'Invalid request method'})
+
+# view borrowed books
+def borrowed_books(request):
+    username = request.user.username
+    # Get the books borrowed by the user
+    borrowed_books = Book.objects.filter(is_borrowed=True, borrowed_by=username)
+
+    borrowed_books_data = [{
+        'title': book.title,
+        'author': book.author,
+        'category': book.category,
+        'image': book.image.url if book.image else None  # Handle missing images
+    } for book in borrowed_books]
+
+    return render(request, 'viewBorrowed.html', {
+        'borrowed_books_json': json.dumps(borrowed_books_data),
+    })
+
+# view available books that aren't borrowed
+def available_books(request):
+    # Fetch books that are available
+    books = Book.objects.filter(is_borrowed=False)
+
+    return render(request, 'viewAvailable.html', {
+        'books': books
+    })
+
+# user presses log out in the navigation bar
+def logout_view(request):
+    from django.contrib.auth import logout
+    logout(request)
+    return redirect('welcome')
+
+# navigation bar
+def user_home(request):
+    # getting the role from the User model to know admin or user
+    user_role = request.user.role
+    context = {'user_role': user_role}
+    return render(request, 'UserHomePage.html', context)
+
+# about us page in the navigation bar
+def about_us(request):
+    return render(request, 'aboutUs.html')

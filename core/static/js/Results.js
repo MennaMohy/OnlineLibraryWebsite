@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
             fetch(`/search/?query=${encodeURIComponent(term)}`)
                 .then(response => response.json())
                 .then(data => {
-                    const container = document.querySelector('.book-results-container');
+                    const container = document.getElementById('bookResults');
                     container.innerHTML = '';
 
                     if (data.length === 0) {
@@ -26,10 +26,13 @@ document.addEventListener('DOMContentLoaded', function () {
                             <h3>${book.title}</h3>
                             <p>By ${book.author}</p>
                             <p>Category: ${book.category}</p>
+                            <p class="description">${book.description || ''}</p>
+                            <p>Available: ${!book.borrowed ? 'Yes' : 'No'}</p>
                         `;
                         container.appendChild(bookDiv);
                     });
-                });
+                })
+                .catch(error => console.error('Error:', error));
         });
     }
 });
