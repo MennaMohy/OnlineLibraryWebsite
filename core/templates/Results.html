@@ -3,7 +3,7 @@
 {% load static %}
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results | Online Library</title>
 
     <link rel="stylesheet" href="{% static 'css/Common.css' %}">
@@ -12,17 +12,12 @@
     <link rel="stylesheet" href="{% static 'css/NavigationBarStyle.css' %}">
     <link rel="icon" href="{% static 'images/icon.png' %}">
 
-
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/Books.js' %}"></script>
-    <script src="{% static 'js/Results.js' %}"></script>
 </head>
 <body>
-
-
 <div id="navbar" class="side_Nav"></div>
 <script src="{% static 'js/navigation.js' %}"></script>
-
 
 <div id="box">
     <div class="results-header">
@@ -30,17 +25,30 @@
         <h1>Search Results</h1>
     </div>
 
-    <div class="book-results-container">
-        {% for book in books %}
-            <div class="book-result">
-                <img src="{% static 'images/' %}{{ book.image }}" alt="{{ book.title }}">
-                <h3>{{ book.title }}</h3>
-                <p>By {{ book.author }}</p>
-                <p>Category: {{ book.category }}</p>
-            </div>
-        {% empty %}
+    <div class="book-results-container" id="bookResults">
+        {% if books %}
+            {% for book in books %}
+                <div class="book-result">
+                    <!-- Book Image -->
+
+                  <div class="container">
+                 <img src="{{ book.image.url }}" alt="Book Cover" class="imgSize">
+                  </div>
+                    <!-- Book Details -->
+                    <div class="book-details">
+                        <h3 id="Title_{{ book.id }}">{{ book.title }}</h3>
+                        <h3 id="Author_{{ book.id }}">By {{ book.author }}</h3>
+                        <h3 id="Category_{{ book.id }}">Category: {{ book.category }}</h3>
+                        <h3 id="Description_{{ book.id }}" class="book-description">{{ book.description }}</h3>
+                        <h3 id="Availability_{{ book.id }}">Available: {% if not book.is_borrowed %}Yes{% else %}No{% endif %}</h3>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No books found</p>
+            {% endfor %}
+        {% else %}
             <p>No books found</p>
-        {% endfor %}
+        {% endif %}
     </div>
 </div>
 

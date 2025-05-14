@@ -58,6 +58,8 @@ def results_page(request):
     )
     user_role = request.session.get('user_role', None)
     print(f"User role from session: {user_role}")
+    print(f"Query: {query}")
+    print(f"Books found: {list(books.values())}")
 
     context = {
         'books': books,
