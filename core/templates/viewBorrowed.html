@@ -32,7 +32,7 @@
     </div>
 
     <div class="book-results-container" id="borrowedbooks">
-        <!-- Loop through borrowed books and display them -->
+        <!-- display only the books borrowed -->
         {% for book in borrowed_books %}
         <div class="book-item">
             <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-image">

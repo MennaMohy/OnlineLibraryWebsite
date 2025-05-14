@@ -16,8 +16,7 @@
 
     <div id="navbar" class="side_Nav"></div>
     <script>
-        // Embedding the user_role from Django context into JavaScript
-        var userRole = "{{ user_role }}";  // Django will replace this with the actual role value
+        var userRole = "{{ user_role }}";
     </script>
     <script src="{% static 'js/navigation.js' %}"></script>
 </head>
@@ -88,7 +87,7 @@
     </div>
 </div>
 
-<!-- All Books List -->
+<!-- All Books from the database -->
 <div id="box">
     <div class="results-header">
         <h1>Library of Books</h1>

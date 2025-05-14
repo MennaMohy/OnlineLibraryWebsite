@@ -9,7 +9,7 @@ function generateNavbar() {
             <ul class="NavLink">
     `;
 
-   // admin
+   // admin navigation bar
     if (userRole === 'admin') {
         html += `
             <li><i class="fa-solid fa-house" style="color: #fff3dc;"></i>
@@ -20,7 +20,7 @@ function generateNavbar() {
                 <a href="/about-us/">About us</a></li>
 
         `;
-    // user
+    // user navigation bar
     } else {
         html += `
             <li><i class="fa-solid fa-house" style="color: #fff3dc;"></i>

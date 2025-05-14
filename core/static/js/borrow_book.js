@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const borrowButton = document.getElementById("borrow_button");
 
     borrowButton.addEventListener("click", function (event) {
-        event.preventDefault(); // Prevent form submission
+        event.preventDefault();
 
-        // Corrected popBox call
+        // confirming with the user to borrow
         popBox(`Are you sure you want to borrow "${bookTitle}"?`, function () {
             fetch(`/borrow-book/${borrowButton.dataset.bookId}/`, {
                 method: 'POST',

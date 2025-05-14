@@ -111,39 +111,42 @@ def search_books(request):
 
     return JsonResponse(result, safe=False)
 
+# display book details when the user presses on a specific book
 def book_detail(request, book_id):
     # Get the book from the database by its ID
     book = get_object_or_404(Book, id=book_id)
     return render(request, 'book_detail.html', {'book': book})
 
+# user goes to homepage
 def user_homepage(request):
-    books = Book.objects.all()  # fetches the latest data
+    books = Book.objects.all()
     return render(request, 'UserHomePage.html', {'books': books})
 
-# user borrow a book
+# user wants to borrow a book
 def borrow_book(request, book_id):
     if request.method == 'POST':
         book = get_object_or_404(Book, id=book_id)
 
+        # book is borrowed so can't borrow it
         if book.is_borrowed:
             return JsonResponse({'success': False, 'message': 'Book is already borrowed'})
 
-        # Get user identifier from request body
+        # Get users name to store the book with his username
         data = json.loads(request.body)
         user = data.get('user')
 
-        book.is_borrowed = True  # Correct field name
+        # changing the is borrowed flag of the book to true
+        book.is_borrowed = True
         book.borrowed_by = user
-        book.save()
+        book.save() # save the updates in the database
         return JsonResponse({'success': True})
     else:
         return JsonResponse({'success': False, 'message': 'Invalid request method'})
 
-#view borrowed books
+# view borrowed books
 def borrowed_books(request):
-    # If you're using session or identifying the user
     username = request.user.username
-    # Get the books borrowed by this user
+    # Get the books borrowed by the user
     borrowed_books = Book.objects.filter(is_borrowed=True, borrowed_by=username)
 
     borrowed_books_data = [{
@@ -159,26 +162,26 @@ def borrowed_books(request):
 
 # view available books that aren't borrowed
 def available_books(request):
-    # Fetch books that are available (i.e., is_borrowed = False)
+    # Fetch books that are available
     books = Book.objects.filter(is_borrowed=False)
 
-    # Pass the books to the template
     return render(request, 'viewAvailable.html', {
         'books': books
     })
 
 # user presses log out in the navigation bar
 def logout_view(request):
-    # Log the user out (you can use Django's built-in logout functionality)
     from django.contrib.auth import logout
     logout(request)
     return redirect('welcome')
 
-#view nav bar
+# navigation bar
 def user_home(request):
-    user_role = request.user.role  # Fetch the role from the User model
+    # getting the role from the User model to know admin or user
+    user_role = request.user.role
     context = {'user_role': user_role}
     return render(request, 'UserHomePage.html', context)
 
+# about us page in the navigation bar
 def about_us(request):
     return render(request, 'aboutUs.html')

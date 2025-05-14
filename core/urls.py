@@ -23,11 +23,13 @@ urlpatterns = [
     # View borrowed books (books borrowed by the logged-in user)
     path('borrowed-books/', views.borrowed_books, name='borrowed_books'),
 
-
+    # user borrows a book
     path('borrow-book/<int:book_id>/', views.borrow_book, name='borrow_book'),
 
+    # home page
     path('home/', views.user_homepage, name='user_homepage'),
 
+    # about us page in navigation bar
     path('about-us/', views.about_us, name='aboutUs'),
 
 ]
