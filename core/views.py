@@ -68,6 +68,10 @@ def signin_submit(request):
         # If the user enters wrong password
         if not check_password(password,user.password):
             return JsonResponse({"error": "Incorrect password!"}, status=400)
+        # Store user's data in the session
+        request.session['username'] = user.name
+        request.session['email'] = user.email
+        request.session['role'] = user.role
         # If the user exists and enters data correctly
         return JsonResponse({"message":"Login successful", "role":user.role}, status = 200)
 
@@ -171,42 +175,52 @@ def user_homepage(request):
     books = Book.objects.all()
     return render(request, 'UserHomePage.html', {'books': books})
 
-# user wants to borrow a book
+@csrf_exempt
 def borrow_book(request, book_id):
     if request.method == 'POST':
+        email = request.session.get('email')
+
+        if not email:
+            return JsonResponse({'success': False, 'message': 'User not logged in'}, status=401)
+
         book = get_object_or_404(Book, id=book_id)
 
-        # book is borrowed so can't borrow it
         if book.is_borrowed:
             return JsonResponse({'success': False, 'message': 'Book is already borrowed'})
 
-        # Get users name to store the book with his username
-        data = json.loads(request.body)
-        user = data.get('user')
-
-        # changing the is borrowed flag of the book to true
         book.is_borrowed = True
-        book.borrowed_by = user
-        book.save() # save the updates in the database
+        book.borrowed_by = email
+        book.save()
+
         return JsonResponse({'success': True})
     else:
-        return JsonResponse({'success': False, 'message': 'Invalid request method'})
+        return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=405)
 
 # view borrowed books
+# def borrowed_books(request):
+#     username = request.user.username
+#     # Get the books borrowed by the user
+#     borrowed_books = Book.objects.filter(is_borrowed=True, borrowed_by=username)
+#
+#     borrowed_books_data = [{
+#         'title': book.title,
+#         'author': book.author,
+#         'category': book.category,
+#         'image': book.image.url if book.image else None  # Handle missing images
+#     } for book in borrowed_books]
+#
+#     return render(request, 'viewBorrowed.html', {
+#         'borrowed_books_json': json.dumps(borrowed_books_data),
+#     })
 def borrowed_books(request):
-    username = request.user.username
-    # Get the books borrowed by the user
-    borrowed_books = Book.objects.filter(is_borrowed=True, borrowed_by=username)
+    email = request.session.get('email')
+    if not email:
+        return redirect('signin')
 
-    borrowed_books_data = [{
-        'title': book.title,
-        'author': book.author,
-        'category': book.category,
-        'image': book.image.url if book.image else None  # Handle missing images
-    } for book in borrowed_books]
+    borrowed_books = Book.objects.filter(is_borrowed=True, borrowed_by=email)
 
     return render(request, 'viewBorrowed.html', {
-        'borrowed_books_json': json.dumps(borrowed_books_data),
+        'borrowed_books': borrowed_books
     })
 
 # view available books that aren't borrowed

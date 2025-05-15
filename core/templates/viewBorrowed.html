@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
-    <title>Borrowed Books</title>
-
-    {% load static %}
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Borrowed Books | Online Library</title>
+    
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{% static 'css/Common.css' %}">
     <link rel="stylesheet" href="{% static 'css/results.css' %}">
@@ -30,24 +30,24 @@
     <div class="results-header">
         <h1>Your Borrowed Books</h1>
     </div>
-
-    <div class="book-results-container" id="borrowedbooks">
-        <!-- display only the books borrowed -->
-        {% for book in borrowed_books %}
-        <div class="book-item">
-            <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-image">
-            <div class="book-info">
-                <h3>{{ book.title }}</h3>
-                <p>Author: {{ book.author }}</p>
-                <p>Category: {{ book.category }}</p>
-            </div>
-        </div>
-        {% empty %}
-        <p>You have not borrowed any books yet.</p>
-        {% endfor %}
+    <div class="book-results-container" id="bookResults">
+            {% for book in borrowed_books %}
+                <div class="book-result">
+                    <a href="{% url 'book_detail' book.id %}">
+                        <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-cover">
+                    </a>
+                    <div class="book-info">
+                        <p><strong>Title:</strong> {{ book.title }}</p>
+                        <p><strong>Author:</strong> {{ book.author }}</p>
+                        <p><strong>Category:</strong> {{ book.category }}</p>
+                        <p class="book-description"><strong>Description:</strong> {{ book.description }}</p>
+                    </div>
+                </div>
+            {% empty %}
+                <p>You have not borrowed any books yet.</p>
+            {% endfor %}
     </div>
 </div>
-
 
 <script src="{% static 'js/popBox.js' %}"></script>
 
