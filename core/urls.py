@@ -39,4 +39,3 @@ urlpatterns = [
     path('about-us/', views.about_us, name='aboutUs'),
 
 ]
-

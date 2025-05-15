@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 <head>
     <meta charset="UTF-8">
     <title>Available Books | Online Library</title>
-    <link rel="stylesheet" href="../static/css/Common.css">
-    <link rel="stylesheet" href="../static/css/availBooks.css">
-    <link rel="stylesheet" href="../static/css/NavigationBarStyle.css">
-    <link rel="stylesheet" href="../static/css/popupBox.css">
-    <link rel="icon" href="../static/images/icon.png">
+    <link rel="stylesheet" href="{% static 'css/Common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/results.css' %}">
+    <link rel="stylesheet" href="{% static 'css/NavigationBarStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/popupBox.css' %}">
+    <link rel="icon" href="{% static 'images/icon.png' %}">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <!-- Navigation Bar -->
 <div id="navbar" class="side_Nav"></div>
-<script src="../static/js/navigation.js"></script>
+<script src="{% static 'js/navigation.js' %}"></script>
 
 <!-- Available Books Section, books that aren't borrowed-->
 <div id="box">
@@ -25,13 +26,24 @@
     <main class="book-results-container" id="booksContainer">
         {% if books %}
             {% for book in books %}
-                <div class="admin-book-card">
-                    <img src="{{ book.image.url }}" alt="{{ book.title }} image">
-                    <div class="admin-book-info">
-                        <h3>{{ book.title }}</h3>
+                <div class="book-result">
+                    <a href="{% url 'book_detail' book.id %}">
+                        <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-cover">
+                    </a>
+                    <div class="book-info">
+                        <p><strong>Title:</strong> {{ book.title }}</p>
                         <p><strong>Author:</strong> {{ book.author }}</p>
                         <p><strong>Category:</strong> {{ book.category }}</p>
-                        <p><strong>Availability:</strong> Available</p>
+                        <p class="book-description"><strong>Description:</strong> {{ book.description }}</p>
+                    </div>
+                    <div class="book-status">
+                        <span class="availability {% if book.is_borrowed %}unavailable{% else %}available{% endif %}">
+                            {% if book.is_borrowed %}
+                                Borrowed
+                            {% else %}
+                                Available
+                            {% endif %}
+                        </span>
                     </div>
                 </div>
             {% endfor %}
@@ -40,6 +52,6 @@
         {% endif %}
     </main>
 </div>
-<script src="../static/js/popBox.js"></script>
+<script src="{% static 'js/popBox.js' %}"></script>
 </body>
 </html>

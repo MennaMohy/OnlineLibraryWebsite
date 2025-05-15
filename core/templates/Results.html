@@ -29,18 +29,23 @@
         {% if books %}
             {% for book in books %}
                 <div class="book-result">
-                    <!-- Book Image -->
-
-                  <div class="container">
-                 <img src="{{ book.image.url }}" alt="Book Cover" class="imgSize">
-                  </div>
-                    <!-- Book Details -->
-                    <div class="book-details">
-                        <h3 id="Title_{{ book.id }}">{{ book.title }}</h3>
-                        <h3 id="Author_{{ book.id }}">By {{ book.author }}</h3>
-                        <h3 id="Category_{{ book.id }}">Category: {{ book.category }}</h3>
-                        <h3 id="Description_{{ book.id }}" class="book-description">{{ book.description }}</h3>
-                        <h3 id="Availability_{{ book.id }}">Available: {% if not book.is_borrowed %}Yes{% else %}No{% endif %}</h3>
+                    <a href="{% url 'book_detail' book.id %}">
+                        <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-cover">
+                    </a>
+                    <div class="book-info">
+                        <p><strong>Title:</strong> {{ book.title }}</p>
+                        <p><strong>Author:</strong> {{ book.author }}</p>
+                        <p><strong>Category:</strong> {{ book.category }}</p>
+                        <p class="book-description"><strong>Description:</strong> {{ book.description }}</p>
+                    </div>
+                    <div class="book-status">
+                        <span class="availability {% if book.is_borrowed %}unavailable{% else %}available{% endif %}">
+                            {% if book.is_borrowed %}
+                                Borrowed
+                            {% else %}
+                                Available
+                            {% endif %}
+                        </span>
                     </div>
                 </div>
             {% empty %}

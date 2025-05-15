@@ -20,7 +20,7 @@ class Book(models.Model):
     author = models.CharField(max_length=255)
     category = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField(upload_to='images/', default='default.jpg')
+    image = models.ImageField(upload_to='books_images/', default='default.jpg')
     is_borrowed = models.BooleanField(default=False)
     borrowed_by = models.CharField(max_length=100, blank=True, null=True)
 

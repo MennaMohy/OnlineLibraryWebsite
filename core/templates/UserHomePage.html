@@ -51,7 +51,7 @@
         <!-- Hardcoded recommended books with dynamic URLs -->
         <div class="book-card-small">
             <a href="{% url 'book_detail' 1 %}">
-                <img src="{% static 'images/it_ends_with_us.jpg' %}" alt="It Ends With Us">
+                <img src="/media/books_images/it_ends_with_us.jpg" alt="It Ends With Us">
             </a>
             <div class="book-title">It Ends With Us</div>
             <div class="book-author">Colleen Hoover</div>
@@ -60,7 +60,7 @@
 
         <div class="book-card-small">
             <a href="{% url 'book_detail' 2 %}">
-                <img src="{% static 'images/tale_of_two_cities.jpg' %}" alt="A Tale of Two Cities">
+                <img src="/media/books_images/tale_of_two_cities.jpg" alt="A Tale of Two Cities">
             </a>
             <div class="book-title">A Tale of Two Cities</div>
             <div class="book-author">Charles Dickens</div>
@@ -69,7 +69,7 @@
 
         <div class="book-card-small">
             <a href="{% url 'book_detail' 3 %}">
-                <img src="{% static 'images/MaybeSomeday.jpg' %}" alt="Maybe Someday">
+                <img src="/media/books_images/MaybeSomeday.jpg" alt="Maybe Someday">
             </a>
             <div class="book-title">Maybe Someday</div>
             <div class="book-author">Colleen Hoover</div>
@@ -78,7 +78,7 @@
 
         <div class="book-card-small">
             <a href="{% url 'book_detail' 4 %}">
-                <img src="{% static 'images/practice-makes-perfect.jpg' %}" alt="Practice Makes Perfect">
+                <img src="/media/books_images/practice-makes-perfect.jpg" alt="Practice Makes Perfect">
             </a>
             <div class="book-title">Practice Makes Perfect</div>
             <div class="book-author">Sarah Adams</div>
@@ -97,12 +97,14 @@
         {% for book in books %}
         <div class="book-result">
             <a href="{% url 'book_detail' book.id %}">
-                <img src="{% static book.image.url %}" alt="{{ book.title }}" class="book-cover">
+                <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-cover">
             </a>
             <div class="book-info">
                 <p><strong>Title:</strong> {{ book.title }}</p>
                 <p><strong>Author:</strong> {{ book.author }}</p>
                 <p><strong>Category:</strong> {{ book.category }}</p>
+                <p class="book-description"><strong>Description:</strong> {{ book.description }}</p>
+
             </div>
             <div class="book-status">
                 <span class="availability {% if book.is_borrowed %}unavailable{% else %}available{% endif %}">
