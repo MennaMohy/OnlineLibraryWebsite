@@ -196,22 +196,6 @@ def borrow_book(request, book_id):
     else:
         return JsonResponse({'success': False, 'message': 'Invalid request method'}, status=405)
 
-# view borrowed books
-# def borrowed_books(request):
-#     username = request.user.username
-#     # Get the books borrowed by the user
-#     borrowed_books = Book.objects.filter(is_borrowed=True, borrowed_by=username)
-#
-#     borrowed_books_data = [{
-#         'title': book.title,
-#         'author': book.author,
-#         'category': book.category,
-#         'image': book.image.url if book.image else None  # Handle missing images
-#     } for book in borrowed_books]
-#
-#     return render(request, 'viewBorrowed.html', {
-#         'borrowed_books_json': json.dumps(borrowed_books_data),
-#     })
 def borrowed_books(request):
     email = request.session.get('email')
     if not email:
