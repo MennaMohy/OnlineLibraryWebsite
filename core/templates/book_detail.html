@@ -1,0 +1,73 @@
+<!-- dynamic html page for all the books stored in the database -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ book.title }}</title>
+
+    {% load static %}
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/Common.css' %}">
+    <link rel="stylesheet" href="{% static 'css/NavigationBarStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/alert.css' %}">
+    <link rel="stylesheet" href="{% static 'css/popupBox.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Buttons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/BooksDescriptions.css' %}">
+    <link rel="icon" href="{% static 'images/icon.png' %}">
+
+    <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/borrow_book.js' %}" defer></script>
+</head>
+
+<body class="bodySecond" data-book-title="{{ book.title }} data-user={{ username }}">
+
+<!-- Navigation bar -->
+<div id="navbar" class="side_Nav"></div>
+<script src="{% static 'js/navigation.js' %}"></script>
+
+<!-- Book Image -->
+<div class="container">
+    <img src="{{ book.image.url }}" alt="Book Cover" class="imgSize">
+</div>
+
+<!-- Book Details -->
+<div class="rightAlign">
+    <div style="margin-left: -50px" id="alertContainer" class="custom-alert"></div>
+    <h3 id="Title">{{ book.title }}</h3>
+    <h3 id="Author">{{ book.author }}</h3>
+    <h3 id="Description">{{ book.description }}</h3>
+
+    <!-- change the status of the borrow button if the book is borrowed-->
+    {% if not book.is_borrowed %}
+    <form method="POST" class="borrow-form">
+        {% csrf_token %}
+        <button class="button-dark" id="borrow_button" data-book-id="{{ book.id }}"
+            {% if book.is_borrowed %}disabled class="button-light" style="pointer-events: none;"{% endif %}>
+            {% if book.is_borrowed %}Borrowed{% else %}Borrow Book{% endif %}
+        </button>
+    </form>
+    {% else %}
+        <button class="button-light" disabled>Borrowed</button>
+    {% endif %}
+</div>
+
+<!-- Confirmation Popup -->
+<div id="confirmPopup" class="popup-overlay hidden">
+    <div class="popup-box">
+        <p id="confirmMessage">Are you sure you want to borrow?</p>
+        <div class="popup-buttons">
+            <button id="confirmCancel">Cancel</button>
+            <button id="confirmYes">Yes</button>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- Alert and popup scripts -->
+<script src="{% static 'js/alert.js' %}"></script>
+<script src="{% static 'js/popBox.js' %}"></script>
+
+</body>
+</html>
