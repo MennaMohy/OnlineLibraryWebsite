@@ -19,6 +19,9 @@ urlpatterns = [
     path('user-home/', views.user_homepage, name='user_home'),
     path('search/', views.search_books, name='search_books'),
     path('results/', views.results_page, name='results_page'),
+    path('admin-home/manage-books/edit/<int:book_id>/', views.edit_books, name='edit_books'),
+    path('admin-home/manage-books/delete/<int:book_id>/', views.delete_book, name='delete_book'),
+    path('admin-home/manage-books/edit/<int:book_id>/manage-books' , views.manage_books, name='manage_books'),
 
     # View available books (list of books that are not borrowed)
     path('available-books/', views.available_books, name='available_books'),

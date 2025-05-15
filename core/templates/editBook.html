@@ -3,52 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta id="editPageMeta" data-book-id="{{ book.id }}" data-book-title="{{ book.title }}">
     <title>Edit Book | Lindy</title>
     <link rel="icon" href="../static/images/icon.png">
-    <link rel="stylesheet" href="../static/css/editBook.css">
-    <link rel="stylesheet" href="../static/css/popupBox.css">
-<!--    <link rel="stylesheet" href="alert.css">-->
-    <link rel="stylesheet" href="../static/css/NavigationBarStyle.css">
-    <script src="../static/js/EditBookByAdmin.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/editBook.css' %}">
+    <link rel="stylesheet" href="{% static 'css/popupBox.css' %}">
+    <link rel="stylesheet" href="{% static 'css/NavigationBarStyle.css' %}">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="navbar" class="side_Nav"></div>
-<script src="../static/js/navigation.js"></script>
+
 
 <div class="container">
     <h2>Edit The Book</h2>
-    <form id="editForm">
-        <div class="form-group">
-            <label for="title">Title:</label>
-            <input type="text" id="title" class="form-control">
-        </div>
+    <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
 
-        <div class="form-group">
-            <label for="author">Author:</label>
-            <input type="text" id="author" class="form-control">
-        </div>
+    <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="{{ book.title }}" class="form-control">
+    </div>
 
-        <div class="form-group">
-            <label for="category">Category:</label>
-            <input type="text" id="category" class="form-control">
-        </div>
+    <div class="form-group">
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" value="{{ book.author }}" class="form-control">
+    </div>
 
-        <div class="form-group">
-            <label for="image">Image URL:</label>
-            <input type="text" id="image" class="form-control">
-        </div>
+    <div class="form-group">
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" value="{{ book.category }}" class="form-control">
+    </div>
 
-        <div class="form-group">
-            <label for="available">Availability:</label>
-            <select id="available" class="form-control">
-                <option value="true">Available</option>
-                <option value="false">Unavailable</option>
-            </select>
-        </div>
+    <div class="form-group">
+        <label for="image">Image URL:</label>
+        <input type="text" id="image" name="image" value="{{ book.image.url }}" class="form-control">
+    </div>
 
-        <button type="submit" class="btn-submit">Save Changes</button>
-    </form>
+    <div class="form-group">
+        <label for="available">Availability:</label>
+        <select id="available" name="available" class="form-control">
+            <option value="true" {% if not book.is_borrowed %}selected{% endif %}>Available</option>
+            <option value="false" {% if book.is_borrowed %}selected{% endif %}>Unavailable</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn-submit">Save Changes</button>
+</form>
 </div>
 
 <!-- Confirmation Popup -->
@@ -62,8 +64,11 @@
     </div>
 </div>
 
-<script src="../static/js/popBox.js"></script>
-<!--<script src="alert.js"></script>-->
+<script src="{% static 'js/popBox.js' %}"></script>
+    <script src="{% static 'js/navigation.js' %}"></script>
+    <script src="{% static 'js/EditBookByAdmin.js' %}"></script>
+    <script src="{% static 'alert.js' %}"></script>
+    <script src="{% static 'js/displayBooksForAdmin.js' %}"></script>
 
 </body>
 </html>

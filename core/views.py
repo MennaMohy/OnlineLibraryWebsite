@@ -8,6 +8,8 @@ from django.db.models import Q
 from django.contrib.auth.hashers import check_password
 import random
 import string
+from .models import Book
+from django.views.decorators.http import require_POST
 # views
 def welcome(request):
     return render(request, 'WelcomePage.html')
@@ -25,9 +27,8 @@ def forgot_password_page(request):
     return render(request, 'ForgotPassword.html')
 
 def manage_books(request):
-    # Logic for managing books
-    return render(request, 'Manage_books.html')
-
+    books = Book.objects.all()
+    return render(request, 'Manage_books.html', {'books': books})
 
 # Define a function that accepts POST request
 @csrf_exempt
@@ -142,7 +143,23 @@ def search_books(request):
         })
 
     return JsonResponse(result, safe=False)
+def edit_books(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    if request.method == 'POST':
+        book.title = request.POST['title']
+        book.author = request.POST['author']
+        book.category = request.POST['category']
+        book.is_borrowed = request.POST.get('is_borrowed') == 'true'
+        book.save()
+        return redirect('manage_books')
 
+    return render(request, 'editBook.html', {'book': book})
+
+@require_POST
+def delete_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    book.delete()
+    return redirect('manage_books')
 # display book details when the user presses on a specific book
 def book_detail(request, book_id):
     # Get the book from the database by its ID

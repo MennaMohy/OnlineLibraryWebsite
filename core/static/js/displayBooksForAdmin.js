@@ -1,46 +1,40 @@
-// Function to load books from localStorage and render them
-function displayBooks() {
-    const booksContainer = document.getElementById('booksContainer');
-    booksContainer.innerHTML = ''; // Clear existing content
 
-    let books = JSON.parse(localStorage.getItem('books')) || [];
-
-    books.forEach((book, index) => {
-        const bookCard = document.createElement('div');
-        bookCard.className = 'admin-book-card';
-        bookCard.innerHTML = `
-               <div class="book-actions">
-                   <button class="edit-btn" onclick="editBook(${index})">Edit</button>
-                   <button class="delete-btn" onclick="deleteBook(${index})">Delete</button>
-               </div>
-               <img src="${book.image}" alt="${book.title}" style="width:100px; height:auto;">
-               <div class="admin-book-info">
-                   <h3>${book.title}</h3>
-                   <p><strong>Author:</strong> ${book.author}</p>
-                   <p><strong>Category:</strong> ${book.category}</p>
-                   <span class="availability ${book.available ? 'available' : 'unavailable'}">
-                       ${book.available ? 'Available' : 'Unavailable'}
-                   </span>
-               </div>
-        `;
-        booksContainer.appendChild(bookCard);
-    });
+function deleteBook(bookId) {
+    if (confirm('Are you sure you want to delete this book?')) {
+        fetch(`/admin-home/manage-books/delete/${bookId}/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken')
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                alert("Book deleted successfully.");
+                window.location.reload();
+            } else {
+                alert("Failed to delete book.");
+            }
+        });
+    }
 }
 
-function deleteBook(index) {
-    // Show confirmation popup before deleting the book
-    popBox("Are you sure you want to delete this book?", function () {
-        let books = JSON.parse(localStorage.getItem('books')) || [];
-        books.splice(index, 1);
-        localStorage.setItem('books', JSON.stringify(books));
-        displayBooks(); // Re-render
-        customAlert("Book is deleted successfully!", 'success');
-    });
+function editBook(bookId) {
+    window.location.href = `/admin-home/manage-books/edit/${bookId}/`;
 }
 
-function editBook(index) {
-    // You can redirect to an edit page and pass index as a query param
-    window.location.href = `editBook.html?index=${index}`;
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }
 
 // Call the function on page load

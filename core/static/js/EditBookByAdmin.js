@@ -1,51 +1,40 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Get index from query string
-    const urlParams = new URLSearchParams(window.location.search);
-    const index = parseInt(urlParams.get('index'));
+document.addEventListener('DOMContentLoaded', () => {
+    const meta = document.getElementById('editPageMeta');
+    const bookId = meta.dataset.bookId;
+    const bookTitle = meta.dataset.bookTitle;
+    const form = document.getElementById('editForm');
 
-    // Load books from localStorage
-    const books = JSON.parse(localStorage.getItem('books')) || [];
-
-    // Check if index is valid
-    if (isNaN(index) || index < 0 || index >= books.length) {
-        alert('Invalid book selection!');
-        window.location.href = 'manage_books.html';
-        return;
-    }
-
-    const originalBook = books[index];
-
-    // Prefill form with existing data
-    document.getElementById('title').value = originalBook.title || '';
-    document.getElementById('author').value = originalBook.author || '';
-    document.getElementById('category').value = originalBook.category || '';
-    document.getElementById('image').value = originalBook.image || '';
-    document.getElementById('available').value = originalBook.available ? 'true' : 'false';
-
-    // Save edits
-    document.getElementById('editForm').addEventListener('submit', function(e) {
+    form.addEventListener('submit', (e) => {
         e.preventDefault();
 
-        popBox("Are you sure you want to save changes?", function () {
-            const updatedBook = {
-                ...originalBook,
-                title: document.getElementById('title').value || originalBook.title,
-                author: document.getElementById('author').value || originalBook.author,
-                category: document.getElementById('category').value || originalBook.category,
-                image: document.getElementById('image').value || originalBook.image,
-                available: document.getElementById('available').value === 'true'
-            };
+        const payload = {
+            title: document.getElementById('title').value,
+            author: document.getElementById('author').value,
+            category: document.getElementById('category').value,
+            description: document.getElementById('description').value,
+            image: document.getElementById('image').value, // Or handle file input differently
+            available: document.getElementById('available').checked  // for checkbox
+        };
 
-            // Update the book in the array
-            books[index] = updatedBook;
-
-            // Save to localStorage
-            localStorage.setItem('books', JSON.stringify(books));
-            // Save the success flag to sessionStorage
-            sessionStorage.setItem('bookUpdated', 'true');
-
-            // Show success message and redirect
-            window.location.href = 'manage_books.html';
+        popBox(`Save changes to "${bookTitle}"?`, () => {
+            fetch(`/admin-home/manage-books/edit/${bookId}/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    customAlert('Book updated successfully!', 'success');
+                    setTimeout(() => location.href = '/admin-home/manage-books/', 1000);
+                } else {
+                    customAlert(`Error: ${data.message}`, 'error');
+                }
+            })
+            .catch(err => customAlert(`Error: ${err}`, 'error'));
         });
     });
 });
