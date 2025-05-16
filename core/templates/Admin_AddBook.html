@@ -16,8 +16,12 @@
 </head>
 
 <body class="addbook">
-    <div id="navbar" class="side_Nav"></div>
-    <script src="{% static 'js/navigation.js' %}"></script>
+<div id="navbar" class="side_Nav"></div>
+
+<script>
+    var userRole = "{{ user_role }}";  // Injected from Django context
+</script>
+<script src="{% static 'js/navigation.js' %}"></script>
 
 
 <div id="box">

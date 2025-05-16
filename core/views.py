@@ -48,6 +48,8 @@ def manage_books(request):
     })
 
 def add_book(request):
+    user_role = request.session.get('role')  # Get role from session
+
     if request.method == 'POST':
         form = BookForm(request.POST, request.FILES)
         if form.is_valid():
@@ -55,8 +57,11 @@ def add_book(request):
             return redirect('manage_books')
     else:
         form = BookForm()
-    return render(request, 'Admin_AddBook.html', {'form': form})
 
+    return render(request, 'Admin_AddBook.html', {
+        'form': form,
+        'user_role': user_role,
+    })
 
 # Define a function that accepts POST request
 @csrf_exempt
