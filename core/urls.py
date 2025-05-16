@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.welcome, name='welcome'),
+    path('welcome/', views.welcome, name='welcome'),
 
     path('signup/', views.signup_page, name='signup'),
     path('signup/submit/', views.signup_view, name='signup_submit'),
@@ -15,12 +16,21 @@ urlpatterns = [
     path('forgot-password/submit/', views.forgot_password_submit, name='forgot_password_submit'),
 
     path('admin-home/', views.admin_homepage, name='admin_home'),
+
     path('admin-home/manage-books/', views.manage_books, name='manage_books'),
+
+    path('manage-books/add-book/', views.add_book, name='add_book'),
+
+    path('add-book/manage-books/', views.manage_books, name='manage_books'),
+
     path('user-home/', views.user_homepage, name='user_home'),
     path('search/', views.search_books, name='search_books'),
     path('results/', views.results_page, name='results_page'),
+
     path('admin-home/manage-books/edit/<int:book_id>/', views.edit_books, name='edit_books'),
+
     path('admin-home/manage-books/delete/<int:book_id>/', views.delete_book, name='delete_book'),
+
     path('admin-home/manage-books/edit/<int:book_id>/manage-books' , views.manage_books, name='manage_books'),
 
     # View available books (list of books that are not borrowed)
@@ -40,5 +50,6 @@ urlpatterns = [
 
     # about us page in navigation bar
     path('about-us/', views.about_us, name='aboutUs'),
+
 
 ]

@@ -25,19 +25,11 @@
 <body style="background-color: beige">
     <div style="top: 90px;" id="alertContainer" class="custom-alert"></div>
 
-    <div id="navbar" class="side_Nav">
-        <a href="#" class="icon">
-            <i class="fa-solid fa-bars" style="color: #F3E9DC; font-size: 25px;position: fixed;left: 18px; top: 15px;"></i>
-        </a>
-        <ul class="NavLink">
-            <li><i class="fa-solid fa-house" style="color: #fff3dc;"></i><a href="Admin_Homepage.html">Home Page</a></li>
-            <li><i class="fa-solid fa-inbox" style="color: #fff3db;"></i><a href="viewAvailable.html">View available books</a></li>
-            <li><i class="fa-solid fa-circle-info" style="color: #fff3db;"></i><a href="aboutUs.html">About us</a></li>
-            <li><i class="fa-solid fa-right-from-bracket" style="color: #f5f5dc;"></i>
-                <a href="#" onclick="popBox('Are you sure you want to log out?', () => window.location.href='WelcomePage.html')">Logout</a>
-            </li>
-        </ul>
-    </div>
+    <div id="navbar" class="side_Nav"></div>
+    <script>
+        var userRole = "{{ user_role }}";
+    </script>
+    <script src="{% static 'js/navigation.js' %}"></script>
 
 
     <script src="{% static 'js/navigation.js' %}"></script>
@@ -52,7 +44,7 @@
 
     <main class="book-management">
         <div class="admin-tools">
-            <button class="add-book-btn" onclick="location.href='Admin_AddBook.html'">+ Add New Book</button>
+            <button class="add-book-btn" onclick="window.location.href='{% url 'add_book' %}'">+ Add New Book</button>
             <div class="search-container">
                 <form id="searchForm" method="GET" action="/results/">
                     <div class="search-wrapper">

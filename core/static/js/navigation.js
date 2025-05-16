@@ -36,7 +36,7 @@ function generateNavbar() {
 
     html += `
         <li><i class="fa-solid fa-right-from-bracket" style="color: #f5f5dc;"></i>
-            <a href="/signin/">Logout</a></li>
+            <a href="/welcome/">Logout</a></li>
         </ul>
     </div>
     `;

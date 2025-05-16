@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+{% load static %}
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,9 +11,15 @@
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
     
 </head>
-<body class = "about-us">
-    <div id="navbar" class="side_Nav"></div>
-<script src="../static/js/navigation.js"></script>
+<body class = "about-us" >
+    <div style="top: 90px;" id="alertContainer" class="custom-alert"></div>
+
+   <div id="navbar" class="side_Nav"></div>
+    <script>
+        var userRole = "{{ user_role }}";
+    </script>
+    <script src="{% static 'js/navigation.js' %}"></script>
+
     <div class="container">
         <h1>About LINDLY</h1>
         <p>Discover the story behind our passion for books and learning</p>

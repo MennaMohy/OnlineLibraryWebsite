@@ -10,15 +10,19 @@ import random
 import string
 from .models import Book
 from django.views.decorators.http import require_POST
+from .forms import BookForm
 # views
 def welcome(request):
     return render(request, 'WelcomePage.html')
 def signup_page(request):
     return render(request, 'SignUp.html')
 def admin_homepage(request):
-    return render(request, 'Admin_Homepage.html')
+    user_role = request.session.get('role')
+    return render(request, 'Admin_Homepage.html', {'user_role': user_role})
+
 def user_homepage(request):
-    return render(request, 'UserHomePage.html')
+    user_role = request.session.get('role')
+    return render(request, 'UserHomePage.html', { 'user_role': user_role})
 
 def signin_view(request):
     return render(request, 'SignIn.html')
@@ -28,7 +32,31 @@ def forgot_password_page(request):
 
 def manage_books(request):
     books = Book.objects.all()
-    return render(request, 'Manage_books.html', {'books': books})
+
+    user_role = None
+
+    if 'email' in request.session:
+        try:
+            user = User.objects.get(email=request.session['email'])
+            user_role = user.role
+        except User.DoesNotExist:
+            pass  # Keep default 'guest' role if user not found
+
+    return render(request, 'Manage_books.html', {
+        'books': books,
+        'user_role': user_role,
+    })
+
+def add_book(request):
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('manage_books')
+    else:
+        form = BookForm()
+    return render(request, 'Admin_AddBook.html', {'form': form})
+
 
 # Define a function that accepts POST request
 @csrf_exempt
@@ -112,7 +140,7 @@ def results_page(request):
     ) | Book.objects.filter(
         category__icontains=query
     )
-    user_role = request.session.get('user_role', None)
+    user_role = request.session.get('role', None)
     print(f"User role from session: {user_role}")
     print(f"Query: {query}")
     print(f"Books found: {list(books.values())}")
@@ -149,6 +177,8 @@ def search_books(request):
     return JsonResponse(result, safe=False)
 def edit_books(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
+    user_role = request.session.get('role')  # get role from session
+
     if request.method == 'POST':
         book.title = request.POST['title']
         book.author = request.POST['author']
@@ -157,7 +187,10 @@ def edit_books(request, book_id):
         book.save()
         return redirect('manage_books')
 
-    return render(request, 'editBook.html', {'book': book})
+    return render(request, 'editBook.html', {
+        'book': book,
+        'user_role': user_role  # pass role to template
+    })
 
 @require_POST
 def delete_book(request, book_id):
@@ -211,9 +244,10 @@ def borrowed_books(request):
 def available_books(request):
     # Fetch books that are available
     books = Book.objects.filter(is_borrowed=False)
-
+    user_role = request.session.get('role')
     return render(request, 'viewAvailable.html', {
-        'books': books
+        'books': books,
+        'user_role': user_role
     })
 
 # user presses log out in the navigation bar
@@ -231,4 +265,6 @@ def user_home(request):
 
 # about us page in the navigation bar
 def about_us(request):
-    return render(request, 'aboutUs.html')
+    user_role = request.session.get('role')
+    return render(request, 'aboutUs.html', {'user_role': user_role})
+

@@ -1,5 +1,4 @@
 document.getElementById("bookForm").addEventListener("submit", function (e) {
-    e.preventDefault();
 
     const id = document.getElementById("book-id").value.trim();
     const title = document.getElementById("book-name").value.trim();

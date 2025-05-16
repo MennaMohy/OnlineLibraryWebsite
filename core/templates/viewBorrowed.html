@@ -23,7 +23,10 @@
 
 <!-- Navigation Bar -->
 <div id="navbar" class="side_Nav"></div>
-<script src="{% static 'js/navigation.js' %}"></script>
+    <script>
+        var userRole = "{{ user_role }}";
+    </script>
+    <script src="{% static 'js/navigation.js' %}"></script>
 
 <!-- Borrowed Books Container -->
 <div id="box">
