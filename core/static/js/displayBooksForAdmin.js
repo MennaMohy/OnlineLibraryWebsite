@@ -1,6 +1,30 @@
+function popBox(message, callback) {
+    const modal = document.getElementById("popBoxModal");
+    const messageEl = document.getElementById("popBoxMessage");
+    const confirmBtn = document.getElementById("popBoxConfirmBtn");
+    const cancelBtn = document.getElementById("popBoxCancelBtn");
+
+    messageEl.textContent = message;
+    modal.style.display = "flex";
+
+    confirmBtn.onclick = () => {
+        modal.style.display = "none";
+        callback();
+    };
+    cancelBtn.onclick = () => {
+        modal.style.display = "none";
+    };
+}
+window.addEventListener('DOMContentLoaded', () => {
+    if (sessionStorage.getItem('bookDeleted') === 'true') {
+        customAlert("Book deleted successfully!", "success");
+        sessionStorage.removeItem('bookDeleted');
+    }
+});
+
 
 function deleteBook(bookId) {
-    if (confirm('Are you sure you want to delete this book?')) {
+    popBox("Are you sure you want to delete this book?", function () {
         fetch(`/admin-home/manage-books/delete/${bookId}/`, {
             method: 'POST',
             headers: {
@@ -9,17 +33,18 @@ function deleteBook(bookId) {
         })
         .then(response => {
             if (response.ok) {
-                customAlert("Book deleted successfully.", "success");
+                // Set flag to show success message after reload
+                sessionStorage.setItem('bookDeleted', 'true');
                 window.location.reload();
             } else {
                 customAlert("Failed to delete book.", "error");
             }
+        })
+        .catch(error => {
+            customAlert("An error occurred.", "error");
+            console.error("Error deleting book:", error);
         });
-    }
-}
-
-function editBook(bookId) {
-    window.location.href = `/admin-home/manage-books/edit/${bookId}/`;
+    });
 }
 
 function getCookie(name) {
