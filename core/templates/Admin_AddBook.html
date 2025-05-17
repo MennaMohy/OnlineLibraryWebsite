@@ -15,7 +15,7 @@
 
 </head>
 
-<body class="addbook">
+<body class="modifyBook">
 <div id="navbar" class="side_Nav"></div>
 
 <script>
@@ -28,12 +28,30 @@
         <h1>Add A Book</h1>
         <form id="bookForm" method="POST" enctype="multipart/form-data" action="/manage-books/add-book/">
             {% csrf_token %}
-            {{ form.as_p }}
-            {% if form.errors %}
-                <div class="error-messages">
-                {{ form.errors }}
-                </div>
-            {% endif %}
+            <div class="form-group">
+                <label for="id_title">Title:</label>
+                {{ form.title }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_author">Author:</label>
+                {{ form.author }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_category">Category:</label>
+                {{ form.category }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_description">Description:</label>
+                {{ form.description }}
+            </div>
+            
+            <div class="form-group">
+                <label for="id_image">Image:</label>
+                {{ form.image }}
+            </div>
             <input type="submit" class="button-light" value="Add Book">
         </form>
 

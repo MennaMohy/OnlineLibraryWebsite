@@ -70,11 +70,6 @@
     color: #3a1f0b;
 }
 
-/* background image for add book page*/
-.addbook{
-    background-image: url('https://www.shutterstock.com/image-photo/books-library-row-literature-on-600nw-2509433735.jpg');
-}
-
 /* add books style*/
 #box input[type="text"],
 #box input[type="password"],
@@ -89,23 +84,28 @@
 }
 
 input[type="submit"].button-light {
-    background-color: #d3b196;
-    color: white;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
+    width: 100%;
+    padding: 15px;
+    background-color: beige;
+    color: #8b5a2b;
     border: none;
     border-radius: 6px;
+    font-size: 18px;
+    font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
-    margin-top: 1.5rem;
-    width: auto;
-    display: inline-block;
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-family: Georgia, serif;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 input[type="submit"].button-light:hover {
-    background-color: #9acaaa;
+    background-color: #8b5a2b;
+    color: beige;
     transform: translateY(-2px);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* manage book page */
@@ -250,4 +250,60 @@ input[type="submit"].button-light:hover {
 
 .quote{
     margin-left: 100px;
+}
+.modifyBook{
+    background-image: url("../images/books_background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Form Styles */
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #fff8ee;
+    font-size: 18px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #d4b996;
+    border-radius: 6px;
+    font-size: 16px;
+    background-color: white;
+    color: #8b5a2b;
+    transition: all 0.3s ease;
+    font-family: Georgia, serif;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.form-control::placeholder {
+    color: #a99e8f;
+    opacity: 1;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #8b5a2b;
+    box-shadow: 0 0 0 3px rgba(139, 90, 43, 0.3);
+    background-color: #fff8ee;
+}
+
+select.form-control {
+    appearance: none;
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 18px;
+    padding-right: 40px;
+}
+textarea#id_description {
+    height: 60px;
+    resize: vertical;
 }

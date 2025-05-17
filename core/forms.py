@@ -2,6 +2,7 @@ from django import forms
 from .models import Book
 
 CATEGORY_CHOICES = [
+    ('', ''),
     ("fiction", "Fiction"),
     ("non-fiction", "Non-Fiction"),
     ("dark-fiction", "Dark-Fiction"),

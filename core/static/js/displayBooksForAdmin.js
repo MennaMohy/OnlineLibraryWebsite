@@ -9,10 +9,10 @@ function deleteBook(bookId) {
         })
         .then(response => {
             if (response.ok) {
-                alert("Book deleted successfully.");
+                customAlert("Book deleted successfully.", "success");
                 window.location.reload();
             } else {
-                alert("Failed to delete book.");
+                customAlert("Failed to delete book.", "error");
             }
         });
     }

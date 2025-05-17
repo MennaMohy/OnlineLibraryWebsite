@@ -7,12 +7,13 @@
     <title>Edit Book | Lindy</title>
     <link rel="icon" href="../static/images/icon.png">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/editBook.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Common.css' %}">
     <link rel="stylesheet" href="{% static 'css/popupBox.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Admin.css' %}">
     <link rel="stylesheet" href="{% static 'css/NavigationBarStyle.css' %}">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="modifyBook">
 <div id="navbar" class="side_Nav"></div>
     <script>
         var userRole = "{{ user_role }}";
@@ -21,9 +22,9 @@
 
 
 
-<div class="container">
-    <h2>Edit The Book</h2>
-    <form method="post" enctype="multipart/form-data">
+<div id="box">
+    <h1>Edit The Book</h1>
+    <form id="bookForm" method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
     <div class="form-group">
@@ -53,8 +54,8 @@
             <option value="false" {% if book.is_borrowed %}selected{% endif %}>Unavailable</option>
         </select>
     </div>
-
-    <button type="submit" class="btn-submit">Save Changes</button>
+        
+    <input type="submit" class="button-light" value="Save changes">
 </form>
 </div>
 
@@ -69,7 +70,7 @@
     </div>
 </div>
 
-<script src="{% static 'js/popBox.js' %}"></script>
+    <script src="{% static 'js/popBox.js' %}"></script>
     <script src="{% static 'js/navigation.js' %}"></script>
     <script src="{% static 'js/EditBookByAdmin.js' %}"></script>
     <script src="{% static 'alert.js' %}"></script>

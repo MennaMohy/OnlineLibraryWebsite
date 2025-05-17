@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const meta = document.getElementById('editPageMeta');
     const bookId = meta.dataset.bookId;
     const bookTitle = meta.dataset.bookTitle;
-    const form = document.getElementById('editForm');
+    const form = document.getElementById('bookForm');
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
