@@ -68,9 +68,14 @@
                 <h3>{{ book.title }}</h3>
                 <p><strong>Author:</strong> {{ book.author }}</p>
                 <p><strong>Category:</strong> {{ book.category }}</p>
-                <span class="availability {% if book.available %}available{% else %}unavailable{% endif %}">
-                    {% if book.available %}Available{% else %}Unavailable{% endif %}
+                <span class="availability {% if book.is_borrowed %}unavailable{% else %}available{% endif %}">
+                    {% if book.is_borrowed %}
+                        Borrowed by {{ book.borrowed_by }}
+                    {% else %}
+                        Available
+                    {% endif %}
                 </span>
+
             </div>
         </div>
     {% empty %}
