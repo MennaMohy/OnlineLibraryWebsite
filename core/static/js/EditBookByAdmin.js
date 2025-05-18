@@ -1,15 +1,21 @@
+const form = document.getElementById('editForm');
+const bookId = form.dataset.bookId;
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append('title', document.getElementById('title').value);
+    const formData = new FormData(form);
+    const bookTitle = document.getElementById('title').value;
+
+    formData.append('title', bookTitle);
     formData.append('author', document.getElementById('author').value);
     formData.append('category', document.getElementById('category').value);
     formData.append('description', document.getElementById('description').value);
+
     const imageInput = document.getElementById('image');
     if (imageInput.files.length > 0) {
         formData.append('image', imageInput.files[0]);
     }
+
     formData.append('csrfmiddlewaretoken', document.querySelector('[name=csrfmiddlewaretoken]').value);
 
     popBox(`Save changes to "${bookTitle}"?`, () => {

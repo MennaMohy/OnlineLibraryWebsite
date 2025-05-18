@@ -23,10 +23,9 @@
 
 
 <div id="box">
-    <h1>Edit The Book</h1>
-<form id="bookForm" method="post" action="{% url 'edit_books' book.id %}">
+    <form method="post" id="BookForm" data-book-id="{{ book.id }}">
     {% csrf_token %}
-
+    <h1>Edit The Book</h1>
     <div class="form-group">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" value="{{ book.title }}" class="form-control">
@@ -44,8 +43,7 @@
 
     <div class="form-group">
        <label for="image">Upload New Image:</label>
-        <input type="file" id="image" name="image" class="form-control">
-
+        <input type="file" id="image" name="image" value="{{ book.image }} " class="form-control">
     </div>
 
     <div class="form-group">
@@ -53,7 +51,7 @@
         <input type="text" id="description" name="description" value="{{ book.description }}" class="form-control">
     </div>
         
-    <input type="submit" class="button-light" value="Save changes">
+        <input type="submit" class="button-light" value="Save changes">
 </form>
 </div>
 
