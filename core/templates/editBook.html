@@ -24,7 +24,7 @@
 
 <div id="box">
     <h1>Edit The Book</h1>
-    <form id="bookForm" method="post" enctype="multipart/form-data">
+<form id="bookForm" method="post" action="{% url 'edit_books' book.id %}">
     {% csrf_token %}
 
     <div class="form-group">
@@ -43,16 +43,14 @@
     </div>
 
     <div class="form-group">
-        <label for="image">Image URL:</label>
-        <input type="text" id="image" name="image" value="{{ book.image.url }}" class="form-control">
+       <label for="image">Upload New Image:</label>
+        <input type="file" id="image" name="image" class="form-control">
+
     </div>
 
     <div class="form-group">
-        <label for="available">Availability:</label>
-        <select id="available" name="available" class="form-control">
-            <option value="true" {% if not book.is_borrowed %}selected{% endif %}>Available</option>
-            <option value="false" {% if book.is_borrowed %}selected{% endif %}>Unavailable</option>
-        </select>
+        <label for="description">Description:</label>
+        <input type="text" id="description" name="description" value="{{ book.description }}" class="form-control">
     </div>
         
     <input type="submit" class="button-light" value="Save changes">

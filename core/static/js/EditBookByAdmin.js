@@ -1,40 +1,36 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const meta = document.getElementById('editPageMeta');
-    const bookId = meta.dataset.bookId;
-    const bookTitle = meta.dataset.bookTitle;
-    const form = document.getElementById('editForm');
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
+    const formData = new FormData();
+    formData.append('title', document.getElementById('title').value);
+    formData.append('author', document.getElementById('author').value);
+    formData.append('category', document.getElementById('category').value);
+    formData.append('description', document.getElementById('description').value);
+    const imageInput = document.getElementById('image');
+    if (imageInput.files.length > 0) {
+        formData.append('image', imageInput.files[0]);
+    }
+    formData.append('csrfmiddlewaretoken', document.querySelector('[name=csrfmiddlewaretoken]').value);
 
-        const payload = {
-            title: document.getElementById('title').value,
-            author: document.getElementById('author').value,
-            category: document.getElementById('category').value,
-            description: document.getElementById('description').value,
-            image: document.getElementById('image').value, // Or handle file input differently
-            available: document.getElementById('available').checked  // for checkbox
-        };
-
-        popBox(`Save changes to "${bookTitle}"?`, () => {
-            fetch(`/admin-home/manage-books/edit/${bookId}/`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
-                },
-                body: JSON.stringify(payload)
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) {
-                    customAlert('Book updated successfully!', 'success');
-                    setTimeout(() => location.href = '/admin-home/manage-books/', 1000);
-                } else {
-                    customAlert(`Error: ${data.message}`, 'error');
-                }
-            })
-            .catch(err => customAlert(`Error: ${err}`, 'error'));
-        });
+    popBox(`Save changes to "${bookTitle}"?`, () => {
+        fetch(`/admin-home/manage-books/edit/${bookId}/`, {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => {
+            if (res.redirected) {
+                window.location.href = res.url;
+                return;
+            }
+            return res.json();
+        })
+        .then(data => {
+            if (data?.success) {
+                customAlert('Book updated successfully!', 'success');
+            } else if (data?.message) {
+                customAlert(`Error: ${data.message}`, 'error');
+            }
+        })
+        .catch(err => customAlert(`Error: ${err}`, 'error'));
     });
 });

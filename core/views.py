@@ -188,7 +188,9 @@ def edit_books(request, book_id):
         book.title = request.POST['title']
         book.author = request.POST['author']
         book.category = request.POST['category']
-        book.is_borrowed = request.POST.get('is_borrowed') == 'true'
+        book.description = request.POST['description']
+        if 'image' in request.FILES:
+            book.image = request.FILES['image']
         book.save()
         return redirect('manage_books')
 
