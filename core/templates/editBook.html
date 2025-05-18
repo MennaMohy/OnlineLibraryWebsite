@@ -23,7 +23,7 @@
 
 
 <div id="box">
-    <form method="post" id="BookForm" data-book-id="{{ book.id }}">
+    <form method="post" enctype="multipart/form-data" id="editForm" data-book-id="{{ book.id }}">
     {% csrf_token %}
     <h1>Edit The Book</h1>
     <div class="form-group">
@@ -68,9 +68,8 @@
 
     <script src="{% static 'js/popBox.js' %}"></script>
     <script src="{% static 'js/navigation.js' %}"></script>
-    <script src="{% static 'js/EditBookByAdmin.js' %}"></script>
+    <script src="{% static 'js/EditBookByAdmin.js' %}" defer></script>
     <script src="{% static 'alert.js' %}"></script>
-    <script src="{% static 'js/displayBooksForAdmin.js' %}"></script>
 
 </body>
 </html>
