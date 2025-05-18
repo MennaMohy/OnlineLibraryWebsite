@@ -9,8 +9,7 @@ function generateNavbar() {
             <ul class="NavLink">
     `;
 
-   // admin navigation bar
-    if (userRole === 'admin') {
+   if (userRole === 'admin') {
         html += `
             <li><i class="fa-solid fa-house" style="color: #fff3dc;"></i>
                 <a href="/admin-home/">Home Page</a></li>
@@ -18,9 +17,7 @@ function generateNavbar() {
                 <a href="/available-books/">View available books</a></li>
             <li><i class="fa-solid fa-circle-info" style="color: #fff3db;"></i>
                 <a href="/about-us/">About us</a></li>
-
         `;
-    // user navigation bar
     } else {
         html += `
             <li><i class="fa-solid fa-house" style="color: #fff3dc;"></i>
@@ -34,14 +31,24 @@ function generateNavbar() {
         `;
     }
 
+    // Notice the logout link now has an id for easy JS targeting
     html += `
         <li><i class="fa-solid fa-right-from-bracket" style="color: #f5f5dc;"></i>
-            <a href="/welcome/">Logout</a></li>
+            <a href="#" id="logoutLink">Logout</a></li>
         </ul>
     </div>
     `;
 
     navbar.innerHTML = html;
+
+    // Add event listener to the logout link after setting innerHTML
+    const logoutLink = document.getElementById('logoutLink');
+    logoutLink.addEventListener('click', function(e) {
+        e.preventDefault();  // Prevent immediate navigation
+        popBox('Are you sure you want to logout?', () => {
+            window.location.href = '/welcome/';
+        });
+    });
 }
 
 window.onload = generateNavbar;

@@ -55,6 +55,15 @@
         {% endif %}
     </main>
 </div>
-<script src="{% static 'js/popBox.js' %}"></script>
+    <div id="confirmPopup" class="popup-overlay hidden">
+        <div class="popup-box">
+            <p id="confirmMessage">Are you sure you want to borrow?</p>
+            <div class="popup-buttons">
+                <button id="confirmCancel">Cancel</button>
+                <button id="confirmYes">Yes</button>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/popBox.js' %}"></script>
 </body>
 </html>

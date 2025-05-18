@@ -15,9 +15,6 @@
 
     <!-- Scripts -->
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/viewborrowed.js' %}"></script>
-    <script src="{% static 'js/borrow_book.js' %}"></script>
-    <script src="{% static 'js/Books.js' %}"></script>
 </head>
 <body>
 
@@ -51,8 +48,16 @@
             {% endfor %}
     </div>
 </div>
-
-<script src="{% static 'js/popBox.js' %}"></script>
+    <div id="confirmPopup" class="popup-overlay hidden">
+        <div class="popup-box">
+            <p id="confirmMessage">Are you sure you want to borrow?</p>
+            <div class="popup-buttons">
+                <button id="confirmCancel">Cancel</button>
+                <button id="confirmYes">Yes</button>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/popBox.js' %}"></script>
 
 </body>
 </html>
