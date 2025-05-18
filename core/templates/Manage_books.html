@@ -92,7 +92,28 @@
         </div>
     </div>
     
-<script src="{% static 'js/alert.js' %}"></script>
+    <script>
+    window.addEventListener("DOMContentLoaded", function () {
+        if (sessionStorage.getItem("bookAdded") === "true") {
+            // Show alert message
+            customAlert("The book was added successfully!", "success");
+
+            // Remove flag so it doesn't show on next page load
+            sessionStorage.removeItem("bookAdded");
+        }
+    });
+    </script>
+    <script>
+    window.addEventListener('DOMContentLoaded', function () {
+        const bookEdited = sessionStorage.getItem('bookEdited');
+        if (bookEdited) {
+            customAlert("Book edited successfully!", "success");
+            sessionStorage.removeItem('bookEdited');  // Remove to avoid showing it again
+        }
+    });
+    </script>
+    
+    <script src="{% static 'js/alert.js' %}"></script>
     <script src="{% static 'js/popBox.js' %}"></script>
 </body>
 </html>

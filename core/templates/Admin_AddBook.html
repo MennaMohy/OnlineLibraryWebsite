@@ -27,6 +27,7 @@
 
 <div id="box">
         <h1>Add A Book</h1>
+        <div id="alertContainer" class="custom-alert"></div>    
         <form id="bookForm" method="POST" enctype="multipart/form-data" action="/manage-books/add-book/">
             {% csrf_token %}
             <div class="form-group">

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/Common.css' %}">
     <link rel="stylesheet" href="{% static 'css/popupBox.css' %}">
     <link rel="stylesheet" href="{% static 'css/Admin.css' %}">
+    <link rel="stylesheet" href="{% static 'css/alert.css' %}">
     <link rel="stylesheet" href="{% static 'css/NavigationBarStyle.css' %}">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
 </head>
@@ -26,6 +27,7 @@
     <form method="post" enctype="multipart/form-data" id="editForm" data-book-id="{{ book.id }}">
     {% csrf_token %}
     <h1>Edit The Book</h1>
+    <div id="alertContainer" class="custom-alert"></div>
     <div class="form-group">
         <label for="title">Title:</label>
         <input type="text" id="title" name="title" value="{{ book.title }}" class="form-control">
@@ -55,16 +57,16 @@
 </form>
 </div>
 
-<!-- Confirmation Popup -->
-<div id="confirmPopup" class="popup-overlay hidden">
-    <div class="popup-box">
-        <p id="confirmMessage">Are you sure you want to borrow?</p>
-        <div class="popup-buttons">
-            <button id="confirmCancel">Cancel</button>
-            <button id="confirmYes">Yes</button>
+    <!-- Confirmation Popup -->
+    <div id="confirmPopup" class="popup-overlay hidden">
+        <div class="popup-box">
+            <p id="confirmMessage">Are you sure you want to borrow?</p>
+            <div class="popup-buttons">
+                <button id="confirmCancel">Cancel</button>
+                <button id="confirmYes">Yes</button>
+            </div>
         </div>
     </div>
-</div>
 
     <script src="{% static 'js/popBox.js' %}"></script>
     <script src="{% static 'js/navigation.js' %}"></script>

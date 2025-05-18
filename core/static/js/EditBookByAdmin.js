@@ -25,6 +25,7 @@ form.addEventListener('submit', (e) => {
         })
         .then(res => {
             if (res.redirected) {
+                sessionStorage.setItem('bookEdited', 'true');
                 window.location.href = res.url;
                 return;
             }
