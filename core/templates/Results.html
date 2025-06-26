@@ -10,52 +10,59 @@
     <link rel="stylesheet" href="{% static 'css/results.css' %}">
     <link rel="stylesheet" href="{% static 'css/Buttons.css' %}">
     <link rel="stylesheet" href="{% static 'css/NavigationBarStyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/darkMode.css' %}">
     <link rel="icon" href="{% static 'images/icon.png' %}">
 
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/Books.js' %}"></script>
+    <script src="{% static 'js/darkMode.js' %}"></script>
 </head>
 <body>
-<div id="navbar" class="side_Nav"></div>
-<script src="{% static 'js/navigation.js' %}"></script>
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" title="Switch to Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
 
-<div id="box">
-    <div class="results-header">
-        <a href="{% if user_role == 'admin' %}{% url 'admin_home' %}{% else %}{% url 'user_home' %}{% endif %}" id="backHome" class="button-light">Back to HomePage</a>
-        <h1>Search Results</h1>
-    </div>
+    <div id="navbar" class="side_Nav"></div>
+    <script src="{% static 'js/navigation.js' %}"></script>
 
-    <div class="book-results-container" id="bookResults">
-        {% if books %}
-            {% for book in books %}
-                <div class="book-result">
-                    <a href="{% url 'book_detail' book.id %}">
-                        <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-cover">
-                    </a>
-                    <div class="book-info">
-                        <p><strong>Title:</strong> {{ book.title }}</p>
-                        <p><strong>Author:</strong> {{ book.author }}</p>
-                        <p><strong>Category:</strong> {{ book.category }}</p>
-                        <p class="book-description"><strong>Description:</strong> {{ book.description }}</p>
+    <div id="box">
+        <div class="results-header">
+            <a href="{% if user_role == 'admin' %}{% url 'admin_home' %}{% else %}{% url 'user_home' %}{% endif %}" id="backHome" class="button-light">Back to HomePage</a>
+            <h1>Search Results</h1>
+        </div>
+
+        <div class="book-results-container" id="bookResults">
+            {% if books %}
+                {% for book in books %}
+                    <div class="book-result">
+                        <a href="{% url 'book_detail' book.id %}">
+                            <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-cover">
+                        </a>
+                        <div class="book-info">
+                            <p><strong>Title:</strong> {{ book.title }}</p>
+                            <p><strong>Author:</strong> {{ book.author }}</p>
+                            <p><strong>Category:</strong> {{ book.category }}</p>
+                            <p class="book-description"><strong>Description:</strong> {{ book.description }}</p>
+                        </div>
+                        <div class="book-status">
+                            <span class="availability {% if book.is_borrowed %}unavailable{% else %}available{% endif %}">
+                                {% if book.is_borrowed %}
+                                    Borrowed
+                                {% else %}
+                                    Available
+                                {% endif %}
+                            </span>
+                        </div>
                     </div>
-                    <div class="book-status">
-                        <span class="availability {% if book.is_borrowed %}unavailable{% else %}available{% endif %}">
-                            {% if book.is_borrowed %}
-                                Borrowed
-                            {% else %}
-                                Available
-                            {% endif %}
-                        </span>
-                    </div>
-                </div>
-            {% empty %}
+                {% empty %}
+                    <p>No books found</p>
+                {% endfor %}
+            {% else %}
                 <p>No books found</p>
-            {% endfor %}
-        {% else %}
-            <p>No books found</p>
-        {% endif %}
+            {% endif %}
+        </div>
     </div>
-</div>
 
 </body>
 </html>

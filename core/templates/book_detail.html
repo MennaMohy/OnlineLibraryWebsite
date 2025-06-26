@@ -14,13 +14,20 @@
     <link rel="stylesheet" href="{% static 'css/popupBox.css' %}">
     <link rel="stylesheet" href="{% static 'css/Buttons.css' %}">
     <link rel="stylesheet" href="{% static 'css/BooksDescriptions.css' %}">
+    <link rel="stylesheet" href="{% static 'css/darkMode.css' %}">
     <link rel="icon" href="{% static 'images/icon.png' %}">
 
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/borrow_book.js' %}" defer></script>
+    <script src="{% static 'js/darkMode.js' %}"></script>
 </head>
 
 <body class="bodySecond" data-book-title="{{ book.title }}">
+
+<!-- Dark Mode Toggle Button -->
+<button class="dark-mode-toggle" title="Switch to Dark Mode">
+    <i class="fas fa-moon"></i>
+</button>
 
 <!-- Navigation bar -->
 <div id="navbar" class="side_Nav"></div>

@@ -1,0 +1,345 @@
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+}
+
+body.dark-mode .container {
+    background-color: transparent;
+}
+
+body.dark-mode #box {
+    background: rgba(40, 40, 40, 0.9) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(80, 80, 80, 0.3) !important;
+}
+
+body.dark-mode p {
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode h1 {
+    color: #ffffff !important;
+}
+
+body.dark-mode h2 {
+    color: #ffd700 !important;
+    text-shadow: 1px 1px 2px #000000 !important;
+}
+
+body.dark-mode h3 {
+    color: #ffd700 !important;
+}
+
+body.dark-mode h4 {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+body.dark-mode h5 {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+body.dark-mode h6 {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+body.dark-mode .quote {
+    color: #ffd700 !important;
+}
+
+body.dark-mode .quote p {
+    color: #ffd700 !important;
+}
+
+body.dark-mode .quote .fa-quote-left {
+    color: rgba(255, 215, 0, 0.3) !important;
+}
+
+/* Lists dark mode */
+body.dark-mode ul {
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode li {
+    color: #e0e0e0 !important;
+}
+
+/* Footer dark mode */
+body.dark-mode footer {
+    background-color: rgba(40, 40, 40, 0.9) !important;
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode footer p {
+    color: #e0e0e0 !important;
+}
+
+/* Dark mode toggle button styles */
+.dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.dark-mode-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.dark-mode-toggle i {
+    font-size: 24px;
+    color: #96501D;
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .dark-mode-toggle i {
+    color: #ffd700;
+}
+
+/* Form inputs dark mode */
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="password"],
+body.dark-mode select,
+body.dark-mode textarea {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    border: 1px solid #555555 !important;
+}
+
+body.dark-mode input[type="text"]::placeholder,
+body.dark-mode input[type="email"]::placeholder,
+body.dark-mode input[type="password"]::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #aaaaaa !important;
+}
+
+body.dark-mode input[type="text"]:focus,
+body.dark-mode input[type="email"]:focus,
+body.dark-mode input[type="password"]:focus,
+body.dark-mode select:focus,
+body.dark-mode textarea:focus {
+    border-color: #ffd700 !important;
+    outline: none !important;
+}
+
+/* File input dark mode */
+body.dark-mode input[type="file"] {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    border: 1px solid #555555 !important;
+}
+
+body.dark-mode input[type="file"]::-webkit-file-upload-button {
+    background-color: #555555 !important;
+    color: #ffffff !important;
+    border: 1px solid #777777 !important;
+}
+
+/* Form groups dark mode */
+body.dark-mode .form-group {
+    background-color: rgba(40, 40, 40, 0.8);
+}
+
+body.dark-mode .form-group label {
+    color: #ffffff !important;
+}
+
+/* Links dark mode */
+body.dark-mode a {
+    color: #ffd700 !important;
+}
+
+body.dark-mode a:hover {
+    color: #ffffff !important;
+}
+
+/* Additional dark mode styles for specific components */
+body.dark-mode .search-container {
+    background-color: rgba(40, 40, 40, 0.8);
+}
+
+body.dark-mode .search-input {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #555555;
+}
+
+body.dark-mode .search-input::placeholder {
+    color: #aaaaaa;
+}
+
+body.dark-mode .book-result {
+    background-color: rgba(40, 40, 40, 0.8);
+    border: 1px solid #555555;
+}
+
+body.dark-mode .book-info p {
+    color: #e0e0e0 !important;
+}
+
+body.dark-mode .availability.available {
+    color: #4CAF50;
+}
+
+body.dark-mode .availability.unavailable {
+    color: #f44336;
+}
+
+body.dark-mode .recommendations {
+    background-color: rgba(40, 40, 40, 0.8);
+}
+
+body.dark-mode .book-card-small {
+    background-color: rgba(40, 40, 40, 0.8);
+    border: 1px solid #555555;
+}
+
+body.dark-mode .book-title {
+    color: #ffffff;
+}
+
+body.dark-mode .book-author {
+    color: #cccccc;
+}
+
+body.dark-mode .rating {
+    color: #ffd700;
+}
+
+/* Navigation bar dark mode */
+body.dark-mode .side_Nav {
+    background-color: rgba(40, 40, 40, 0.95);
+}
+
+body.dark-mode .nav-link {
+    color: #ffffff;
+}
+
+body.dark-mode .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Popup dark mode */
+body.dark-mode .popup-box {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+body.dark-mode .popup-buttons button {
+    background-color: #555555;
+    color: #ffffff;
+}
+
+body.dark-mode .popup-buttons button:hover {
+    background-color: #777777;
+}
+
+/* Alert messages dark mode */
+body.dark-mode .custom-alert {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #555555;
+}
+
+body.dark-mode .custom-alert.success {
+    background-color: #2d5a2d;
+    border-color: #4CAF50;
+}
+
+body.dark-mode .custom-alert.error {
+    background-color: #5a2d2d;
+    border-color: #f44336;
+}
+
+/* Book detail page specific dark mode */
+body.dark-mode .rightAlign {
+    background-color: rgba(40, 40, 40, 0.8);
+}
+
+body.dark-mode .imgSize {
+    border: 2px solid #555555;
+}
+
+/* Welcome page specific dark mode */
+body.dark-mode .imgAlign {
+    opacity: 0.8;
+}
+
+/* Button dark mode adjustments */
+body.dark-mode .button-dark {
+    background-color: #555555;
+    color: #ffffff;
+}
+
+body.dark-mode .button-dark:hover {
+    background-color: #777777;
+}
+
+body.dark-mode .button-light {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #555555;
+}
+
+body.dark-mode .button-light:hover {
+    background-color: #555555;
+}
+
+/* About us page specific dark mode */
+body.dark-mode.about-us {
+    background-color: #1a1a1a !important;
+}
+
+body.dark-mode.about-us .container {
+    background-color: rgba(40, 40, 40, 0.8);
+}
+
+/* Results page specific dark mode */
+body.dark-mode .results-header {
+    background-color: rgba(40, 40, 40, 0.8);
+}
+
+body.dark-mode .results-header h1 {
+    color: #ffffff !important;
+}
+
+/* Admin pages specific dark mode */
+body.dark-mode.modifyBook {
+    background-color: #1a1a1a !important;
+}
+
+body.dark-mode .manage-books-container {
+    background-color: rgba(40, 40, 40, 0.8);
+}
+
+body.dark-mode .book-management-card {
+    background-color: rgba(40, 40, 40, 0.8);
+    border: 1px solid #555555;
+}
+
+/* Table dark mode */
+body.dark-mode table {
+    background-color: rgba(40, 40, 40, 0.8);
+    color: #ffffff;
+}
+
+body.dark-mode th {
+    background-color: #555555;
+    color: #ffffff;
+}
+
+body.dark-mode td {
+    background-color: rgba(40, 40, 40, 0.8);
+    color: #e0e0e0;
+    border: 1px solid #555555;
+} 

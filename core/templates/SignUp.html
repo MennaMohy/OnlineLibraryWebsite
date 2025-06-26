@@ -6,53 +6,61 @@
     <link rel="stylesheet" href="../static/css/Common.css">
     <link rel="stylesheet" href="../static/css/alert.css">
     <link rel="stylesheet" href="../static/css/Buttons.css">
+    <link rel="stylesheet" href="../static/css/darkMode.css">
     <link rel="icon" href="../static/images/icon.png">
+    <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
+    <script src="../static/js/darkMode.js"></script>
 </head>
 <body class="SignUp">
-<div id="box">
-    <h1>Sign Up</h1><br>
-    <div id="alertContainer" class="custom-alert"></div>
-    <h4>Create your account free with our user-friendly Online Library and borrow digital books :)</h4>
-    <form id="signupForm" method="POST">
-        {% csrf_token %}
-        <p>Username</p>
-        <label>
-            <input type="text" id="UserName" name="UserName" placeholder="Name" required>
-        </label>
+    <!-- Dark Mode Toggle Button -->
+    <button class="dark-mode-toggle" title="Switch to Dark Mode">
+        <i class="fas fa-moon"></i>
+    </button>
 
-        <p>Email</p>
-        <label>
-            <input type="email" id="email" name="email" placeholder="xxxx@gmail.com" required>
-        </label>
+    <div id="box">
+        <h1>Sign Up</h1><br>
+        <div id="alertContainer" class="custom-alert"></div>
+        <h4>Create your account free with our user-friendly Online Library and borrow digital books :)</h4>
+        <form id="signupForm" method="POST">
+            {% csrf_token %}
+            <p>Username</p>
+            <label>
+                <input type="text" id="UserName" name="UserName" placeholder="Name" required>
+            </label>
 
-        <p>Password</p>
-        <label>
-            <input type="password" id="pass" name="pass" placeholder="********" required>
-        </label>
+            <p>Email</p>
+            <label>
+                <input type="email" id="email" name="email" placeholder="xxxx@gmail.com" required>
+            </label>
 
-        <p>Password Confirmation</p>
-        <label>
-            <input type="password" id="passCheck" name="passCheck" placeholder="********" required>
+            <p>Password</p>
+            <label>
+                <input type="password" id="pass" name="pass" placeholder="********" required>
+            </label>
 
-        </label>
-        <p>Is admin?</p>
-        <label for="isAdmin">
-            <select id="isAdmin" name="isAdmin" required>
-                <option value="" disabled selected>Select an option</option>
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-            </select>
-        </label>
-        <br>
-        <input type="submit" class="button-light" value="Sign Up">
+            <p>Password Confirmation</p>
+            <label>
+                <input type="password" id="passCheck" name="passCheck" placeholder="********" required>
 
-        <p id="account">Already have an account?
-            <a id="acc" href="/signin/">Sign In</a>
-        </p>
-    </form>
-</div>
+            </label>
+            <p>Is admin?</p>
+            <label for="isAdmin">
+                <select id="isAdmin" name="isAdmin" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </label>
+            <br>
+            <input type="submit" class="button-light" value="Sign Up">
 
-<script src="../static/js/alert.js"></script>
-<script src="../static/js/Sign.js"></script>
+            <p id="account">Already have an account?
+                <a id="acc" href="/signin/">Sign In</a>
+            </p>
+        </form>
+    </div>
+
+    <script src="../static/js/alert.js"></script>
+    <script src="../static/js/Sign.js"></script>
 </body>
 </html>
