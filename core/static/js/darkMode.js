@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (toggleButton) {
         toggleButton.addEventListener('click', toggleDarkMode);
     }
+    
+    // Adjust dark mode toggle position based on search container presence
+    adjustDarkModeTogglePosition();
 });
 
 function toggleDarkMode() {
@@ -68,4 +71,16 @@ if (window.matchMedia) {
 }
 
 // Initialize system preference check
-checkSystemPreference(); 
+checkSystemPreference();
+
+function adjustDarkModeTogglePosition() {
+    const searchContainer = document.querySelector('.search-container');
+    
+    if (searchContainer) {
+        // If search container exists, add a class to body for CSS targeting
+        document.body.classList.add('has-search');
+    } else {
+        // If no search container, remove the class
+        document.body.classList.remove('has-search');
+    }
+} 

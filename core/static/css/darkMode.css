@@ -78,8 +78,8 @@ body.dark-mode footer p {
 .dark-mode-toggle {
     position: fixed;
     top: 20px;
-    right: 20px;
-    z-index: 1000;
+    right: 20px; /* Default position for pages without search */
+    z-index: 9999; /* Very high z-index to ensure it's above everything */
     background: none;
     border: none;
     cursor: pointer;
@@ -88,6 +88,25 @@ body.dark-mode footer p {
     transition: all 0.3s ease;
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+}
+
+/* Position dark mode toggle beside search container when search exists */
+body.has-search .dark-mode-toggle {
+    right: 20px; /* Rightmost position */
+}
+
+/* Adjust search container position when dark mode toggle is present */
+body.has-search .search-container {
+    right: 70px; /* Position search container to the left of dark mode toggle (20px + 50px gap) */
+}
+
+/* Ensure dark mode toggle is visible in admin dashboard */
+.admin-header + .dark-mode-toggle,
+.dark-mode-toggle {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    z-index: 9999 !important;
 }
 
 .dark-mode-toggle:hover {
