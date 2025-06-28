@@ -92,6 +92,7 @@
     text-align: center;
     border-radius: 8px;
 }
+
 /* Book card hover effect */
 .book-card-small:hover {
     transform: scale(1.05); 
@@ -111,19 +112,13 @@
     color: #5a3921;
     font-size: 1.1em;
 }
+
 /* Book image styling */
 .book-card-small img {
     width: 100%;
     height: 235px;  
     object-fit: fill;
     border-radius: 5px;
-}
-
-/* Book author styling */
-.book-card-small .book-author {
-    font-size: 1em;
-    color: #7e6a58;
-    margin-top: 5px;
 }
 
 #box {
