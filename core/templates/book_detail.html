@@ -3,18 +3,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ book.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }} - Book Details</title>
 
     {% load static %}
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="{% static 'css/Common.css' %}">
-    <link rel="stylesheet" href="{% static 'css/NavigationBarStyle.css' %}">
-    <link rel="stylesheet" href="{% static 'css/alert.css' %}">
-    <link rel="stylesheet" href="{% static 'css/popupBox.css' %}">
-    <link rel="stylesheet" href="{% static 'css/Buttons.css' %}">
-    <link rel="stylesheet" href="{% static 'css/BooksDescriptions.css' %}">
-    <link rel="stylesheet" href="{% static 'css/darkMode.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Common.css' %}?v=2.0">
+    <link rel="stylesheet" href="{% static 'css/NavigationBarStyle.css' %}?v=2.0">
+    <link rel="stylesheet" href="{% static 'css/alert.css' %}?v=2.0">
+    <link rel="stylesheet" href="{% static 'css/popupBox.css' %}?v=2.0">
+    <link rel="stylesheet" href="{% static 'css/Buttons.css' %}?v=2.0">
+    <link rel="stylesheet" href="{% static 'css/BooksDescriptions.css' %}?v=2.0">
+    <link rel="stylesheet" href="{% static 'css/darkMode.css' %}?v=2.0">
     <link rel="icon" href="../static/images/icon.png">
 
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
@@ -36,48 +37,150 @@
     </script>
     <script src="{% static 'js/navigation.js' %}"></script>
 
-<!-- Book Image -->
-<div class="container">
-    <img src="{{ book.image.url }}" alt="Book Cover" class="imgSize">
-</div>
+<!-- Main Content -->
+<main class="container">
+    <!-- Book Image Section -->
+    <section class="book-image-section">
+        <div class="image-container">
+            <img src="{{ book.image.url }}" alt="Cover of {{ book.title }}" class="imgSize">
+            <div class="image-overlay">
+                <i class="fas fa-book-open"></i>
+            </div>
+        </div>
+    </section>
 
-<!-- Book Details -->
-<div class="rightAlign">
-    <div style="margin-left: -50px" id="alertContainer" class="custom-alert"></div>
-    <h3 id="Title">{{ book.title }}</h3>
-    <h3 id="Author">{{ book.author }}</h3>
-    <h3 id="Description">{{ book.description }}</h3>
+    <!-- Book Details Section -->
+    <section class="book-details-section">
+        <div class="rightAlign">
+            <div id="alertContainer" class="custom-alert"></div>
+            
+            <!-- Book Title -->
+            <header class="book-header">
+                <h1 id="Title" class="book-title">{{ book.title }}</h1>
+                <div class="title-decoration"></div>
+            </header>
 
-    <!-- change the status of the borrow button if the book is borrowed-->
-    {% if not book.is_borrowed %}
-    <form method="POST" class="borrow-form">
-        {% csrf_token %}
-        <button class="button-dark" id="borrow_button" data-book-id="{{ book.id }}"
-            {% if book.is_borrowed %}disabled class="button-light" style="pointer-events: none;"{% endif %}>
-            {% if book.is_borrowed %}Borrowed{% else %}Borrow Book{% endif %}
-        </button>
-    </form>
-    {% else %}
-        <button class="button-light" disabled>Borrowed</button>
-    {% endif %}
-</div>
+            <!-- Book Author -->
+            <div class="author-section">
+                <h2 id="Author" class="book-author">{{ book.author }}</h2>
+            </div>
+
+            <!-- Book Description -->
+            <article class="description-section">
+                <h3 class="description-label">About this book</h3>
+                <p id="Description" class="book-description">{{ book.description }}</p>
+            </article>
+
+            <!-- Action Section -->
+            <div class="action-section">
+                {% if not book.is_borrowed %}
+                <form method="POST" class="borrow-form">
+                    {% csrf_token %}
+                    <button class="borrow-button" id="borrow_button" data-book-id="{{ book.id }}"
+                        {% if book.is_borrowed %}disabled{% endif %}>
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <span>{% if book.is_borrowed %}Already Borrowed{% else %}Borrow This Book{% endif %}</span>
+                    </button>
+                </form>
+                {% else %}
+                    <div class="borrowed-status">
+                        <i class="fas fa-check-circle"></i>
+                        <span>This book is currently borrowed</span>
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Additional Info -->
+            <footer class="book-footer">
+                <div class="book-meta">
+                    <div class="meta-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Added to library</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-eye"></i>
+                        <span>Available for borrowing</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </section>
+</main>
 
 <!-- Confirmation Popup -->
 <div id="confirmPopup" class="popup-overlay hidden">
     <div class="popup-box">
-        <p id="confirmMessage">Are you sure you want to borrow?</p>
+        <div class="popup-header">
+            <i class="fas fa-question-circle"></i>
+            <h3>Confirm Borrow</h3>
+        </div>
+        <p id="confirmMessage">Are you sure you want to borrow "{{ book.title }}"?</p>
         <div class="popup-buttons">
-            <button id="confirmCancel">Cancel</button>
-            <button id="confirmYes">Yes</button>
+            <button id="confirmCancel" class="cancel-btn">
+                <i class="fas fa-times"></i>
+                Cancel
+            </button>
+            <button id="confirmYes" class="confirm-btn">
+                <i class="fas fa-check"></i>
+                Yes, Borrow
+            </button>
         </div>
     </div>
-
 </div>
-
 
 <!-- Alert and popup scripts -->
 <script src="{% static 'js/alert.js' %}"></script>
 <script src="{% static 'js/popBox.js' %}"></script>
+
+<!-- Enhanced JavaScript for animations -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add scroll reveal animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
+        });
+    }, observerOptions);
+
+    // Observe elements for scroll animations
+    document.querySelectorAll('.book-header, .author-section, .description-section, .action-section').forEach(el => {
+        el.classList.add('scroll-reveal');
+        observer.observe(el);
+    });
+
+    // Add hover effects to book image
+    const bookImage = document.querySelector('.imgSize');
+    if (bookImage) {
+        bookImage.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-15px) scale(1.03)';
+        });
+        
+        bookImage.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    }
+
+    // Enhanced button interactions
+    const borrowButton = document.querySelector('.borrow-button');
+    if (borrowButton) {
+        borrowButton.addEventListener('click', function(e) {
+            if (!this.disabled) {
+                this.classList.add('loading');
+                setTimeout(() => {
+                    this.classList.remove('loading');
+                }, 2000);
+            }
+        });
+    }
+});
+</script>
 
 </body>
 </html>
