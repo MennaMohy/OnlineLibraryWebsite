@@ -14,6 +14,7 @@
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/Search.js' %}"></script>
     <script src="{% static 'js/darkMode.js' %}"></script>
+    <script src="{% static 'js/favorites.js' %}"></script>
 
     <div id="navbar" class="side_Nav"></div>
     <script>
@@ -56,36 +57,48 @@
     <div class="books-row" style="top: 100px;">
         <!-- Hardcoded recommended books with dynamic URLs -->
         <div class="book-card-small">
-            <a href="{% url 'book_detail' 15 %}">
-                <img src="/media/books_images/it ends.jpg" alt="It Ends With Us">
-            </a>
+            <div class="book-cover-container">
+                <a href="{% url 'book_detail' 15 %}">
+                    <img src="/media/books_images/it ends.jpg" alt="It Ends With Us">
+                </a>
+                <i class="fas fa-heart favorite-heart" data-book-id="15"></i>
+            </div>
             <div class="book-title">It Ends With Us</div>
             <div class="book-author">Colleen Hoover</div>
             <div class="rating">★★★★☆</div>
         </div>
 
         <div class="book-card-small">
-            <a href="{% url 'book_detail' 41 %}">
-                <img src="/media/books_images/tale_of_two_cities.jpg" alt="A Tale of Two Cities">
-            </a>
+            <div class="book-cover-container">
+                <a href="{% url 'book_detail' 41 %}">
+                    <img src="/media/books_images/tale_of_two_cities.jpg" alt="A Tale of Two Cities">
+                </a>
+                <i class="fas fa-heart favorite-heart" data-book-id="41"></i>
+            </div>
             <div class="book-title">A Tale of Two Cities</div>
             <div class="book-author">Charles Dickens</div>
             <div class="rating">★★★★☆</div>
         </div>
 
         <div class="book-card-small">
-            <a href="{% url 'book_detail' 5 %}">
-                <img src="/media/books_images/MaybeSomeday.jpg" alt="Maybe Someday">
-            </a>
+            <div class="book-cover-container">
+                <a href="{% url 'book_detail' 5 %}">
+                    <img src="/media/books_images/MaybeSomeday.jpg" alt="Maybe Someday">
+                </a>
+                <i class="fas fa-heart favorite-heart" data-book-id="5"></i>
+            </div>
             <div class="book-title">Maybe Someday</div>
             <div class="book-author">Colleen Hoover</div>
             <div class="rating">★★★★★</div>
         </div>
 
         <div class="book-card-small">
-            <a href="{% url 'book_detail' 6 %}">
-                <img src="/media/books_images/practice-makes-perfect.jpg" alt="Practice Makes Perfect">
-            </a>
+            <div class="book-cover-container">
+                <a href="{% url 'book_detail' 6 %}">
+                    <img src="/media/books_images/practice-makes-perfect.jpg" alt="Practice Makes Perfect">
+                </a>
+                <i class="fas fa-heart favorite-heart" data-book-id="6"></i>
+            </div>
             <div class="book-title">Practice Makes Perfect</div>
             <div class="book-author">Sarah Adams</div>
             <div class="rating">★★★☆☆</div>
@@ -102,9 +115,12 @@
     <div class="book-results-container">
         {% for book in books %}
         <div class="book-result">
-            <a href="{% url 'book_detail' book.id %}">
-                <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-cover">
-            </a>
+            <div class="book-cover-container">
+                <a href="{% url 'book_detail' book.id %}">
+                    <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-cover">
+                </a>
+                <i class="fas fa-heart favorite-heart" data-book-id="{{ book.id }}"></i>
+            </div>
             <div class="book-info">
                 <p><strong>Title:</strong> {{ book.title }}</p>
                 <p><strong>Author:</strong> {{ book.author }}</p>

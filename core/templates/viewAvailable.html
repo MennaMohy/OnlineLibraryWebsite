@@ -12,6 +12,7 @@
     <link rel="icon" href="../static/images/icon.png">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/darkMode.js' %}"></script>
+    <script src="{% static 'js/favorites.js' %}"></script>
 </head>
 <body>
     <!-- Dark Mode Toggle Button -->
@@ -38,9 +39,12 @@
         {% if books %}
             {% for book in books %}
                 <div class="book-result">
-                    <a href="{% url 'book_detail' book.id %}">
-                        <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-cover">
-                    </a>
+                    <div class="book-cover-container">
+                        <a href="{% url 'book_detail' book.id %}">
+                            <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-cover">
+                        </a>
+                        <i class="fas fa-heart favorite-heart" data-book-id="{{ book.id }}"></i>
+                    </div>
                     <div class="book-info">
                         <p><strong>Title:</strong> {{ book.title }}</p>
                         <p><strong>Author:</strong> {{ book.author }}</p>

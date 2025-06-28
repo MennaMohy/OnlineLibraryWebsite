@@ -32,10 +32,8 @@
     margin-bottom: 0;
 }
 .imgSize{
-    width: 45%;
+    width: 100%;
     height: auto;
-    margin-left: 20%;
-    margin-bottom: 50px;
     border-radius: 15px;
     box-shadow: 0 15px 50px rgba(150, 79, 29, 0.5), 0 5px 20px rgba(150, 79, 29, 0.3);
 }
@@ -114,7 +112,7 @@
     right: 20px;
     font-size: 2em;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: color 0.1s ease;
     z-index: 10;
     color: #ccc;
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
@@ -122,28 +120,19 @@
 
 .favorite-heart:hover {
     transform: scale(1.2);
-    color: #ff6b6b;
-}
-
-.favorite-heart.favorited {
     color: #ff4757;
-    animation: heartShimmer 2s infinite;
 }
 
-@keyframes heartShimmer {
-    0% {
-        text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
-    }
-    50% {
-        text-shadow: 0 0 20px rgba(255, 71, 87, 0.8), 0 0 30px rgba(255, 71, 87, 0.6);
-    }
-    100% {
-        text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
-    }
+.favorite-heart.clicked {
+    color: #ff4757 !important;
+    transform: scale(1.1);
 }
 
 /* Container for book cover with heart */
 .book-cover-container {
     position: relative;
     display: inline-block;
+    width: 45%;
+    margin-left: 20%;
+    margin-bottom: 50px;
 }

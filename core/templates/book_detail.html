@@ -20,6 +20,7 @@
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/borrow_book.js' %}" defer></script>
     <script src="{% static 'js/darkMode.js' %}"></script>
+    <script src="{% static 'js/favorites.js' %}"></script>
 </head>
 
 <body class="bodySecond" data-book-title="{{ book.title }}">
@@ -78,61 +79,6 @@
 <!-- Alert and popup scripts -->
 <script src="{% static 'js/alert.js' %}"></script>
 <script src="{% static 'js/popBox.js' %}"></script>
-
-<script>
-// Favorite functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const heartIcon = document.getElementById('favoriteHeart');
-    const bookId = heartIcon.getAttribute('data-book-id');
-    
-    // Check initial favorite status
-    checkFavoriteStatus();
-    
-    // Add click event listener
-    heartIcon.addEventListener('click', function() {
-        toggleFavorite();
-    });
-    
-    function checkFavoriteStatus() {
-        fetch(`/favorite-status/${bookId}/`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.is_favorite) {
-                    heartIcon.classList.add('favorited');
-                } else {
-                    heartIcon.classList.remove('favorited');
-                }
-            })
-            .catch(error => console.error('Error checking favorite status:', error));
-    }
-    
-    function toggleFavorite() {
-        fetch(`/toggle-favorite/${bookId}/`, {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
-                'Content-Type': 'application/json',
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'favorited') {
-                heartIcon.classList.add('favorited');
-                showAlert('Book added to favorites!', 'success');
-            } else if (data.status === 'unfavorited') {
-                heartIcon.classList.remove('favorited');
-                showAlert('Book removed from favorites!', 'info');
-            } else if (data.error) {
-                showAlert(data.error, 'error');
-            }
-        })
-        .catch(error => {
-            console.error('Error toggling favorite:', error);
-            showAlert('Error updating favorite status', 'error');
-        });
-    }
-});
-</script>
 
 </body>
 </html>

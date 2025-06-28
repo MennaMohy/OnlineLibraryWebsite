@@ -17,6 +17,7 @@
     <!-- Scripts -->
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/darkMode.js' %}"></script>
+    <script src="{% static 'js/favorites.js' %}"></script>
 </head>
 <body>
     <!-- Dark Mode Toggle Button -->
@@ -56,6 +57,38 @@
             {% endfor %}
     </div>
 </div>
+
+<!-- Favorite Books Section -->
+<div class="favorite-books-section">
+    <div class="results-header">
+        <h1>Your Favorite Books</h1>
+    </div>
+    <div class="favorite-books-container">
+        <div class="favorite-books-scroll">
+            <!-- Dynamic favorite books will be loaded here -->
+            {% if favorite_books %}
+                {% for book in favorite_books %}
+                <div class="favorite-book-card">
+                    <div class="book-cover-container">
+                        <a href="{% url 'book_detail' book.id %}">
+                            <img src="{{ book.image.url }}" alt="{{ book.title }}">
+                        </a>
+                        <i class="fas fa-heart favorite-heart clicked" data-book-id="{{ book.id }}"></i>
+                    </div>
+                    <div class="book-title">{{ book.title }}</div>
+                    <div class="book-author">{{ book.author }}</div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="no-favorites">
+                    <p>You haven't added any books to your favorites yet.</p>
+                    <p>Click the heart icon on any book to add it to your favorites!</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
     <div id="confirmPopup" class="popup-overlay hidden">
         <div class="popup-box">
             <p id="confirmMessage">Are you sure you want to borrow?</p>

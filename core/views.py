@@ -21,8 +21,12 @@ def admin_homepage(request):
     return render(request, 'Admin_Homepage.html', {'user_role': user_role})
 
 def user_homepage(request):
+    books = Book.objects.all()
     user_role = request.session.get('role')
-    return render(request, 'UserHomePage.html', { 'user_role': user_role})
+    return render(request, 'UserHomePage.html', {
+        'books': books,
+        'user_role': user_role
+    })
 
 def signin_view(request):
     return render(request, 'SignIn.html')
@@ -204,16 +208,16 @@ def delete_book(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     book.delete()
     return redirect('manage_books')
+
 # display book details when the user presses on a specific book
 def book_detail(request, book_id):
     # Get the book from the database by its ID
     book = get_object_or_404(Book, id=book_id)
-    return render(request, 'book_detail.html', {'book': book})
-
-# user goes to homepage
-def user_homepage(request):
-    books = Book.objects.all()
-    return render(request, 'UserHomePage.html', {'books': books})
+    user_role = request.session.get('role')
+    return render(request, 'book_detail.html', {
+        'book': book,
+        'user_role': user_role
+    })
 
 @csrf_exempt
 def borrow_book(request, book_id):
@@ -242,9 +246,17 @@ def borrowed_books(request):
         return redirect('signin')
 
     borrowed_books = Book.objects.filter(is_borrowed=True, borrowed_by=email)
+    
+    # Get user's favorite books
+    try:
+        user = User.objects.get(email=email)
+        favorite_books = Book.objects.filter(favorite__user=user)
+    except User.DoesNotExist:
+        favorite_books = []
 
     return render(request, 'viewBorrowed.html', {
-        'borrowed_books': borrowed_books
+        'borrowed_books': borrowed_books,
+        'favorite_books': favorite_books
     })
 
 # view available books that aren't borrowed
