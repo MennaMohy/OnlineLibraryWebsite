@@ -38,7 +38,10 @@
 
 <!-- Book Image -->
 <div class="container">
-    <img src="{{ book.image.url }}" alt="Book Cover" class="imgSize">
+    <div class="book-cover-container">
+        <img src="{{ book.image.url }}" alt="Book Cover" class="imgSize">
+        <i class="fas fa-heart favorite-heart" id="favoriteHeart" data-book-id="{{ book.id }}"></i>
+    </div>
 </div>
 
 <!-- Book Details -->
@@ -52,13 +55,12 @@
     {% if not book.is_borrowed %}
     <form method="POST" class="borrow-form">
         {% csrf_token %}
-        <button class="button-dark" id="borrow_button" data-book-id="{{ book.id }}"
-            {% if book.is_borrowed %}disabled class="button-light" style="pointer-events: none;"{% endif %}>
-            {% if book.is_borrowed %}Borrowed{% else %}Borrow Book{% endif %}
+        <button class="borrow-button" id="borrow_button" data-book-id="{{ book.id }}">
+            Borrow Book
         </button>
     </form>
     {% else %}
-        <button class="button-light" disabled>Borrowed</button>
+        <button class="borrowed-button" disabled>Borrowed</button>
     {% endif %}
 </div>
 
@@ -76,6 +78,61 @@
 <!-- Alert and popup scripts -->
 <script src="{% static 'js/alert.js' %}"></script>
 <script src="{% static 'js/popBox.js' %}"></script>
+
+<script>
+// Favorite functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const heartIcon = document.getElementById('favoriteHeart');
+    const bookId = heartIcon.getAttribute('data-book-id');
+    
+    // Check initial favorite status
+    checkFavoriteStatus();
+    
+    // Add click event listener
+    heartIcon.addEventListener('click', function() {
+        toggleFavorite();
+    });
+    
+    function checkFavoriteStatus() {
+        fetch(`/favorite-status/${bookId}/`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.is_favorite) {
+                    heartIcon.classList.add('favorited');
+                } else {
+                    heartIcon.classList.remove('favorited');
+                }
+            })
+            .catch(error => console.error('Error checking favorite status:', error));
+    }
+    
+    function toggleFavorite() {
+        fetch(`/toggle-favorite/${bookId}/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                'Content-Type': 'application/json',
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'favorited') {
+                heartIcon.classList.add('favorited');
+                showAlert('Book added to favorites!', 'success');
+            } else if (data.status === 'unfavorited') {
+                heartIcon.classList.remove('favorited');
+                showAlert('Book removed from favorites!', 'info');
+            } else if (data.error) {
+                showAlert(data.error, 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error toggling favorite:', error);
+            showAlert('Error updating favorite status', 'error');
+        });
+    }
+});
+</script>
 
 </body>
 </html>

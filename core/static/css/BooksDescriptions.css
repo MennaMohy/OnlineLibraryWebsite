@@ -1,10 +1,8 @@
 #Title {
-    font-size: 45px;
-    color: #f5f5dc;
+    font-size: 50px;
+    color: #96501DFF;
     font-weight: bold;
-    text-shadow:
-            -2px -2px 0 #96501DFF, 1px -1px 0 #96501DFF,
-            -1px  1px 0 #96501DFF, 2px  2px 0 #96501DFF;
+    font-family: Georgia, serif;
     text-align: left;
     margin-bottom: 2rem;
     margin-top: 0;
@@ -40,15 +38,10 @@
     margin-bottom: 50px;
     border-radius: 15px;
     box-shadow: 0 15px 50px rgba(150, 79, 29, 0.5), 0 5px 20px rgba(150, 79, 29, 0.3);
-    transition: all 0.3s ease;
 }
 
-.imgSize:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 70px rgba(150, 79, 29, 0.7), 0 10px 30px rgba(150, 79, 29, 0.5);
-}
-
-button{
+/* Borrow button (when book is available) */
+.borrow-button {
     display: block;
     margin-top: 1rem;
     padding: 15px 40px;
@@ -61,11 +54,10 @@ button{
     border-radius: 50px;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(150, 79, 29, 0.4);
     transition: all 0.3s ease;
 }
 
-button::before {
+.borrow-button::before {
     content: '';
     position: absolute;
     top: 0;
@@ -76,16 +68,82 @@ button::before {
     transition: left 0.8s;
 }
 
-button:hover {
+.borrow-button:hover {
     background: linear-gradient(135deg, #d2b48c 0%, #96501DFF 100%);
     transform: translateY(-2px);
-    box-shadow: 0 15px 40px rgba(150, 79, 29, 0.6);
 }
 
-button:hover::before {
+.borrow-button:hover::before {
     left: 100%;
 }
 
-button:active {
+.borrow-button:active {
     transform: translateY(0);
+}
+
+/* Borrowed button (when book is already borrowed) - no effects */
+.borrowed-button {
+    display: block;
+    margin-top: 1rem;
+    padding: 15px 40px;
+    background: #cccccc;
+    color: #666666;
+    border: none;
+    cursor: default;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 50px;
+    box-shadow: none;
+    transition: none;
+}
+
+.borrowed-button:hover {
+    background: #cccccc;
+    transform: none;
+    box-shadow: none;
+}
+
+.borrowed-button:active {
+    transform: none;
+}
+
+/* Favorite heart icon styles */
+.favorite-heart {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    color: #ccc;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.favorite-heart:hover {
+    transform: scale(1.2);
+    color: #ff6b6b;
+}
+
+.favorite-heart.favorited {
+    color: #ff4757;
+    animation: heartShimmer 2s infinite;
+}
+
+@keyframes heartShimmer {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 71, 87, 0.8), 0 0 30px rgba(255, 71, 87, 0.6);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+    }
+}
+
+/* Container for book cover with heart */
+.book-cover-container {
+    position: relative;
+    display: inline-block;
 }

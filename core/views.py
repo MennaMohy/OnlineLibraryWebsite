@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-from .models import User,Book
+from .models import User,Book,Favorite
 from django.contrib.auth.hashers import make_password
 from django.db.models import Q
 from django.contrib.auth.hashers import check_password
@@ -272,6 +272,54 @@ def user_home(request):
 
 # about us page in the navigation bar
 def about_us(request):
-    user_role = request.session.get('role')
-    return render(request, 'aboutUs.html', {'user_role': user_role})
+    return render(request, 'aboutUs.html')
+
+@csrf_exempt
+def toggle_favorite(request, book_id):
+    if request.method == 'POST':
+        try:
+            # Get user from session
+            user_email = request.session.get('email')
+            if not user_email:
+                return JsonResponse({"error": "User not logged in"}, status=401)
+            
+            user = User.objects.get(email=user_email)
+            book = Book.objects.get(id=book_id)
+            
+            # Check if already favorited
+            favorite, created = Favorite.objects.get_or_create(user=user, book=book)
+            
+            if not created:
+                # If it already exists, remove it (unfavorite)
+                favorite.delete()
+                return JsonResponse({"status": "unfavorited", "message": "Book removed from favorites"})
+            else:
+                # If it was created, it's now favorited
+                return JsonResponse({"status": "favorited", "message": "Book added to favorites"})
+                
+        except User.DoesNotExist:
+            return JsonResponse({"error": "User not found"}, status=404)
+        except Book.DoesNotExist:
+            return JsonResponse({"error": "Book not found"}, status=404)
+        except Exception as e:
+            return JsonResponse({"error": str(e)}, status=500)
+    
+    return JsonResponse({"error": "Invalid request method"}, status=405)
+
+def get_favorite_status(request, book_id):
+    try:
+        user_email = request.session.get('email')
+        if not user_email:
+            return JsonResponse({"is_favorite": False})
+        
+        user = User.objects.get(email=user_email)
+        book = Book.objects.get(id=book_id)
+        
+        is_favorite = Favorite.objects.filter(user=user, book=book).exists()
+        return JsonResponse({"is_favorite": is_favorite})
+        
+    except (User.DoesNotExist, Book.DoesNotExist):
+        return JsonResponse({"is_favorite": False})
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
 

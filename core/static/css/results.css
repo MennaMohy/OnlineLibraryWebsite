@@ -73,22 +73,11 @@
     box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
-/* Disable hover effects for borrowed books */
-.book-result:has(.unavailable):hover {
-    transform: none;
-    box-shadow: 0 3px 10px rgba(139, 69, 19, 0.1);
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.book-result:has(.unavailable):hover .book-cover {
-    transform: none;
-    filter: none;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.book-result:has(.unavailable) .book-cover {
-    cursor: default;
+.book-description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
 }
 
 .available {
@@ -99,12 +88,6 @@
 .unavailable {
     background: #ffebee;
     color: #c62828;
-}
-.book-description {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
 }
 
 
