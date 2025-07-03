@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-from .models import User,Book,Favorite
+from .models import User,Book,Favorite, Borrow
 from django.contrib.auth.hashers import make_password
 from django.db.models import Q
 from django.contrib.auth.hashers import check_password
@@ -32,9 +32,8 @@ def forgot_password_page(request):
 
 def manage_books(request):
     books = Book.objects.all()
-
     user_role = None
-
+    borrowed_users = {}
     if 'email' in request.session:
         try:
             user = User.objects.get(email=request.session['email'])
@@ -42,9 +41,15 @@ def manage_books(request):
         except User.DoesNotExist:
             pass  # Keep default 'guest' role if user not found
 
+    # For each book, get all users who have borrowed it and not returned
+    for book in books:
+        borrows = Borrow.objects.filter(book=book, returned=False)
+        borrowed_users[book.id] = [borrow.user for borrow in borrows]
+
     return render(request, 'Manage_books.html', {
         'books': books,
         'user_role': user_role,
+        'borrowed_users': borrowed_users,
     })
 
 def add_book(request):
@@ -224,13 +229,19 @@ def borrow_book(request, book_id):
             return JsonResponse({'success': False, 'message': 'User not logged in'}, status=401)
 
         book = get_object_or_404(Book, id=book_id)
+        user = User.objects.get(email=email)
 
-        if book.is_borrowed:
-            return JsonResponse({'success': False, 'message': 'Book is already borrowed'})
+        # Check if user has already borrowed this book
+        if Borrow.objects.filter(user=user, book=book, returned=False).exists():
+            return JsonResponse({'success': False, 'message': 'You have already borrowed this book'})
 
-        book.is_borrowed = True
-        book.borrowed_by = email
-        book.save()
+        # Check if book quantity is available
+        borrowed_count = Borrow.objects.filter(book=book, returned=False).count()
+        if borrowed_count >= book.quantity:
+            return JsonResponse({'success': False, 'message': 'No copies available'})
+
+        # Create borrow record
+        Borrow.objects.create(user=user, book=book)
 
         return JsonResponse({'success': True})
     else:
@@ -241,11 +252,13 @@ def borrowed_books(request):
     if not email:
         return redirect('signin')
 
-    borrowed_books = Book.objects.filter(is_borrowed=True, borrowed_by=email)
+    user = User.objects.get(email=email)
+    # Get books borrowed by this user (not returned)
+    borrowed_records = Borrow.objects.filter(user=user, returned=False)
+    borrowed_books = [record.book for record in borrowed_records]
 
     # Get user's favorite books
     try:
-        user = User.objects.get(email=email)
         favorite_books = Book.objects.filter(favorite__user=user)
     except User.DoesNotExist:
         favorite_books = []
@@ -257,11 +270,17 @@ def borrowed_books(request):
 
 # view available books that aren't borrowed
 def available_books(request):
-    # Fetch books that are available
-    books = Book.objects.filter(is_borrowed=False)
+    # Fetch books that have available quantity
+    books = Book.objects.all()
+    available_books = []
+    for book in books:
+        borrowed_count = Borrow.objects.filter(book=book, returned=False).count()
+        if borrowed_count < book.quantity:
+            available_books.append(book)
+    
     user_role = request.session.get('role')
     return render(request, 'viewAvailable.html', {
-        'books': books,
+        'books': available_books,
         'user_role': user_role
     })
 

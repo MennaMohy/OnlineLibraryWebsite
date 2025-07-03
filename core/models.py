@@ -21,8 +21,7 @@ class Book(models.Model):
     category = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(upload_to='books_images/', default='default.jpg')
-    is_borrowed = models.BooleanField(default=False)
-    borrowed_by = models.CharField(max_length=100, blank=True, null=True)
+    quantity = models.PositiveIntegerField(default=1)  # type: ignore
 
     def __str__(self):
         return self.title
@@ -36,4 +35,19 @@ class Favorite(models.Model):
         unique_together = ('user', 'book')
 
     def __str__(self):
-        return f"{self.user.email} - {self.book.title}"
+        return f"{self.user.name} - {self.book.title}"
+
+class Borrow(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    borrowed_at = models.DateTimeField(auto_now_add=True)
+    returned = models.BooleanField(default=False)
+
+    class Meta:
+        unique_together = ('user', 'book', 'returned')
+
+    def __str__(self):
+        return f"{self.user.name} borrowed {self.book.title} at {self.borrowed_at}"
+    
+    
+     # dummy change to force migration

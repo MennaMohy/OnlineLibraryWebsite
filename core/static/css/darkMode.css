@@ -128,10 +128,11 @@ body.dark-mode .dark-mode-toggle i {
 body.dark-mode input[type="text"],
 body.dark-mode input[type="email"],
 body.dark-mode input[type="password"],
+body.dark-mode input[type="number"],
 body.dark-mode select,
 body.dark-mode textarea {
-    background-color: #e8d5b3 !important; /* Darker beige background */
-    color: #2d1a0f !important; /* Dark brown text for contrast */
+    background-color: #f5e6d3 !important; /* Light beige background */
+    color: #8b5a2b !important; /* Brown text */
     border: 1px solid #d4c4a8 !important; /* Medium beige border */
 }
 
@@ -145,6 +146,7 @@ body.dark-mode textarea::placeholder {
 body.dark-mode input[type="text"]:focus,
 body.dark-mode input[type="email"]:focus,
 body.dark-mode input[type="password"]:focus,
+body.dark-mode input[type="number"]:focus,
 body.dark-mode select:focus,
 body.dark-mode textarea:focus {
     border-color: #f5e6d3 !important; /* Light beige for focus */
