@@ -14,7 +14,6 @@
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/Search.js' %}"></script>
     <script src="{% static 'js/darkMode.js' %}"></script>
-    <script src="{% static 'js/favorites.js' %}"></script>
 
     <div id="navbar" class="side_Nav"></div>
     <script>
@@ -58,10 +57,10 @@
         <!-- Hardcoded recommended books with dynamic URLs -->
         <div class="book-card-small">
             <div class="book-cover-container">
-                <a href="{% url 'book_detail' 15 %}">
+                <a href="{% url 'book_detail' 6 %}">
                     <img src="/media/books_images/it ends.jpg" alt="It Ends With Us">
                 </a>
-                <i class="fas fa-heart favorite-heart" data-book-id="15"></i>
+                <i class="fas fa-heart favorite-heart" data-book-id="6"></i>
             </div>
             <div class="book-title">It Ends With Us</div>
             <div class="book-author">Colleen Hoover</div>
@@ -70,10 +69,10 @@
 
         <div class="book-card-small">
             <div class="book-cover-container">
-                <a href="{% url 'book_detail' 41 %}">
+                <a href="{% url 'book_detail' 7 %}">
                     <img src="/media/books_images/tale_of_two_cities.jpg" alt="A Tale of Two Cities">
                 </a>
-                <i class="fas fa-heart favorite-heart" data-book-id="41"></i>
+                <i class="fas fa-heart favorite-heart" data-book-id="7"></i>
             </div>
             <div class="book-title">A Tale of Two Cities</div>
             <div class="book-author">Charles Dickens</div>
@@ -82,10 +81,10 @@
 
         <div class="book-card-small">
             <div class="book-cover-container">
-                <a href="{% url 'book_detail' 5 %}">
+                <a href="{% url 'book_detail' 8 %}">
                     <img src="/media/books_images/MaybeSomeday.jpg" alt="Maybe Someday">
                 </a>
-                <i class="fas fa-heart favorite-heart" data-book-id="5"></i>
+                <i class="fas fa-heart favorite-heart" data-book-id="8"></i>
             </div>
             <div class="book-title">Maybe Someday</div>
             <div class="book-author">Colleen Hoover</div>
@@ -94,10 +93,10 @@
 
         <div class="book-card-small">
             <div class="book-cover-container">
-                <a href="{% url 'book_detail' 6 %}">
+                <a href="{% url 'book_detail' 9 %}">
                     <img src="/media/books_images/practice-makes-perfect.jpg" alt="Practice Makes Perfect">
                 </a>
-                <i class="fas fa-heart favorite-heart" data-book-id="6"></i>
+                <i class="fas fa-heart favorite-heart" data-book-id="9"></i>
             </div>
             <div class="book-title">Practice Makes Perfect</div>
             <div class="book-author">Sarah Adams</div>
@@ -152,5 +151,70 @@
         </div>
     </div>
     <script src="{% static 'js/popBox.js' %}"></script>
+    
+    <script>
+    // Heart icon click functionality for all hearts on the page
+    document.addEventListener('DOMContentLoaded', function() {
+        const heartIcons = document.querySelectorAll('.favorite-heart');
+        const heartsByBookId = {};
+        heartIcons.forEach(function(heartIcon) {
+            const bookId = heartIcon.getAttribute('data-book-id');
+            if (!heartsByBookId[bookId]) heartsByBookId[bookId] = [];
+            heartsByBookId[bookId].push(heartIcon);
+        });
+        // Fetch favorite status for each book
+        Object.keys(heartsByBookId).forEach(function(bookId) {
+            fetch(`/favorite-status/${bookId}/`)
+                .then(response => response.json())
+                .then(data => {
+                    heartsByBookId[bookId].forEach(function(icon) {
+                        if (data.is_favorite) {
+                            icon.classList.add('clicked');
+                            icon.style.color = '#ff4757';
+                        } else {
+                            icon.classList.remove('clicked');
+                            icon.style.color = '#ccc';
+                        }
+                    });
+                });
+        });
+        // Add click event to all hearts
+        heartIcons.forEach(function(heartIcon) {
+            const bookId = heartIcon.getAttribute('data-book-id');
+            heartIcon.addEventListener('click', function(event) {
+                fetch(`/toggle-favorite/${bookId}/`, {method: 'POST', headers: {'X-CSRFToken': getCSRFToken()}})
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Updating hearts for bookId:', bookId, heartsByBookId[bookId]);
+                        heartsByBookId[bookId].forEach(function(icon) {
+                            if (data.status === 'favorited') {
+                                icon.classList.add('clicked');
+                                icon.style.color = '#ff4757';
+                            } else {
+                                icon.classList.remove('clicked');
+                                icon.style.color = '#ccc';
+                            }
+                        });
+                    });
+                event.stopPropagation();
+            });
+        });
+    });
+    // Helper to get CSRF token from cookies
+    function getCSRFToken() {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, 10) === ('csrftoken=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(10));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+    </script>
 </body>
 </html>

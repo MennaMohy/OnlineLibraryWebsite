@@ -20,7 +20,6 @@
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/borrow_book.js' %}" defer></script>
     <script src="{% static 'js/darkMode.js' %}"></script>
-    <script src="{% static 'js/favorites.js' %}"></script>
 </head>
 
 <body class="bodySecond" data-book-title="{{ book.title }}">
@@ -79,6 +78,63 @@
 <!-- Alert and popup scripts -->
 <script src="{% static 'js/alert.js' %}"></script>
 <script src="{% static 'js/popBox.js' %}"></script>
+
+<script>
+// Heart icon click functionality
+// This will update all hearts for this book on the page (if any)
+document.addEventListener('DOMContentLoaded', function() {
+    const heartIcons = document.querySelectorAll('.favorite-heart[data-book-id]');
+    const bookId = heartIcons.length > 0 ? heartIcons[0].getAttribute('data-book-id') : null;
+    if (!bookId) return;
+    // Fetch favorite status for this book
+    fetch(`/favorite-status/${bookId}/`)
+        .then(response => response.json())
+        .then(data => {
+            heartIcons.forEach(function(icon) {
+                if (data.is_favorite) {
+                    icon.classList.add('clicked');
+                    icon.style.color = '#ff4757';
+                } else {
+                    icon.classList.remove('clicked');
+                    icon.style.color = '#ccc';
+                }
+            });
+        });
+    heartIcons.forEach(function(heartIcon) {
+        heartIcon.addEventListener('click', function(event) {
+            fetch(`/toggle-favorite/${bookId}/`, {method: 'POST', headers: {'X-CSRFToken': getCSRFToken()}})
+                .then(response => response.json())
+                .then(data => {
+                    heartIcons.forEach(function(icon) {
+                        if (data.status === 'favorited') {
+                            icon.classList.add('clicked');
+                            icon.style.color = '#ff4757';
+                        } else {
+                            icon.classList.remove('clicked');
+                            icon.style.color = '#ccc';
+                        }
+                    });
+                });
+            event.stopPropagation();
+        });
+    });
+});
+// Helper to get CSRF token from cookies
+function getCSRFToken() {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, 10) === ('csrftoken=')) {
+                cookieValue = decodeURIComponent(cookie.substring(10));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+</script>
 
 </body>
 </html>

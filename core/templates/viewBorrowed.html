@@ -17,15 +17,12 @@
     <!-- Scripts -->
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
     <script src="{% static 'js/darkMode.js' %}"></script>
-    <script src="{% static 'js/favorites.js' %}"></script>
 </head>
 <body>
     <!-- Dark Mode Toggle Button -->
     <button class="dark-mode-toggle" title="Switch to Dark Mode">
         <i class="fas fa-moon"></i>
     </button>
-
-
 
 <!-- Navigation Bar -->
 <div id="navbar" class="side_Nav"></div>
@@ -34,56 +31,53 @@
     </script>
     <script src="{% static 'js/navigation.js' %}"></script>
 
-<!-- Borrowed Books Container -->
-<div id="box">
-    <div class="results-header">
-        <h1>Your Borrowed Books</h1>
-    </div>
-    <div class="book-results-container" id="bookResults">
-            {% for book in borrowed_books %}
-                <div class="book-result">
-                    <a href="{% url 'book_detail' book.id %}">
-                        <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-cover">
-                    </a>
-                    <div class="book-info">
-                        <p><strong>Title:</strong> {{ book.title }}</p>
-                        <p><strong>Author:</strong> {{ book.author }}</p>
-                        <p><strong>Category:</strong> {{ book.category }}</p>
-                        <p class="book-description"><strong>Description:</strong> {{ book.description }}</p>
+<!-- Main vertical container for borrowed and favorite books -->
+<div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+    <!-- Borrowed Books Container -->
+    <div id="box">
+        <div class="results-header">
+            <h1>Your Borrowed Books</h1>
+        </div>
+        {% if borrowed_books|length > 1 %}
+        <div class="book-row-scroll" id="bookResults">
+        {% else %}
+        <div class="book-row-static" id="bookResults">
+        {% endif %}
+                {% for book in borrowed_books %}
+                    <div class="book-card-advanced">
+                        <a href="{% url 'book_detail' book.id %}">
+                            <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-cover">
+                        </a>
                     </div>
-                </div>
-            {% empty %}
-                <p>You have not borrowed any books yet.</p>
-            {% endfor %}
+                {% empty %}
+                    <p>You have not borrowed any books yet.</p>
+                {% endfor %}
+        </div>
     </div>
-</div>
 
-<!-- Favorite Books Section -->
-<div class="favorite-books-section">
-    <div class="results-header">
-        <h1>Your Favorite Books</h1>
-    </div>
-    <div class="favorite-books-container">
-        <div class="favorite-books-scroll">
-            <!-- Dynamic favorite books will be loaded here -->
+    <!-- Favorite Books Section -->
+    <div id="box" class="favorite-books-section">
+        <div class="results-header">
+            <h1>Your Favorite Books</h1>
+        </div>
+        {% if favorite_books|length > 1 %}
+        <div class="book-row-scroll" id="favoriteBooksResults">
+        {% else %}
+        <div class="book-row-static" id="favoriteBooksResults">
+        {% endif %}
             {% if favorite_books %}
                 {% for book in favorite_books %}
-                <div class="favorite-book-card">
-                    <div class="book-cover-container">
-                        <a href="{% url 'book_detail' book.id %}">
-                            <img src="{{ book.image.url }}" alt="{{ book.title }}">
-                        </a>
-                        <i class="fas fa-heart favorite-heart clicked" data-book-id="{{ book.id }}"></i>
+                    <div class="book-card-advanced">
+                        <div class="book-cover-container">
+                            <a href="{% url 'book_detail' book.id %}">
+                                <img src="{{ book.image.url }}" alt="{{ book.title }}" class="book-cover">
+                            </a>
+                            <i class="fas fa-heart favorite-heart clicked" data-book-id="{{ book.id }}" style="color: #ff4757;"></i>
+                        </div>
                     </div>
-                    <div class="book-title">{{ book.title }}</div>
-                    <div class="book-author">{{ book.author }}</div>
-                </div>
                 {% endfor %}
             {% else %}
-                <div class="no-favorites">
-                    <p>You haven't added any books to your favorites yet.</p>
-                    <p>Click the heart icon on any book to add it to your favorites!</p>
-                </div>
+                <p>You have no favorite books yet.</p>
             {% endif %}
         </div>
     </div>
@@ -99,6 +93,7 @@
         </div>
     </div>
     <script src="{% static 'js/popBox.js' %}"></script>
+    <script src="{% static 'js/borrowedCarousel.js' %}"></script>
 
 </body>
 </html>

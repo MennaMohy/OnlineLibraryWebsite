@@ -53,6 +53,6 @@ urlpatterns = [
 
     # Favorite functionality
     path('toggle-favorite/<int:book_id>/', views.toggle_favorite, name='toggle_favorite'),
-    path('get-favorite-status/<int:book_id>/', views.get_favorite_status, name='get_favorite_status'),
+    path('favorite-status/<int:book_id>/', views.get_favorite_status, name='get_favorite_status'),
 
 ]
