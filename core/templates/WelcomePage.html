@@ -5,27 +5,75 @@
     <title>LINDLY</title>
     <link rel="stylesheet" href="../static/css/Common.css?v=1.1">
     <link rel="stylesheet" href="../static/css/Buttons.css?v=1.1">
+    <link rel="stylesheet" href="../static/css/WelcomePage.css">
     <link rel="icon" href="../static/images/icon.png">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="bodySecond">
-
-    <div class="container">
-        <img src="../static/images/lindly.png" alt = "logo" class = "logo">
-        <h2>Welcome!</h2>
-        <h3>Discover a world of books, from classics to bestsellers. <br>Read, explore, and enjoy anytime, anywhere!</h3>
-        <br>
-        <input type="submit" class="button-dark" value="Sign Up" onclick="window.location.href = '/signup/'">
-        <input type="submit" class="button-dark" value="Sign In" onclick="window.location.href = '/signin/'">
-        <div class="quote">
-            <i class="fas fa-quote-left"></i>
-            <p>A reader lives a thousand lives before he dies.</p>
-            <p class="author">- George R.R. Martin</p>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-left">
+            <div class="logo-container" style="align-self: center;">
+                <img src="../static/images/lindly.png" alt="logo" class="logo animated-logo">
+            </div>
+            <h1 class="hero-title">Welcome to LINDLY</h1>
+            <p class="hero-subtitle">Discover a world of books, from classics to bestsellers. Read, explore, and enjoy anytime, anywhere!</p>
+            <div class="cta-buttons">
+                <button class="cta-button primary" onclick="window.location.href = '/signup/'">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </button>
+                <button class="cta-button secondary" onclick="window.location.href = '/signin/'">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Sign In
+                </button>
+            </div>
+            <div class="hero-quote-section" style="align-self: center; text-align:center; margin: 2.2rem 0 0 0;">
+                <span class="quote-text" style="display:block; font-size:0.95rem; color:#96501D; font-style:italic;">A reader lives a thousand lives before he dies.</span>
+                <span class="quote-author" style="display:block; font-size:0.85rem; color:#8b5a2b; font-weight:bold; margin-top:0.2rem;">- George R.R. Martin</span>
+            </div>
+        </div>
+        <div class="hero-right">
+            <img src="/static/images/bookswbg.png" alt="books" class="books-image">
         </div>
     </div>
 
-    <img src="../static/images/bookswbg.png" class="imgAlign">
+    <!-- Features Section -->
+    <div class="features-section">
+        <h2 class="section-title">Why LINDLY?</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>Extensive Library</h3>
+                <p>Browse through thousands of books across all genres</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3>24/7 Access</h3>
+                <p>Access your borrowed books anytime, anywhere</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Personalized</h3>
+                <p>Get recommendations based on your reading preferences</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Secure & Private</h3>
+                <p>Your data and reading history are always protected.</p>
+            </div>
+        </div>
+    </div>
 
+    <script src="../static/js/WelcomePage.js"></script>
 </body>
 </html>

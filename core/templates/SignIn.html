@@ -3,7 +3,7 @@
 {% load static %}
 <head>
     <meta charset="UTF-8">
-    <title>Sign In</title>
+    <title>Welcome Back</title>
     <link rel="stylesheet" href="{% static 'css/alert.css' %}">
     <link rel="stylesheet" href="{% static 'css/Common.css' %}">
     <link rel="stylesheet" href="{% static 'css/Buttons.css' %}">
@@ -11,48 +11,115 @@
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
 
     <style>
-        a {
-            color: rgba(245, 245, 220, 0.9);
-            text-align: left;
-            font-size: 15px;
-            letter-spacing: 1px;
-            font-weight: lighter;
-            margin-bottom: 0;
-            text-decoration: none;
-            display: inline-block;
-            cursor: pointer;
+        .password-wrapper {
+            position: relative;
+            width: 100%;
         }
-
-        a:hover {
-            text-decoration: underline;
+        .toggle-password {
+            position: absolute;
+            top: 50%;
+            right: 12px;
+            transform: translateY(-50%);
             cursor: pointer;
+            color: #96501D;
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 1.5rem auto;
+            width: 120px;
+            height: 120px;
+        }
+        .signin-title {
+            color: #f5f5dc;
+            font-size: 2.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        .signin-subtitle {
+            color: rgba(245, 245, 220, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 2.2rem;
+            font-style: italic;
+            text-align: center;
+        }
+        .forgot-link {
+            display: block;
+            text-align: right;
+            margin-bottom: 1.2rem;
+            color: #f5f5dc;
+            font-size: 0.98rem;
+            text-decoration: none;
+        }
+        .forgot-link:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+        .signin-footer {
+            margin-top: 2.2rem;
+            color: #f5f5dc;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .signin-footer a {
+            color: bisque;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .signin-footer a:hover {
+            text-decoration: underline;
+            color: #fff;
         }
     </style>
 
 </head>
 <body class="SignIn">
     <div id="box">
-        <h1>Sign In</h1><br>
-
+        <img src="{% static 'images/lindly.png' %}" alt="Lindly Logo" class="logo">
+        <div class="signin-title">Welcome Back</div>
+        <div class="signin-subtitle">Sign in to continue your reading journey with Lindly!</div>
         <div id="alertContainer" class="custom-alert"></div>
-
-        <form id="signinForm">
+        <form id="signinForm" class="signin-form">
             {% csrf_token %}
-
             <p>Email</p>
             <label>
                 <input type="text" id="savedEmail" placeholder="xxxx@gmail.com" required>
             </label>
             <p>Password</p>
             <label>
-                <input type="password" id="savedPass" placeholder="xxxxxxxx" required>
+                <div class="password-wrapper">
+                    <input type="password" id="savedPass" placeholder="********" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility()">
+                        <i class="fas fa-eye" id="eyeIcon"></i>
+                    </span>
+                </div>
             </label>
-            <h6><a href="/forgot-password/" id="ForgotPass"> Forgot Password?</a></h6>
-            <br>
+            <a href="/forgot-password/" class="forgot-link" id="ForgotPass">Forgot Password?</a>
             <input type="submit" class="button-light" value="Sign In">
+            <div class="signin-footer">
+                Don't have an account? <a href="/signup/">Sign Up</a>
+            </div>
         </form>
     </div>
 
+    <script>
+    function togglePasswordVisibility() {
+        const passInput = document.getElementById('savedPass');
+        const eyeIcon = document.getElementById('eyeIcon');
+        if (passInput.type === 'password') {
+            passInput.type = 'text';
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash');
+        } else {
+            passInput.type = 'password';
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye');
+        }
+    }
+    </script>
     <script src="{% static 'js/alert.js' %}"></script>
     <script src="{% static 'js/Sign.js' %}"></script>
 

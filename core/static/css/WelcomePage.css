@@ -1,0 +1,425 @@
+/* Welcome Page Advanced Styles */
+
+/* Hero Section */
+.hero-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+    background: #f5e6d3;
+    overflow: hidden;
+}
+
+.hero-left {
+    flex: 1 1 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 7vw;
+    min-width: 350px;
+    max-width: 650px;
+    height: 100%;
+}
+
+.hero-right {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    min-width: 350px;
+}
+
+.books-image {
+    width: 95%;
+    max-width: 700px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin-right: 0;
+    margin-left: auto;
+    box-shadow: none;
+}
+
+.hero-content, .behind-books, .in-front-books, .hero-overlay {
+    display: none !important;
+}
+
+.hero-title, .hero-quote-section, .hero-subtitle, .cta-buttons {
+    text-align: left;
+    align-items: flex-start;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    color: #96501D;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.18);
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: #8b5a2b;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    animation: slideInUp 1s ease-out 0.6s both;
+}
+
+.cta-buttons {
+    display: flex;
+    flex-direction: row !important;
+    gap: 1.7rem;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    animation: fadeIn 1s ease-out 0.9s both;
+    margin-top: 2.2rem;
+}
+
+.cta-button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: Georgia, serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(150, 79, 29, 0.3);
+    min-width: 350px;
+    justify-content: center;
+}
+
+.cta-button.primary {
+    background: linear-gradient(135deg, #96501D, #8b5a2b);
+    color: #f5e6d3;
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: #96501D;
+    border: 2px solid #96501D;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(150, 79, 29, 0.4);
+}
+
+.cta-button.primary:hover {
+    background: linear-gradient(135deg, #8b5a2b, #96501D);
+}
+
+.cta-button.secondary:hover {
+    background: #96501D;
+    color: #f5e6d3;
+}
+
+/* Features Section */
+.features-section {
+    width: 100vw;
+    max-width: 100vw;
+    box-sizing: border-box;
+    padding: 4rem 2rem 2rem 2rem;
+    background: rgba(245, 230, 211, 0.5);
+    text-align: center;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    color: #96501D;
+    margin-bottom: 3rem;
+    text-shadow: 1px 1px 2px rgba(90, 57, 33, 0.3);
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.features-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(150, 79, 29, 0.15);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(150, 79, 29, 0.1);
+    width: 250px;
+    height: 350px;
+    min-height: 350px;
+    max-height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    box-sizing: border-box;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(150, 79, 29, 0.25);
+    background: rgba(255, 255, 255, 1);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #96501D, #8b5a2b);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: #f5e6d3;
+    font-size: 2rem;
+    box-shadow: 0 5px 15px rgba(150, 79, 29, 0.3);
+}
+
+.feature-card h3 {
+    color: #96501D;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.feature-card p {
+    color: #8b5a2b;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Quote Carousel */
+.quote-section {
+    padding: 4rem 2rem;
+    background: rgba(150, 79, 29, 0.05);
+    text-align: center;
+}
+
+.quote-carousel {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 200px;
+}
+
+.quote-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    transform: translateY(20px);
+}
+
+.quote-slide.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.quote-icon {
+    font-size: 3rem;
+    color: rgba(150, 79, 29, 0.3);
+    margin-bottom: 1rem;
+}
+
+.quote-text {
+    font-size: 1.5rem;
+    color: #96501D;
+    font-style: italic;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.quote-author {
+    font-size: 1.1rem;
+    color: #8b5a2b;
+    font-weight: 600;
+}
+
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+    .feature-card {
+        width: 220px;
+        min-height: 320px;
+    }
+}
+
+@media (max-width: 900px) {
+    .hero-section {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+    .hero-left, .hero-right {
+        min-width: 0;
+        max-width: 100vw;
+        width: 100vw;
+        padding-left: 0;
+        align-items: center;
+        justify-content: center;
+    }
+    .books-image {
+        width: 90vw;
+        max-width: 95vw;
+        margin: 0 auto;
+    }
+    .hero-title, .hero-quote-section, .hero-subtitle, .cta-buttons {
+        text-align: center;
+        align-items: center;
+    }
+    .cta-buttons {
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: center;
+    }
+    .cta-button {
+        min-width: 180px;
+    }
+    .features-section {
+        min-height: 80vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .cta-buttons {
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .cta-button {
+        width: 250px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .quote-text {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 1rem;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .animated-logo {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .features-section,
+    .quote-section {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Background image positioning */
+.imgAlign {
+    display: none;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.hero-quote-section {
+    margin-top: 2.2rem;
+    margin-bottom: 0;
+    text-align: center;
+    align-self: center;
+}
+
+.small-quote-carousel {
+    max-width: 320px;
+    margin: 0 auto;
+    min-height: 60px;
+    background: none !important;
+    box-shadow: none !important;
+    padding: 0;
+}
+
+.hero-quote-section .quote-icon {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+}
+
+.hero-quote-section .quote-text {
+    font-size: 0.92rem;
+    margin-bottom: 0.2rem;
+}
+
+.hero-quote-section .quote-author {
+    font-size: 0.8rem;
+    margin-bottom: 0.2rem;
+}
+
+.hero-quote-section .carousel-dots {
+    margin-top: 0.2rem;
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.animated-logo {
+    width: 180px;
+    height: 180px;
+    animation: float 3s ease-in-out infinite;
+    filter: drop-shadow(0 10px 20px rgba(150, 79, 29, 0.3));
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+} 

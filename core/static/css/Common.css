@@ -22,18 +22,22 @@
 }
 
 .bodySecond {
-    align-items: center;
+    align-items: initial;
     margin: 0;
-    overflow: hidden;
+    overflow: initial;
+    display: block !important;
+    justify-content: initial !important;
+    min-height: initial !important;
 }
-body{
-    font-family: Georgia, serif;
-    background-color: beige;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+
+body.bodySecond {
+    display: block !important;
+    justify-content: initial !important;
+    align-items: initial !important;
+    min-height: initial !important;
     margin: 0;
+    background-color: beige;
+    font-family: Georgia, serif;
 }
 
 .justifyTopRight {
