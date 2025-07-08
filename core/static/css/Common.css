@@ -144,8 +144,166 @@ h6 {
     margin-bottom: 5px;
 }
 .logo{
-    width: 150px;
-    height: 150px;
-    margin-bottom: -50px;
+    display: block;
+    margin: 0.5rem auto 0.2rem auto;
+    width: 120px;
+    height: 120px;
+    filter: brightness(0) saturate(100%) invert(92%) sepia(7%) saturate(749%) hue-rotate(358deg) brightness(104%) contrast(97%);
+}
+
+/* Common input and password field styles for Sign In/Up pages */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
+    height: 36px;
+    font-size: 0.7rem;
+    padding: 0 14px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.auth-box {
+    width: 700px;
+    max-width: 95vw;
+    background: rgba(150, 80, 29, 0.95);
+    border-radius: 20px;
+    padding: 2px 24px 2px 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1vh;
+}
+
+.auth-box > *:not(:last-child) {
+    margin-bottom: 0.15rem;
+}
+
+.auth-box form p {
+    margin: 0.3rem 0 0.1rem 0;
+}
+
+.auth-box label {
+    margin-bottom: 0.3rem;
+}
+
+body.SignIn, body.SignUp {
+    min-height: 100vh;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    overflow: hidden;
+}
+
+.auth-box .signin-title,
+.auth-box .signup-title {
+    color: #f5f5dc;
+    font-size: 2.3rem;
+    font-weight: bold;
+    margin-top: 0.1rem;
+    margin-bottom: 0.1rem;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.auth-box .signin-subtitle,
+.auth-box .signup-subtitle {
+    color: rgba(245, 245, 220, 0.9);
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+    font-style: italic;
+    text-align: center;
+}
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #96501D;
+    font-size: 1.1rem;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon-wrapper {
+    position: relative;
+    width: 100%;
+}
+.input-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: #96501D;
+    font-size: 1rem;
+    pointer-events: none;
+    z-index: 2;
+}
+.input-icon + input[type="text"],
+.input-icon + input[type="password"],
+.input-icon + input[type="email"] {
+    padding-left: 38px;
+}
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Toggle Switch Styles */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 24px;
+}
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #96501D;
+  transition: .4s;
+  border-radius: 50%;
+}
+.toggle-switch input:checked + .toggle-slider {
+  background-color: #f5f5dc;
+}
+.toggle-switch input:checked + .toggle-slider:before {
+  transform: translateX(20px);
 }
 

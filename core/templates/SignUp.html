@@ -8,51 +8,115 @@
     <link rel="stylesheet" href="../static/css/Buttons.css">
     <link rel="icon" href="../static/images/icon.png">
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
+    <style>
+        body.SignUp {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+        .signup-title {
+            color: #f5f5dc;
+            font-size: 2.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+        .signup-subtitle {
+            color: rgba(245, 245, 220, 0.9);
+            font-size: 1.1rem;
+            margin-bottom: 2.2rem;
+            font-style: italic;
+            text-align: center;
+        }
+        .signup-footer {
+            margin-top: 2.2rem;
+            color: #f5f5dc;
+            font-size: 1rem;
+            text-align: center;
+        }
+        .signup-footer a {
+            color: bisque;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        .signup-footer a:hover {
+            text-decoration: underline;
+            color: #fff;
+        }
+    </style>
 </head>
 <body class="SignUp">
-    <div id="box">
-        <h1>Sign Up</h1><br>
+    <div id="box" class="auth-box">
+        <img src="../static/images/lindly.png" alt="Lindly Logo" class="logo">
+        <div class="signup-title">Sign Up</div>
+        <div class="signup-subtitle">Create your account free with our user-friendly Online Library and borrow digital books :)</div>
         <div id="alertContainer" class="custom-alert"></div>
-        <h4>Create your account free with our user-friendly Online Library and borrow digital books :)</h4>
-        <form id="signupForm" method="POST">
+        <form id="signupForm" method="POST" style="width: 100%; max-width: 100%;">
             {% csrf_token %}
             <p>Username</p>
-            <label>
-                <input type="text" id="UserName" name="UserName" placeholder="Name" required>
+            <label style="width: 100%; display: block;">
+                <div class="input-icon-wrapper">
+                    <span class="input-icon"><i class="fas fa-user"></i></span>
+                    <input type="text" id="UserName" name="UserName" placeholder="Enter your username" required>
+                </div>
             </label>
-
             <p>Email</p>
-            <label>
-                <input type="email" id="email" name="email" placeholder="xxxx@gmail.com" required>
+            <label style="width: 100%; display: block;">
+                <div class="input-icon-wrapper">
+                    <span class="input-icon"><i class="fas fa-envelope"></i></span>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
             </label>
-
             <p>Password</p>
-            <label>
-                <input type="password" id="pass" name="pass" placeholder="********" required>
+            <label style="width: 100%; display: block;">
+                <div class="input-icon-wrapper password-wrapper">
+                    <span class="input-icon"><i class="fas fa-lock"></i></span>
+                    <input type="password" id="pass" name="pass" placeholder="Enter your password" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility('pass', 'signupEyeIcon')">
+                        <i class="fas fa-eye" id="signupEyeIcon"></i>
+                    </span>
+                </div>
             </label>
-
             <p>Password Confirmation</p>
-            <label>
-                <input type="password" id="passCheck" name="passCheck" placeholder="********" required>
-
+            <label style="width: 100%; display: block;">
+                <div class="input-icon-wrapper password-wrapper">
+                    <span class="input-icon"><i class="fas fa-lock"></i></span>
+                    <input type="password" id="passCheck" name="passCheck" placeholder="Confirm your password" required>
+                </div>
             </label>
             <p>Is admin?</p>
-            <label for="isAdmin">
-                <select id="isAdmin" name="isAdmin" required>
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                </select>
-            </label>
+            <div style="width: 100%; display: flex; align-items: center; gap: 12px;">
+                <label class="toggle-switch">
+                    <input type="checkbox" id="isAdmin" name="isAdmin">
+                    <span class="toggle-slider"></span>
+                </label>
+                <span style="font-size: 0.9rem; color: #f5f5dc;">Is admin?</span>
+            </div>
             <br>
-            <input type="submit" class="button-light" value="Sign Up">
-
-            <p id="account">Already have an account?
-                <a id="acc" href="/signin/">Sign In</a>
-            </p>
+            <input type="submit" class="button-light" value="Sign Up" style="width: 100%;">
+            <div class="signup-footer">
+                Already have an account? <a href="/signin/">Sign In</a>
+            </div>
         </form>
     </div>
-
+    <script>
+    function togglePasswordVisibility(inputId, eyeIconId) {
+        const passInput = document.getElementById(inputId);
+        const eyeIcon = document.getElementById(eyeIconId);
+        if (passInput.type === 'password') {
+            passInput.type = 'text';
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash');
+        } else {
+            passInput.type = 'password';
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye');
+        }
+    }
+    </script>
     <script src="../static/js/alert.js"></script>
     <script src="../static/js/Sign.js"></script>
 </body>
