@@ -15,7 +15,7 @@
     background: #f5f5dc;
     padding: 20px 30px;
     border-radius: 10px;
-    text-align: center;
+    text-align: left;
     max-width: 350px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
@@ -53,4 +53,28 @@
     font-family: sans-serif;
     font-weight: bold;
     text-align: center;
+}
+
+.borrowers-list {
+    list-style: disc inside;
+    padding-left: 1.2em;
+    color: #8b4513;
+    margin: 0.5em 0;
+    background: #f5f5dc;
+    border-radius: 8px;
+    padding: 0.7em 1em;
+}
+body.dark-mode .borrowers-list {
+    color: #8b4513;
+    background: #f5f5dc;
+}
+.borrowers-list li {
+    margin-bottom: 0.3em;
+}
+
+.borrowers-list,
+.borrowers-list li {
+    color: #8b4513 !important;
+    opacity: 1 !important;
+    font-weight: 600;
 }

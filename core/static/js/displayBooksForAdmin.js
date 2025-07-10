@@ -123,8 +123,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (users.length > 0) {
                     usersHtml = `
                         <p style="color: #8b4513; font-family: Georgia, serif; margin: 15px 0 10px 0;"><strong>Currently borrowed by (${borrowedCount}):</strong></p>
-                        <ul style="max-height: 150px; overflow-y: auto; border: 1px solid #ddd; padding: 15px; border-radius: 5px; background: #f9f9f9; margin: 10px 0; font-family: Georgia, serif;">
-                            ${users.map(u => `<li style="margin: 10px 0; padding: 8px; border-bottom: 1px solid #eee; color: #8b4513; font-family: Georgia, serif;">${u.name} (${u.email})</li>`).join('')}
+                        <ul class="borrowers-list" style="max-height: 150px; overflow-y: auto; border: 1px solid #ddd;">
+                            ${users.map(u => `<li style="border-bottom: 1px solid #eee;">${u.name} (${u.email})</li>`).join('')}
                         </ul>
                     `;
                 } else {

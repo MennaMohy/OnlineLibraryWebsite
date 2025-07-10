@@ -11,19 +11,27 @@
     <link rel="stylesheet" href="{% static 'css/popupBox.css' %}">
     <link rel="stylesheet" href="{% static 'css/NavigationBarStyle.css' %}">
     <link rel="stylesheet" href="{% static 'css/darkMode.css' %}">
-    <link rel="icon" href="../static/images/icon.png">
+    <link rel="icon" href="{% static 'images/icon.png' %}">
 
     <script src="https://kit.fontawesome.com/f5a1817204.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/darkMode.js' %}"></script>
+    <style>
+        .body {
+            text-align: center;
+            margin: 200px 0 0 80px;
+            width: 90vw;
+            max-width: 1500px;
+        }
+        body:not(.dark-mode) .logo {
+            filter: sepia(1) saturate(6) hue-rotate(10deg) brightness(0.7);
+        }
+    </style>
 </head>
 
-<body>
+<body style="background-color: beige">
     <!-- Dark Mode Toggle Button -->
     <button class="dark-mode-toggle" title="Switch to Dark Mode">
         <i class="fas fa-moon"></i>
     </button>
-
-
 
     <!-- Navbar -->
     <div id="navbar" class="side_Nav"></div>
@@ -55,7 +63,7 @@
             Every action you take makes a difference.
             Your work ensures that users always have access to a well-maintained and up-to-date library.
             With just a few clicks, you can help foster a love for reading, support lifelong learning,
-            and create a seamless borrowing experience for everyone. We're excited to have you as part of this mission.
+            and create a seamless borrowing experience for everyone. We’re excited to have you as part of this mission.
             If you ever need assistance or have ideas to improve the system, our team is always here to support you.
             Thank you for being a vital part of our community!
             <i>Behind every well-read community is someone who made the books accessible.
@@ -85,6 +93,6 @@
 
     <!-- JS -->
     <script src="{% static 'js/popBox.js' %}"></script>
-
+    <script src="{% static 'js/darkMode.js' %}"></script>
 </body>
 </html>
